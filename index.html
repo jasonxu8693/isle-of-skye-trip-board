@@ -940,7 +940,7 @@
 
     const groupTasks = [
       { id: "flightKraken", icon: "🛫", title: "Lock all 6 flights", desc: "Jason + Kat booked. Get the other 4 on the same easyJet LTN→INV.", priority: "P1" },
-      { id: "budgetPact", icon: "💷", title: "Agree the budget", desc: "Confirm the per-person all-in (car + stay + food), ~A$1,800–2,400pp.", priority: "P1" },
+      { id: "budgetPact", icon: "💷", title: "Agree the budget", desc: "Confirm the per-person all-in (flights + car + stay + food) and how you'll split it.", priority: "P1" },
       { id: "seoulJejuSplit", icon: "🌦️", title: "Lock the day order", desc: "Keep Trotternish (Day 2) and West Skye (Day 3) swappable until 48h out for weather.", priority: "P1" },
       { id: "accommodation", icon: "🛏️", title: "Confirm the stay & shares", desc: "Solas Alainn, Staffin — confirm beds and everyone's share.", priority: "P2" },
       { id: "vehicle", icon: "🚗", title: "Book the car hire", desc: "Enterprise/Hertz at INV, Fri ~20:15 pickup. Confirm the desk is open past 20:00.", priority: "P1" },
@@ -1039,7 +1039,7 @@
       opts = opts || {};
       if (!hasRemoteSync()) { setSyncChip("disabled"); return; }
       if (!opts.poll) setSyncChip("syncing");
-      const callbackName = `koreaBoardSync_${Date.now()}_${Math.floor(Math.random() * 100000)}`;
+      const callbackName = `skyeBoardSync_${Date.now()}_${Math.floor(Math.random() * 100000)}`;
       const script = document.createElement("script");
       let done = false;
       const cleanup = () => {
@@ -1104,7 +1104,7 @@
 
     function remoteSave() {
       if (!hasRemoteSync()) return;
-      const iframeId = "koreaBoardSyncFrame";
+      const iframeId = "skyeBoardSyncFrame";
       let iframe = document.getElementById(iframeId);
       if (!iframe) {
         iframe = document.createElement("iframe");
@@ -1534,7 +1534,7 @@
 
     document.getElementById("copyIdeasBtn").addEventListener("click", async () => {
       const lines = [
-        "Korea Boys Trip Idea Votes",
+        "Isle of Skye Trip — Activity Votes",
         `Selected traveller: ${selectedPlayer().name}`,
         "",
         ...allIdeas().map(idea => {
@@ -1550,9 +1550,9 @@
     document.getElementById("copySummaryBtn").addEventListener("click", async () => {
       const groupDoneCount = Object.values(state.groupDone).filter(Boolean).length;
       const lines = [
-        "Korea Boys Trip Quest Summary",
-        "Dates: 23 Oct to 2 Nov 2026",
-        "Route: London to Seoul to Jeju",
+        "Isle of Skye Trip — Board Summary",
+        "Dates: 24 to 28 Jul 2026",
+        "Route: London Luton → Inverness → Isle of Skye",
         `Group boss progress: ${groupDoneCount}/${groupTasks.length}`,
         "",
         "Traveller progress:",

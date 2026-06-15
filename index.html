@@ -482,6 +482,121 @@
     .day-photo .dl { position: relative; z-index: 1; padding: 13px 14px; }
     .day-photo .dd { font-size: 9.5px; letter-spacing: 1.4px; text-transform: uppercase; font-weight: 800; color: #cfe0f6; }
     .day-photo .dt { font-size: 19px; font-weight: 650; line-height: 1.1; margin-top: 2px; }
+
+    /* ---------- Summer light + mountain re-theme (Isle of Skye, July) ---------- */
+    /* Flips the board from night-dark to a bright Hebridean summer day: warm sky-lit
+       off-white page, white cards, loch-blue / machair-green / heather / gorse accents,
+       and a daytime board scene. Keeps the immersive Storr photo hero. */
+    :root {
+      --ink: #16273c;            /* deep navy ink text */
+      --muted: #4d5c70;
+      --subtle: #6f8197;
+      --panel: #ffffff;
+      --line: rgba(22, 45, 68, 0.12);
+      --neon: #2f86b5;           /* loch blue */
+      --sun:  #4aa3d8;           /* summer sky */
+      --pink: #7d5fae;           /* heather */
+      --gold: #cf9a2e;           /* gorse / whisky gold */
+      --green:#2e9e6e;           /* machair green */
+      --purple:#6f7fc0;          /* slate blue */
+    }
+    body {
+      color: var(--ink);
+      background:
+        radial-gradient(circle at 12% 6%, rgba(74,163,216,0.18), transparent 30%),
+        radial-gradient(circle at 88% 4%, rgba(46,158,110,0.14), transparent 30%),
+        radial-gradient(circle at 50% 98%, rgba(207,154,46,0.10), transparent 34%),
+        linear-gradient(160deg, #eef5f8 0%, #f5f8f4 48%, #eef4ef 100%);
+    }
+    body:before, body:after { display: none; }   /* remove the dark starfield + glints */
+
+    /* hero stays immersive: photo + dark scrim, light text */
+    .hero-content, .hero h1, .hero p { color: #fff; }
+    .hero .eyebrow { color: rgba(255,255,255,0.92); border-color: rgba(255,255,255,0.32); background: rgba(255,255,255,0.12); }
+    .hero h1 .shine {
+      background: linear-gradient(100deg, #eaf6ff, #8fd3ef 40%, #c4a9e6 70%, #ffd98a);
+      -webkit-background-clip: text; background-clip: text; color: transparent; font-style: italic;
+    }
+    .hero .glass { background: rgba(255,255,255,0.14); border-color: rgba(255,255,255,0.26); }
+    .hero .glass .label { color: rgba(255,255,255,0.80); }
+    .hero .glass .micro { color: rgba(255,255,255,0.84); }
+    .hero .glass .big, .countdown-card .big { color: #fff; -webkit-text-fill-color: #fff; }
+    .hero .pill { background: rgba(255,255,255,0.16); border-color: rgba(255,255,255,0.30); color: #fff; }
+    .hero .pill.hot { background: rgba(125,95,174,0.45); border-color: rgba(255,255,255,0.34); color: #fff; }
+    .hero .progress-bar { background: rgba(255,255,255,0.24); border-color: rgba(255,255,255,0.18); }
+
+    /* nav */
+    .nav { background: rgba(255,255,255,0.86); border-color: var(--line); box-shadow: 0 12px 30px rgba(22,45,68,0.10); }
+    .nav button { color: var(--muted); }
+    .nav button.active { background: linear-gradient(135deg, #2f86b5, #4aa3d8); color: #fff; }
+    .nav .sync-chip { background: #fff; border-color: var(--line); color: var(--muted); }
+    .nav .sync-chip .dot { background: var(--green); }
+
+    /* page surfaces */
+    .panel { background: #ffffff; border-color: var(--line); box-shadow: 0 18px 50px rgba(22,45,68,0.08); }
+    .panel-head { border-bottom-color: var(--line); }
+    .info-card, .task-card, .idea-card, .hub-card, .mini-score, .flow-step,
+    .timeline-item, .roster-row, .sync-box, .player-card, .traveller-row,
+    .mini-idea-row { background: #f7fafc; border-color: var(--line); }
+    .hub-card.primary { background: linear-gradient(135deg, rgba(47,134,181,0.12), rgba(125,95,174,0.10)); border-color: rgba(47,134,181,0.30); box-shadow: 0 16px 42px rgba(47,134,181,0.10); }
+    .activity-spotlight { background: linear-gradient(180deg, rgba(47,134,181,0.10), rgba(255,255,255,0.65)); border-color: rgba(47,134,181,0.24); }
+    .info-card:before, .idea-card:before, .flight-card:before { opacity: 0.45; }
+    .modal-card { background: #fff; border-color: var(--line); }
+    .modal-card p { color: var(--muted); }
+    .personality { background: #f7fafc; border-color: var(--line); }
+
+    /* inputs */
+    select, input[type="text"], .roster-fields select { background: #f1f5f8; border-color: var(--line); color: var(--ink); }
+    select option { color: #111; }
+    textarea { color: var(--ink); }
+
+    /* chips, tags, toggles, votes, progress */
+    .pill { background: #eef3f7; border-color: var(--line); color: var(--muted); }
+    .pill.done { background: rgba(46,158,110,0.12); border-color: rgba(46,158,110,0.34); color: #1f7d54; }
+    .pill.warn { background: rgba(207,154,46,0.14); border-color: rgba(207,154,46,0.34); color: #936a12; }
+    .pill.hot  { background: rgba(125,95,174,0.14); border-color: rgba(125,95,174,0.34); color: #5e4690; }
+    .tag { background: #eef3f7; color: var(--muted); }
+    .tag.personal { background: rgba(47,134,181,0.14); color: #1f6390; }
+    .toggle { background: #d7dee6; border-color: var(--line); }
+    .toggle:checked { background: rgba(46,158,110,0.85); }
+    .vote-btn { background: #f1f5f8; border-color: var(--line); color: var(--muted); }
+    .progress-bar, .meter-track { background: #e4ebf1; border-color: var(--line); }
+    .progress-fill { background: linear-gradient(90deg, #2f86b5, #2e9e6e, #cf9a2e); }
+    .meter-keen { background: rgba(46,158,110,0.85); }
+    .task-card.completed { background: rgba(46,158,110,0.10); border-color: rgba(46,158,110,0.30); }
+    .task-card.group-done { background: rgba(207,154,46,0.12); border-color: rgba(207,154,46,0.30); }
+    .task-icon, .idea-emoji { background: #eaf0f5; border-color: var(--line); }
+
+    /* buttons */
+    .btn { background: linear-gradient(135deg, #2f86b5, #4aa3d8); color: #fff; box-shadow: 0 12px 28px rgba(47,134,181,0.26); }
+    .btn:hover { box-shadow: 0 18px 38px rgba(47,134,181,0.34); }
+    .btn.secondary { background: #eef3f7; color: var(--ink); border: 1px solid var(--line); }
+    .btn.ghost { background: #fff; color: var(--ink); border: 1px solid var(--line); }
+    .btn.danger { background: rgba(200,60,60,0.12); color: #b23535; border: 1px solid rgba(200,60,60,0.30); }
+
+    .source-note { border-top-color: var(--line); color: var(--subtle); }
+    .source-note a { color: #2f86b5; }
+    .timeline-date { color: #b9831f; }
+
+    /* ---- daytime summer board scene ---- */
+    .board {
+      border-color: var(--line);
+      background:
+        radial-gradient(circle at 80% 14%, rgba(255,231,168,0.60), transparent 30%),
+        linear-gradient(180deg, #bfe2f3 0%, #d6ecf6 34%, #e9f4ec 70%, #d9ead7 100%);
+      box-shadow: inset 0 0 90px rgba(255,255,255,0.30);
+    }
+    .board:before { opacity: 0.22; }
+    .sea { background: linear-gradient(180deg, rgba(120,180,210,0.32), rgba(70,140,180,0.50)); }
+    .route-shadow { stroke: rgba(255,255,255,0.65); stroke-width: 12; }
+    .route-line { stroke: rgba(36,72,104,0.55); filter: drop-shadow(0 1px 2px rgba(255,255,255,0.6)); }
+    .node-title { color: #16273c; text-shadow: 0 1px 2px rgba(255,255,255,0.75); }
+    .node-meta { color: #4d5c70; text-shadow: 0 1px 2px rgba(255,255,255,0.6); }
+    .node-core { border-color: rgba(22,45,68,0.18); box-shadow: 0 14px 28px rgba(22,45,68,0.18), 0 0 0 6px rgba(22,45,68,0.05); }
+    .node.boss .node-core { background: linear-gradient(135deg, #2f5a7e, #4a86b0); color: #fff; }
+    .leaves { opacity: 0.45; }
+    .beam { opacity: 0.35; }
+    .saltire { box-shadow: 0 0 24px rgba(0,101,189,0.28); }
   </style>
 </head>
 <body>
@@ -572,20 +687,20 @@
               <div class="board" id="questBoard">
                 <svg class="k-scene" viewBox="0 0 1000 660" preserveAspectRatio="xMidYMax slice" aria-hidden="true">
                   <defs>
-                    <linearGradient id="cuillin" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#33405f"/><stop offset="1" stop-color="#111728"/></linearGradient>
-                    <linearGradient id="hill" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#4a3a5e"/><stop offset="1" stop-color="#211a30"/></linearGradient>
-                    <linearGradient id="heather" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#5e3a66"/><stop offset="1" stop-color="#281a30"/></linearGradient>
-                    <radialGradient id="glow" cx="0.5" cy="0.5" r="0.5"><stop offset="0" stop-color="#ffd0a0" stop-opacity="0.55"/><stop offset="1" stop-color="#ffd0a0" stop-opacity="0"/></radialGradient>
+                    <linearGradient id="cuillin" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#8ba2c0"/><stop offset="1" stop-color="#5a7396"/></linearGradient>
+                    <linearGradient id="hill" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#7bac6e"/><stop offset="1" stop-color="#447a4c"/></linearGradient>
+                    <linearGradient id="heather" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#9a86a8"/><stop offset="1" stop-color="#5f7050"/></linearGradient>
+                    <radialGradient id="glow" cx="0.5" cy="0.5" r="0.5"><stop offset="0" stop-color="#fff0c4" stop-opacity="0.75"/><stop offset="1" stop-color="#fff0c4" stop-opacity="0"/></radialGradient>
                   </defs>
                   <ellipse cx="720" cy="318" rx="280" ry="130" fill="url(#glow)"/>
                   <path fill="url(#cuillin)" opacity="0.95" d="M0 350 L80 250 L140 300 L210 205 L270 285 L340 215 L410 295 L480 235 L560 300 L640 215 L720 295 L800 245 L880 310 L1000 250 L1000 660 L0 660 Z"/>
                   <path fill="url(#hill)" d="M0 432 Q150 360 320 420 T660 420 T1000 412 L1000 660 L0 660 Z"/>
                   <path fill="url(#heather)" d="M0 524 Q220 474 460 512 T1000 502 L1000 660 L0 660 Z"/>
                   <g transform="translate(250 432)">
-                    <path fill="#1a2236" d="M-11 0 C -17 -64 -7 -126 1 -158 C 5 -116 15 -66 17 0 Z"/>
-                    <path fill="#111728" d="M15 0 C 13 -42 19 -82 27 -100 C 31 -62 31 -30 31 0 Z"/>
+                    <path fill="#6b7e9a" d="M-11 0 C -17 -64 -7 -126 1 -158 C 5 -116 15 -66 17 0 Z"/>
+                    <path fill="#56698c" d="M15 0 C 13 -42 19 -82 27 -100 C 31 -62 31 -30 31 0 Z"/>
                   </g>
-                  <g transform="translate(150 470)" fill="#151c2c">
+                  <g transform="translate(150 470)" fill="#8295ac">
                     <rect x="-26" y="-32" width="52" height="32"/>
                     <rect x="-30" y="-44" width="13" height="44"/>
                     <rect x="17" y="-40" width="12" height="40"/>
@@ -593,7 +708,7 @@
                     <rect x="-31" y="-50" width="3" height="7"/><rect x="-24" y="-50" width="3" height="7"/><rect x="22" y="-46" width="3" height="7"/>
                   </g>
                   <g transform="translate(835 466)">
-                    <path fill="#1a2236" d="M-44 70 Q-18 2 12 -4 Q 44 2 58 70 Z"/>
+                    <path fill="#6b7e9a" d="M-44 70 Q-18 2 12 -4 Q 44 2 58 70 Z"/>
                     <rect x="4" y="-46" width="12" height="44" fill="#eef2f8"/>
                     <rect x="2" y="-54" width="16" height="10" fill="#9c2b2e"/>
                     <circle cx="10" cy="-58" r="5" fill="#ffe39a"><animate attributeName="opacity" values="0.45;1;0.45" dur="2.6s" repeatCount="indefinite"/></circle>
@@ -794,6 +909,12 @@
             <div class="info-card"><div class="emoji">🏔️</div><h3>Why Skye</h3><p>The Cuillin, Old Man of Storr, the Quiraing, Fairy Pools, Neist Point sunsets and Talisker whisky.</p></div>
           </div>
 
+          <h3 style="margin:26px 0 14px; font-size:18px">The stay — Solas Alainn, Staffin</h3>
+          <div class="grid-2">
+            <div class="info-card"><div class="emoji">🛏️</div><h3>Booked &amp; paid</h3><p>3-bed / 3-bath cottage, sleeps 6 (all king beds, one ground-floor + bathroom). £1,726 total = ~£288 pp. Booking #42401 via Islands &amp; Highlands Cottages. Check-in Sat 25 Jul after 17:00, out Tue 28 by 10:00. Linen, towels, electricity &amp; final clean included.</p></div>
+            <div class="info-card"><div class="emoji">🏞️</div><h3>Right under the Quiraing</h3><p>Detached cottage overlooking Staffin Bay in the far north of Trotternish. Walk to Mackenzie's store &amp; fuel; An Corran (dinosaur) beach and Mealt Falls 5 min; Old Man of Storr 15 min. Side parking, wildflower garden, fast WiFi. Directions land 14 days out.</p></div>
+          </div>
+
           <h3 style="margin:26px 0 14px; font-size:18px">The five days</h3>
           <div class="grid-2">
             <article class="info-card" style="padding:0; overflow:hidden; min-height:0">
@@ -810,7 +931,7 @@
             </article>
             <article class="info-card" style="padding:0; overflow:hidden; min-height:0">
               <div class="day-photo"><img loading="lazy" src="images/neist.jpg" alt="Neist Point" /><div class="dl"><div class="dd">Mon 27 Jul</div><div class="dt">West Skye</div></div></div>
-              <p style="margin:0; padding:13px 14px; color:var(--muted); font-size:13px; line-height:1.5">Fairy Pools, Talisker, Dunvegan Castle, then Neist Point for the ~21:45 sunset.</p>
+              <p style="margin:0; padding:13px 14px; color:var(--muted); font-size:13px; line-height:1.5">The big drive day from the far-north base: Fairy Pools, Talisker, Dunvegan, then Neist Point for the ~21:45 sunset. Leave early and fuel up — it's ~1h45 home to Staffin afterwards.</p>
             </article>
             <article class="info-card" style="padding:0; overflow:hidden; min-height:0; grid-column:1 / -1">
               <div class="day-photo"><img loading="lazy" src="images/cuillin.jpg" alt="The Cuillin from Sligachan" /><div class="dl"><div class="dd">Tue 28 Jul</div><div class="dt">Highlands &amp; home</div></div></div>
@@ -824,6 +945,7 @@
             <div class="info-card"><div class="emoji">🛣️</div><h3>Single-track roads</h3><p>Trotternish and Glendale are single-track — use the passing places and expect 30–40 mph averages.</p></div>
             <div class="info-card"><div class="emoji">⛽</div><h3>Fuel is sparse</h3><p>Fill up at Portree or Broadford — don't push past half a tank heading to Neist Point or the Quiraing.</p></div>
             <div class="info-card"><div class="emoji">🌦️</div><h3>Weather flex</h3><p>Keep the Trotternish and West Skye days swappable until 48h out — give Trotternish the clearest forecast.</p></div>
+            <div class="info-card"><div class="emoji">🧭</div><h3>The base is far north</h3><p>Staffin puts Trotternish on the doorstep — Storr, Kilt Rock, Quiraing and Fairy Glen are all 5–20 min, so give that the clearest day. The trade-off: West Skye (Fairy Pools, Neist) is ~1h15–1h45 each way, so that day starts early and ends late after the sunset.</p></div>
           </div>
         </div>
       </section>
@@ -873,7 +995,7 @@
       { id: "final", title: "Offline ready", meta: "Clear", icon: "✨", type: "personal", x: 42, y: 68 }
     ];
 
-    const colours = ["#72f4ff", "#ff97ca", "#d7e6ff", "#8be8d4", "#8fa9ff", "#9ec9ff", "#f5f8ff"];
+    const colours = ["#5aa8c8", "#b48fce", "#dcc488", "#82ccae", "#8fa9d6", "#7fb0c4", "#e8edf4"];
     const roles = ["🚗 Driver", "🗺️ Navigator", "📸 Photographer", "🥃 Whisky Scout", "💷 Money Manager", "🌦️ Forecaster", "🧭 Trail Lead"];
 
     // Each traveller picks their own vibe — shown on their token and roster card.
@@ -917,7 +1039,7 @@
         flightKraken: false,
         budgetPact: false,
         seoulJejuSplit: false,
-        accommodation: false,
+        accommodation: true,
         vehicle: false,
         activityShortlist: false,
         itinerary: false,
@@ -932,7 +1054,7 @@
       { id: "return", icon: "↩️", title: "Return flight booked", desc: "INV→LTN Tue 28 Jul evening. Match the group if you can.", priority: "P1", checkpoint: 3 },
       { id: "wishlistVote", icon: "⭐", title: "Vote on activities", desc: "Vote on at least one idea in the Activity Market.", priority: "P2", checkpoint: 4 },
       { id: "jejuHop", icon: "🚗", title: "Car seat / lift sorted", desc: "Confirm your seat in the hire car(s) from Inverness.", priority: "P1", checkpoint: 5 },
-      { id: "accomShare", icon: "🛏️", title: "Accommodation share paid", desc: "Settle your share of Solas Alainn (Staffin).", priority: "P2", checkpoint: 6 },
+      { id: "accomShare", icon: "🛏️", title: "Accommodation share paid", desc: "Pay your ~£288 share of Solas Alainn to Jason (£1,726 ÷ 6 — booked + paid in full).", priority: "P2", checkpoint: 6 },
       { id: "transportShare", icon: "💷", title: "Fuel / hire share confirmed", desc: "Split the car hire and petrol with the group.", priority: "P2", checkpoint: 7 },
       { id: "entry", icon: "🎒", title: "Packed for Skye", desc: "Waterproofs, hiking boots, layers and midge protection (Smidge + head net).", priority: "P1", checkpoint: 8 },
       { id: "final", icon: "📲", title: "Offline maps + apps ready", desc: "Offline Google Maps, RingGo parking app, and bookings saved offline.", priority: "P2", checkpoint: 9 }
@@ -942,7 +1064,7 @@
       { id: "flightKraken", icon: "🛫", title: "Lock all 6 flights", desc: "Jason + Kat booked. Get the other 4 on the same easyJet LTN→INV.", priority: "P1" },
       { id: "budgetPact", icon: "💷", title: "Agree the budget", desc: "Confirm the per-person all-in (flights + car + stay + food) and how you'll split it.", priority: "P1" },
       { id: "seoulJejuSplit", icon: "🌦️", title: "Lock the day order", desc: "Keep Trotternish (Day 2) and West Skye (Day 3) swappable until 48h out for weather.", priority: "P1" },
-      { id: "accommodation", icon: "🛏️", title: "Confirm the stay & shares", desc: "Solas Alainn, Staffin — confirm beds and everyone's share.", priority: "P2" },
+      { id: "accommodation", icon: "🛏️", title: "Stay booked — settle shares", desc: "Solas Alainn, Staffin booked + paid in full (£1,726, ~£288 pp). Collect everyone's share back to Jason.", priority: "P2" },
       { id: "vehicle", icon: "🚗", title: "Book the car hire", desc: "Enterprise/Hertz at INV, Fri ~20:15 pickup. Confirm the desk is open past 20:00.", priority: "P1" },
       { id: "activityShortlist", icon: "🥾", title: "Pick the activity shortlist", desc: "Lock the strongest voted ideas into the plan.", priority: "P2" },
       { id: "itinerary", icon: "🗺️", title: "Lock the itinerary", desc: "Confirm Storr, Quiraing, Fairy Pools, Neist Point and the return drive.", priority: "P2" },

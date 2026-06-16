@@ -290,6 +290,11 @@
     .mini-score .txt { color: var(--muted); font-size: 12px; line-height: 1.35; }
     .add-idea-form { display: grid; grid-template-columns: 0.9fr 0.8fr 1.4fr auto; gap: 10px; margin-top: 16px; }
     .idea-help { color: var(--muted); font-size: 13px; line-height: 1.5; }
+    .idea-photo { margin: -16px -16px 2px; height: 138px; overflow: hidden; border-radius: 24px 24px 0 0; position: relative; border-bottom: 1px solid rgba(255,255,255,0.10); }
+    .idea-photo img { width: 100%; height: 100%; object-fit: cover; display: block; transition: transform 0.5s ease; }
+    .idea-card:hover .idea-photo img { transform: scale(1.05); }
+    .idea-link { display: inline-flex; align-items: center; gap: 5px; margin-top: 9px; font-size: 12px; font-weight: 800; color: #2f86b5; }
+    .idea-link:hover { text-decoration: underline; text-underline-offset: 2px; }
 
 
 
@@ -613,8 +618,9 @@
           <p>The car, the castles, the hikes — and who's keen for what.</p>
           <div class="hero-actions">
             <button class="btn" data-jump="board">Open board</button>
-            <button class="btn secondary" data-jump="tasks">Boss tasks</button>
+            <button class="btn secondary" data-jump="itinerary">Itinerary</button>
             <button class="btn ghost" data-jump="ideas">Activity Market</button>
+            <button class="btn ghost" data-jump="tasks">Boss tasks</button>
             <button class="btn ghost" data-jump="settings">Set your vibe</button>
           </div>
         </div>
@@ -642,7 +648,7 @@
       <button class="active" data-tab="board">🗺️ Board</button>
       <button data-tab="tasks">🎬 Group tasks</button>
       <button class="market-tab" data-tab="ideas">🎯 Activity Market</button>
-      <button data-tab="intel">📍 Trip intel</button>
+      <button data-tab="itinerary">📅 Itinerary</button>
       <button data-tab="settings">⚙️ Roster &amp; vibes</button>
       <button class="sync-chip" id="syncChip" title="Tap to pull the latest from the group">
         <span class="dot"></span><span class="ico">↻</span><span id="syncChipText">Live</span>
@@ -887,12 +893,17 @@
         </div>
       </section>
 
-      <section id="intel" class="section">
+      <section id="itinerary" class="section">
         <div class="panel pad">
           <div class="panel-head" style="padding:0 0 18px; border-bottom:0">
             <div>
-              <h2>The trip</h2>
-              <p class="panel-sub">Five days across the Highlands and the Isle of Skye.</p>
+              <h2>Itinerary</h2>
+              <p class="panel-sub">Five days, hour by hour — Inverness, the drive-up, Trotternish, West Skye and home.</p>
+            </div>
+            <div class="pill-row" style="margin:0">
+              <span class="pill done">✈️ Flights booked</span>
+              <span class="pill done">🛏️ Stay booked</span>
+              <span class="pill warn">🚗 Car hire TBC</span>
             </div>
           </div>
           <div class="rail-label">Skye in five frames</div>
@@ -915,29 +926,79 @@
             <div class="info-card"><div class="emoji">🏞️</div><h3>Right under the Quiraing</h3><p>Detached cottage overlooking Staffin Bay in the far north of Trotternish. Walk to Mackenzie's store &amp; fuel; An Corran (dinosaur) beach and Mealt Falls 5 min; Old Man of Storr 15 min. Side parking, wildflower garden, fast WiFi. Directions land 14 days out.</p></div>
           </div>
 
-          <h3 style="margin:26px 0 14px; font-size:18px">The five days</h3>
-          <div class="grid-2">
-            <article class="info-card" style="padding:0; overflow:hidden; min-height:0">
-              <div class="day-photo"><img loading="lazy" src="images/portree.jpg" alt="Portree harbour" /><div class="dl"><div class="dd">Fri 24 Jul</div><div class="dt">Fly to Inverness</div></div></div>
-              <p style="margin:0; padding:13px 14px; color:var(--muted); font-size:13px; line-height:1.5">easyJet LTN→INV, land 20:00, collect the hire car, overnight in south Inverness.</p>
-            </article>
-            <article class="info-card" style="padding:0; overflow:hidden; min-height:0">
-              <div class="day-photo"><img loading="lazy" src="images/eilean.jpg" alt="Eilean Donan Castle at dusk" /><div class="dl"><div class="dd">Sat 25 Jul</div><div class="dt">The drive-up</div></div></div>
-              <p style="margin:0; padding:13px 14px; color:var(--muted); font-size:13px; line-height:1.5">A82 along Loch Ness, Eilean Donan Castle, cross the Skye Bridge, check in at Staffin.</p>
-            </article>
-            <article class="info-card" style="padding:0; overflow:hidden; min-height:0">
-              <div class="day-photo"><img loading="lazy" src="images/quiraing.jpg" alt="The Quiraing" /><div class="dl"><div class="dd">Sun 26 Jul · clearest day</div><div class="dt">Trotternish</div></div></div>
-              <p style="margin:0; padding:13px 14px; color:var(--muted); font-size:13px; line-height:1.5">Old Man of Storr, Kilt Rock, the Quiraing, Fairy Glen. Early start to beat the car parks.</p>
-            </article>
-            <article class="info-card" style="padding:0; overflow:hidden; min-height:0">
-              <div class="day-photo"><img loading="lazy" src="images/neist.jpg" alt="Neist Point" /><div class="dl"><div class="dd">Mon 27 Jul</div><div class="dt">West Skye</div></div></div>
-              <p style="margin:0; padding:13px 14px; color:var(--muted); font-size:13px; line-height:1.5">The big drive day from the far-north base: Fairy Pools, Talisker, Dunvegan, then Neist Point for the ~21:45 sunset. Leave early and fuel up — it's ~1h45 home to Staffin afterwards.</p>
-            </article>
-            <article class="info-card" style="padding:0; overflow:hidden; min-height:0; grid-column:1 / -1">
-              <div class="day-photo"><img loading="lazy" src="images/cuillin.jpg" alt="The Cuillin from Sligachan" /><div class="dl"><div class="dd">Tue 28 Jul</div><div class="dt">Highlands &amp; home</div></div></div>
-              <p style="margin:0; padding:13px 14px; color:var(--muted); font-size:13px; line-height:1.5">Sligachan, Eilean Donan, Plockton for lunch, then INV → Luton 19:30.</p>
-            </article>
-          </div>
+          <h3 style="margin:26px 0 14px; font-size:18px">Day by day</h3>
+          <p class="panel-sub" style="margin:-8px 0 16px">Times are a guide — Days 3 (Trotternish) and 4 (West Skye) stay swappable until 48h out, so the clearest forecast gets Trotternish. Early starts beat the car parks.</p>
+
+          <article class="info-card" style="padding:0; overflow:hidden; min-height:0; margin-bottom:16px">
+            <div class="day-photo"><img loading="lazy" src="images/portree.jpg" alt="Portree harbour" /><div class="dl"><div class="dd">Fri 24 Jul · Day 1</div><div class="dt">Fly to Inverness</div></div></div>
+            <div style="padding:14px">
+              <div class="timeline">
+                <div class="timeline-item"><div class="timeline-date">18:30</div><div><div class="timeline-title">Fly London Luton → Inverness</div><div class="timeline-body">easyJet EZY623, lands ~20:00. Backpack only.</div></div></div>
+                <div class="timeline-item"><div class="timeline-date">20:00</div><div><div class="timeline-title">Collect the hire car(s)</div><div class="timeline-body">INV airport desk — confirm it's staffed past 20:00 before booking.</div></div></div>
+                <div class="timeline-item"><div class="timeline-date">20:45</div><div><div class="timeline-title">Overnight south Inverness</div><div class="timeline-body">15 min to the Royal Apartment, Broom Dr. Sleep here, drive to Skye tomorrow.</div></div></div>
+                <div class="timeline-item"><div class="timeline-date">21:15</div><div><div class="timeline-title">Late supplies</div><div class="timeline-body">Tesco Extra Inshes (open late) or a takeaway — most kitchens shut by 21:00.</div></div></div>
+              </div>
+            </div>
+          </article>
+
+          <article class="info-card" style="padding:0; overflow:hidden; min-height:0; margin-bottom:16px">
+            <div class="day-photo"><img loading="lazy" src="images/eilean.jpg" alt="Eilean Donan Castle at dusk" /><div class="dl"><div class="dd">Sat 25 Jul · Day 2</div><div class="dt">The drive-up to Skye</div></div></div>
+            <div style="padding:14px">
+              <div class="timeline">
+                <div class="timeline-item"><div class="timeline-date">09:00</div><div><div class="timeline-title">Check out, A82 south along Loch Ness</div><div class="timeline-body">The scenic gateway west — out by the 10:00 checkout.</div></div></div>
+                <div class="timeline-item"><div class="timeline-date">09:30</div><div><div class="timeline-title">Urquhart Castle (optional)</div><div class="timeline-body">Ruined castle on Loch Ness, £14.50. Skip if the day's running tight.</div></div></div>
+                <div class="timeline-item"><div class="timeline-date">12:00</div><div><div class="timeline-title">Lunch — Fort Augustus / Invermoriston</div><div class="timeline-body">Last proper food stop before Skye.</div></div></div>
+                <div class="timeline-item"><div class="timeline-date">13:45</div><div><div class="timeline-title">Eilean Donan Castle</div><div class="timeline-body">Scotland's most photographed castle, on the way in.</div></div></div>
+                <div class="timeline-item"><div class="timeline-date">15:15</div><div><div class="timeline-title">Cross the Skye Bridge</div><div class="timeline-body">Onto the island — free since 2004.</div></div></div>
+                <div class="timeline-item"><div class="timeline-date">15:30</div><div><div class="timeline-title">Portree — fuel + Co-op shop</div><div class="timeline-body">Top up the tank and grab supplies; sparse fuel north of here.</div></div></div>
+                <div class="timeline-item"><div class="timeline-date">17:00</div><div><div class="timeline-title">Check in — Solas Alainn, Staffin</div><div class="timeline-body">Dinner at the Hungry Gull (Staffin) or back in Portree (30 min).</div></div></div>
+              </div>
+            </div>
+          </article>
+
+          <article class="info-card" style="padding:0; overflow:hidden; min-height:0; margin-bottom:16px">
+            <div class="day-photo"><img loading="lazy" src="images/quiraing.jpg" alt="The Quiraing" /><div class="dl"><div class="dd">Sun 26 Jul · Day 3 · give it the clearest day</div><div class="dt">Trotternish loop</div></div></div>
+            <div style="padding:14px">
+              <div class="timeline">
+                <div class="timeline-item"><div class="timeline-date">07:30</div><div><div class="timeline-title">Old Man of Storr</div><div class="timeline-body">Early start to beat the car park (20 min from the Staffin base). 1.5–2.5 hr return hike.</div></div></div>
+                <div class="timeline-item"><div class="timeline-date">10:10</div><div><div class="timeline-title">Rigg Viewpoint · Lealt Falls · Kilt Rock</div><div class="timeline-body">Quick roadside stops north along the A855 — Kilt Rock & Mealt Falls is the highlight.</div></div></div>
+                <div class="timeline-item"><div class="timeline-date">11:30</div><div><div class="timeline-title">Staffin Bay + An Corran beach (optional)</div><div class="timeline-body">Dinosaur footprints, 10 min from base.</div></div></div>
+                <div class="timeline-item"><div class="timeline-date">13:00</div><div><div class="timeline-title">Quiraing</div><div class="timeline-body">Full 7km ridge circuit (2.5–4 hr) or the quick main viewpoint. 10 min from base.</div></div></div>
+                <div class="timeline-item"><div class="timeline-date">16:20</div><div><div class="timeline-title">Brother's Point (optional) → Fairy Glen</div><div class="timeline-body">Hidden coast, then the surreal mini-hills near Uig.</div></div></div>
+                <div class="timeline-item"><div class="timeline-date">18:30</div><div><div class="timeline-title">Back to base — dinner in Portree</div><div class="timeline-body">Scorrybreac or Sea Breezes on the harbour.</div></div></div>
+              </div>
+            </div>
+          </article>
+
+          <article class="info-card" style="padding:0; overflow:hidden; min-height:0; margin-bottom:16px">
+            <div class="day-photo"><img loading="lazy" src="images/neist.jpg" alt="Neist Point" /><div class="dl"><div class="dd">Mon 27 Jul · Day 4 · the big drive day</div><div class="dt">West Skye</div></div></div>
+            <div style="padding:14px">
+              <div class="timeline">
+                <div class="timeline-item"><div class="timeline-date">07:30</div><div><div class="timeline-title">Early start from Staffin</div><div class="timeline-body">It's a long way west and back — fuel up first.</div></div></div>
+                <div class="timeline-item"><div class="timeline-date">08:00</div><div><div class="timeline-title">Fairy Pools</div><div class="timeline-body">Arrive early — the car park fills by 10:00. ~1–1.5 hr return walk.</div></div></div>
+                <div class="timeline-item"><div class="timeline-date">10:00</div><div><div class="timeline-title">Talisker Bay → Talisker Distillery</div><div class="timeline-body">Black-sand bay, then the booked distillery tour (~11:45).</div></div></div>
+                <div class="timeline-item"><div class="timeline-date">13:30</div><div><div class="timeline-title">Dunvegan Castle</div><div class="timeline-body">800-year MacLeod seat — add the seal boat if keen.</div></div></div>
+                <div class="timeline-item"><div class="timeline-date">14:30</div><div><div class="timeline-title">Coral Beach (optional)</div><div class="timeline-body">Turquoise maerl beach, ~1 hr round trip. Skip if tight.</div></div></div>
+                <div class="timeline-item"><div class="timeline-date">16:00</div><div><div class="timeline-title">Coastal drive — Glendale · Waterstein · Milovaig</div><div class="timeline-body">One of the best scenic stretches on the island.</div></div></div>
+                <div class="timeline-item"><div class="timeline-date">20:00</div><div><div class="timeline-title">Neist Point for sunset</div><div class="timeline-body">Arrive ~1.5 hr early for parking; sunset ~21:45. Best on Skye.</div></div></div>
+                <div class="timeline-item"><div class="timeline-date">22:00</div><div><div class="timeline-title">Drive home</div><div class="timeline-body">~1h45 back to Staffin. Late one.</div></div></div>
+              </div>
+            </div>
+          </article>
+
+          <article class="info-card" style="padding:0; overflow:hidden; min-height:0; margin-bottom:8px">
+            <div class="day-photo"><img loading="lazy" src="images/cuillin.jpg" alt="The Cuillin from Sligachan" /><div class="dl"><div class="dd">Tue 28 Jul · Day 5</div><div class="dt">Highlands &amp; home</div></div></div>
+            <div style="padding:14px">
+              <div class="timeline">
+                <div class="timeline-item"><div class="timeline-date">08:00</div><div><div class="timeline-title">Slow Portree morning</div><div class="timeline-body">The Lump viewpoint over the bay (optional).</div></div></div>
+                <div class="timeline-item"><div class="timeline-date">10:30</div><div><div class="timeline-title">Depart → Sligachan Old Bridge</div><div class="timeline-body">Classic Cuillin viewpoint, ~11:00.</div></div></div>
+                <div class="timeline-item"><div class="timeline-date">12:00</div><div><div class="timeline-title">Eilean Donan Castle</div><div class="timeline-body">Second look on the way out, or push on.</div></div></div>
+                <div class="timeline-item"><div class="timeline-date">13:45</div><div><div class="timeline-title">Plockton — lunch</div><div class="timeline-body">Palm-tree fishing village, prettiest stop on the return.</div></div></div>
+                <div class="timeline-item"><div class="timeline-date">15:00</div><div><div class="timeline-title">Drive to Inverness Airport</div><div class="timeline-body">Return the car ~16:30 (fuel up at Invermoriston/Broadford).</div></div></div>
+                <div class="timeline-item"><div class="timeline-date">19:30</div><div><div class="timeline-title">Fly Inverness → London Luton</div><div class="timeline-body">easyJet EZY624, lands ~21:00. Trains run past midnight.</div></div></div>
+              </div>
+            </div>
+          </article>
 
           <h3 style="margin:24px 0 12px">Planning watchouts</h3>
           <div class="grid-2">
@@ -946,6 +1007,14 @@
             <div class="info-card"><div class="emoji">⛽</div><h3>Fuel is sparse</h3><p>Fill up at Portree or Broadford — don't push past half a tank heading to Neist Point or the Quiraing.</p></div>
             <div class="info-card"><div class="emoji">🌦️</div><h3>Weather flex</h3><p>Keep the Trotternish and West Skye days swappable until 48h out — give Trotternish the clearest forecast.</p></div>
             <div class="info-card"><div class="emoji">🧭</div><h3>The base is far north</h3><p>Staffin puts Trotternish on the doorstep — Storr, Kilt Rock, Quiraing and Fairy Glen are all 5–20 min, so give that the clearest day. The trade-off: West Skye (Fairy Pools, Neist) is ~1h15–1h45 each way, so that day starts early and ends late after the sunset.</p></div>
+          </div>
+
+          <h3 style="margin:26px 0 14px; font-size:18px">Good to know</h3>
+          <div class="grid-2">
+            <div class="info-card"><div class="emoji">🚗</div><h3>Car hire &amp; driving</h3><p>Enterprise / Hertz at Inverness airport, mid-size with boot space, ~£200–300 for the 4 days plus ~£40 petrol. Drive on the left, 60 mph single carriageway, 30 in villages. No tolls — the Skye Bridge is free.</p></div>
+            <div class="info-card"><div class="emoji">🦟</div><h3>Midges &amp; kit</h3><p>July–August is midge season — pack Smidge or Avon Skin So Soft and a head net for the Quiraing. Bring waterproof jacket + trousers, hiking boots and layers; weather turns fast.</p></div>
+            <div class="info-card"><div class="emoji">💷</div><h3>Money &amp; data</h3><p>GBP, contactless everywhere. Carry ~£40 in coins as a parking backup (most use RingGo or card). A UK SIM works fine — no roaming needed; signal drops in parts of Trotternish and Glendale, so download offline Google Maps before you go.</p></div>
+            <div class="info-card"><div class="emoji">🆘</div><h3>Emergency &amp; insurance</h3><p>Emergency 999 or 112. Jason on HSBC Premier travel insurance; emergency contact Alice Zhu. Nearest fuel + pharmacy + Co-op are in Portree — don't leave it to the rural ends.</p></div>
           </div>
         </div>
       </section>
@@ -1013,14 +1082,14 @@
 
 
     const defaultIdeas = [
-      { id: "talisker", emoji: "🥃", title: "Talisker distillery tour", city: "Carbost", desc: "The 1hr immersive tour at Skye's oldest working distillery, ~£25pp. Book ahead — peak summer fills early." },
-      { id: "scorrybreac", emoji: "🍽️", title: "Scorrybreac dinner", city: "Portree", desc: "Modern Scottish tasting menu on Portree harbour, ~£70pp. The standout-dinner pick — booking essential." },
-      { id: "threeChimneys", emoji: "🕯️", title: "Three Chimneys dinner", city: "Loch Dunvegan", desc: "One of Scotland's most famous restaurants — candlelit stone cottage, ~£100–140pp. Pairs with the West Skye day." },
-      { id: "urquhart", emoji: "🏰", title: "Urquhart Castle stop", city: "Loch Ness", desc: "Ruined castle on Loch Ness on the drive up (£14.50). Adds time on the Inverness → Skye day — worth it or skip?" },
-      { id: "dunveganSeals", emoji: "🦭", title: "Dunvegan seal boat", city: "Dunvegan", desc: "Add the seal-colony boat trip (+£10) to the 800-year MacLeod clan castle visit." },
-      { id: "coralBeach", emoji: "🏖️", title: "Coral Beach detour", city: "near Dunvegan", desc: "White maerl / turquoise beach, ~1hr round trip. Nice-to-have — skip if the West Skye day runs tight." },
-      { id: "quiraingCircuit", emoji: "🥾", title: "Full Quiraing circuit", city: "Trotternish", desc: "The full 7km / 2.5–4hr ridge loop vs the quick main viewpoint. Best scenery payoff if everyone's up for it." },
-      { id: "anCorran", emoji: "🦕", title: "An Corran dinosaur beach", city: "Staffin", desc: "Beach with dinosaur footprints, 10 min from the Staffin base. Quick optional stop on the Trotternish day." }
+      { id: "talisker", emoji: "🥃", title: "Talisker distillery tour", city: "Carbost", desc: "The 1hr immersive tour at Skye's oldest working distillery, ~£25pp. Book ahead — peak summer fills early.", img: "images/act-talisker.jpg", link: "https://www.malts.com/en-row/distilleries/talisker" },
+      { id: "scorrybreac", emoji: "🍽️", title: "Scorrybreac dinner", city: "Portree", desc: "Modern Scottish tasting menu on Portree harbour, ~£70pp. The standout-dinner pick — booking essential.", link: "https://www.scorrybreac.com/" },
+      { id: "threeChimneys", emoji: "🕯️", title: "Three Chimneys dinner", city: "Loch Dunvegan", desc: "One of Scotland's most famous restaurants — candlelit stone cottage, ~£100–140pp. Pairs with the West Skye day.", link: "https://www.threechimneys.co.uk/" },
+      { id: "urquhart", emoji: "🏰", title: "Urquhart Castle stop", city: "Loch Ness", desc: "Ruined castle on Loch Ness on the drive up (£14.50). Adds time on the Inverness → Skye day — worth it or skip?", img: "images/act-urquhart.jpg", link: "https://www.historicenvironment.scot/visit-a-place/places/urquhart-castle/" },
+      { id: "dunveganSeals", emoji: "🦭", title: "Dunvegan seal boat", city: "Dunvegan", desc: "Add the seal-colony boat trip (+£10) to the 800-year MacLeod clan castle visit.", img: "images/act-dunvegan.jpg", link: "https://www.dunvegancastle.com/" },
+      { id: "coralBeach", emoji: "🏖️", title: "Coral Beach detour", city: "near Dunvegan", desc: "White maerl / turquoise beach, ~1hr round trip. Nice-to-have — skip if the West Skye day runs tight.", link: "https://maps.google.com/?q=Claigan+Coral+Beach+Skye" },
+      { id: "quiraingCircuit", emoji: "🥾", title: "Full Quiraing circuit", city: "Trotternish", desc: "The full 7km / 2.5–4hr ridge loop vs the quick main viewpoint. Best scenery payoff if everyone's up for it.", img: "images/quiraing.jpg", link: "https://www.walkhighlands.co.uk/skye/quiraing.shtml" },
+      { id: "anCorran", emoji: "🦕", title: "An Corran dinosaur beach", city: "Staffin", desc: "Beach with dinosaur footprints, 10 min from the Staffin base. Quick optional stop on the Trotternish day.", link: "https://maps.google.com/?q=An+Corran+Beach+Staffin" }
     ];
 
     const defaultState = {
@@ -1411,9 +1480,10 @@
         const selectedVote = state.ideaVotes?.[idea.id]?.[state.selectedPlayer] || "";
         const denom = Math.max(tally.total, 1);
         return `<article class="idea-card">
+          ${idea.img ? `<div class="idea-photo"><img loading="lazy" src="${escapeAttr(idea.img)}" alt="${escapeAttr(idea.title)}" /></div>` : ""}
           <div class="idea-top">
             <div class="idea-emoji">${idea.emoji || "💡"}</div>
-            <div><div class="idea-title">${escapeHtml(idea.title)}</div><div class="idea-desc">${escapeHtml(idea.desc)}</div></div>
+            <div><div class="idea-title">${escapeHtml(idea.title)}</div><div class="idea-desc">${escapeHtml(idea.desc)}</div>${idea.link ? `<a class="idea-link" href="${escapeAttr(idea.link)}" target="_blank" rel="noopener">🔗 See what this is ↗</a>` : ""}</div>
             <span class="idea-status ${status.cls}">${status.label}</span>
           </div>
           <div class="pill-row" style="margin:0"><span class="pill idea-city">${escapeHtml(idea.city || "TBC")}</span><span class="pill">${tally.total}/${state.players.length} voted</span><span class="pill">Score ${tally.score}</span></div>

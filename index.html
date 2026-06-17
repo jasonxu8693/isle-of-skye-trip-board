@@ -843,14 +843,11 @@
             <div class="panel-head">
               <div>
                 <h2>Group tasks</h2>
-                <p class="panel-sub">Personal tasks move one player. Group tasks move everyone.</p>
+                <p class="panel-sub">The shared checklist — tick one and it's done for the whole group.</p>
               </div>
-              <button class="btn small secondary" id="markJasonFactsBtn">Apply Jason facts</button>
+              <span class="pill warn" id="groupTasksBadge" style="align-self:center">0% done</span>
             </div>
             <div style="padding:20px">
-              <h3 style="margin-bottom:12px">Personal checkpoints</h3>
-              <div class="task-list" id="personalTasks"></div>
-              <h3 style="margin:24px 0 12px">Group tasks</h3>
               <div class="task-list" id="groupTasks"></div>
             </div>
           </div>
@@ -1145,7 +1142,6 @@
       ],
       groupDone: {
         flightKraken: false,
-        budgetPact: false,
         seoulJejuSplit: false,
         accommodation: true,
         vehicle: false,
@@ -1156,21 +1152,8 @@
       }
     };
 
-    const personalTasks = [
-      { id: "squad", icon: "🧭", title: "Confirm your details", desc: "Name, whether you can drive the hire car, and a firm yes or no.", priority: "P1", checkpoint: 1 },
-      { id: "outbound", icon: "🎟️", title: "Outbound flight booked", desc: "Jason + Kat on easyJet LTN→INV. Others book the same or their own.", priority: "P1", checkpoint: 2 },
-      { id: "return", icon: "↩️", title: "Return flight booked", desc: "INV→LTN Tue 28 Jul evening. Match the group if you can.", priority: "P1", checkpoint: 3 },
-      { id: "wishlistVote", icon: "⭐", title: "Vote on activities", desc: "Vote on at least one idea in the Activity Market.", priority: "P2", checkpoint: 4 },
-      { id: "jejuHop", icon: "🚗", title: "Car seat / lift sorted", desc: "Confirm your seat in the hire car(s) from Inverness.", priority: "P1", checkpoint: 5 },
-      { id: "accomShare", icon: "🛏️", title: "Accommodation share paid", desc: "Pay your ~£288 share of Solas Alainn to Jason (£1,726 ÷ 6 — booked + paid in full).", priority: "P2", checkpoint: 6 },
-      { id: "transportShare", icon: "💷", title: "Fuel / hire share confirmed", desc: "Split the car hire and petrol with the group.", priority: "P2", checkpoint: 7 },
-      { id: "entry", icon: "🎒", title: "Packed for Skye", desc: "Waterproofs, hiking boots, layers and midge protection (Smidge + head net).", priority: "P1", checkpoint: 8 },
-      { id: "final", icon: "📲", title: "Offline maps + apps ready", desc: "Offline Google Maps, RingGo parking app, and bookings saved offline.", priority: "P2", checkpoint: 9 }
-    ];
-
     const groupTasks = [
       { id: "flightKraken", icon: "🛫", title: "Lock all 6 flights", desc: "Jason + Kat booked. Get the other 4 on the same easyJet LTN→INV.", priority: "P1" },
-      { id: "budgetPact", icon: "💷", title: "Agree the budget", desc: "Confirm the per-person all-in (flights + car + stay + food) and how you'll split it.", priority: "P1" },
       { id: "seoulJejuSplit", icon: "🌦️", title: "Lock the day order", desc: "Keep Trotternish (Day 2) and West Skye (Day 3) swappable until 48h out for weather.", priority: "P1" },
       { id: "accommodation", icon: "🛏️", title: "Stay booked — settle shares", desc: "Solas Alainn, Staffin booked + paid in full (£1,726, ~£288 pp). Collect everyone's share back to Jason.", priority: "P2" },
       { id: "vehicle", icon: "🚗", title: "Book the car hire", desc: "Enterprise/Hertz at INV, Fri ~20:15 pickup. Confirm the desk is open past 20:00.", priority: "P1" },
@@ -1368,8 +1351,8 @@
     function selectedPlayer() { return state.players[state.selectedPlayer] || state.players[0]; }
 
     function computePlayerProgress(player) {
-      const maxCheckpoint = Math.max(...personalTasks.filter(t => player.completed[t.id]).map(t => t.checkpoint), player.progress || 0);
-      return clamp(maxCheckpoint, 0, checkpoints.length - 1);
+      // Tokens advance via the manual move buttons and the voting nudge (updateWishlistCheckpoint).
+      return clamp(player.progress || 0, 0, checkpoints.length - 1);
     }
 
     function renderNodes() {
@@ -1435,29 +1418,6 @@
     }
 
     function renderTasks() {
-      const p = selectedPlayer();
-      const personalHolder = document.getElementById("personalTasks");
-      personalHolder.innerHTML = personalTasks.map(task => {
-        const done = !!p.completed[task.id];
-        return `<label class="task-card ${done ? "completed" : ""}">
-          <div class="task-icon">${task.icon}</div>
-          <div><div class="task-title">${task.title}</div><div class="task-desc">${task.desc}</div><div class="task-tags"><span class="tag ${task.priority.toLowerCase()}">${task.priority}</span><span class="tag personal">${escapeHtml(p.name)} only</span></div></div>
-          <input class="toggle personal-toggle" type="checkbox" data-task="${task.id}" ${done ? "checked" : ""}/>
-        </label>`;
-      }).join("");
-      personalHolder.querySelectorAll(".personal-toggle").forEach(toggle => {
-        toggle.addEventListener("change", e => {
-          const taskId = e.target.dataset.task;
-          const player = selectedPlayer();
-          player.completed[taskId] = e.target.checked;
-          const progress = computePlayerProgress(player);
-          player.progress = progress;
-          saveState();
-          renderAll();
-          toast(e.target.checked ? `${player.name} cleared a checkpoint` : `${player.name} checkpoint unchecked`);
-        });
-      });
-
       const groupHolder = document.getElementById("groupTasks");
       groupHolder.innerHTML = groupTasks.map(task => {
         const done = !!state.groupDone[task.id];
@@ -1581,11 +1541,8 @@
     }
 
     function renderNextActions() {
-      const p = selectedPlayer();
-      const openPersonal = personalTasks.filter(t => !p.completed[t.id]).slice(0, 2);
-      const openGroup = groupTasks.filter(t => !state.groupDone[t.id]).slice(0, 1);
-      const actions = [...openPersonal, ...openGroup];
-      document.getElementById("nextActions").innerHTML = actions.map(t => `<div class="task-card" style="grid-template-columns:auto 1fr; padding:12px"><div class="task-icon">${t.icon}</div><div><div class="task-title">${t.title}</div><div class="task-desc">${t.desc}</div></div></div>`).join("") || `<div class="info-card"><div class="emoji">🏆</div><h3>All clear</h3><p>No open actions for the selected view.</p></div>`;
+      const actions = groupTasks.filter(t => !state.groupDone[t.id]).slice(0, 3);
+      document.getElementById("nextActions").innerHTML = actions.map(t => `<div class="task-card" style="grid-template-columns:auto 1fr; padding:12px"><div class="task-icon">${t.icon}</div><div><div class="task-title">${t.title}</div><div class="task-desc">${t.desc}</div></div></div>`).join("") || `<div class="info-card"><div class="emoji">🏆</div><h3>All clear</h3><p>Every group task is done.</p></div>`;
     }
 
     function renderStartStrip() {
@@ -1593,19 +1550,17 @@
       if (!host) return;
       const p = selectedPlayer();
       const v = vibeById(p.vibe);
-      const openPersonal = personalTasks.filter(t => !p.completed[t.id]);
       const openGroup = groupTasks.filter(t => !state.groupDone[t.id]);
       let action, target, cta, allDone = false;
-      if (openPersonal.length) {
-        const t = openPersonal[0];
-        action = t;
-        target = t.id === "wishlistVote" ? "ideas" : "tasks";
-        cta = t.id === "wishlistVote" ? "Vote now" : "Open tasks";
+      if (selectedPlayerVoteCount(state.selectedPlayer) === 0) {
+        // Personal nudge: get your votes in first.
+        action = { icon: "🎯", title: "Vote on the activities", desc: "Tell the group what you're keen for in the Activity Market." };
+        target = "ideas"; cta = "Vote now";
       } else if (openGroup.length) {
         action = openGroup[0]; target = "tasks"; cta = "Open group tasks";
       } else {
         allDone = true;
-        action = { icon: "🏆", title: "You're all set", desc: "Every checkpoint cleared — nice one. Check the votes or the itinerary." };
+        action = { icon: "🏆", title: "You're all set", desc: "Every group task is done — nice one. Check the votes or the itinerary." };
         target = "ideas"; cta = "Review votes";
       }
       host.innerHTML = `
@@ -1635,6 +1590,8 @@
       const percent = Math.round(groupDone / groupTotal * 100);
       const gpb = document.getElementById("groupProgressBadge");
       if (gpb) gpb.textContent = `Group bosses ${percent}%`;
+      const gtb = document.getElementById("groupTasksBadge");
+      if (gtb) gtb.textContent = `${groupDone}/${groupTotal} done · ${percent}%`;
     }
 
     function renderHero() {
@@ -1781,12 +1738,6 @@
     document.getElementById("advanceBtn").addEventListener("click", () => { const p = selectedPlayer(); p.progress = clamp((p.progress || 0) + 1, 0, checkpoints.length - 1); saveState(); renderAll(); toast(`${p.name} moved forward`); });
     document.getElementById("undoBtn").addEventListener("click", () => { const p = selectedPlayer(); p.progress = clamp((p.progress || 0) - 1, 0, checkpoints.length - 1); saveState(); renderAll(); toast(`${p.name} moved back`); });
     document.getElementById("resetBtn").addEventListener("click", () => { if (confirm("Reset this browser's Skye board state?")) { localStorage.removeItem(STORE_KEY); state = loadState(); renderAll(); toast("Board reset"); } });
-    document.getElementById("markJasonFactsBtn").addEventListener("click", () => {
-      const jason = state.players[0];
-      jason.name = "Jason"; jason.initials = "J"; jason.completed.squad = true; jason.completed.outbound = true; jason.progress = 2;
-      state.selectedPlayer = 0;
-      saveState(); renderAll(); toast("Jason facts applied");
-    });
 
     document.getElementById("addIdeaBtn").addEventListener("click", () => {
       const title = document.getElementById("newIdeaTitle").value.trim();

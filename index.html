@@ -307,8 +307,8 @@
     .hub-copy { color: var(--muted); font-size: 12px; line-height: 1.42; }
     .hub-status { width: fit-content; border-radius: 999px; padding: 6px 9px; background: rgba(0,0,0,0.2); border: 1px solid rgba(255,255,255,0.12); color: var(--muted); font-size: 11px; font-weight: 900; }
 
-    .nav button.market-tab { color: #fff3c3; border: 1px solid rgba(255,209,92,0.22); background: rgba(255,209,92,0.08); }
-    .nav button.market-tab.active { color: #071226; background: linear-gradient(90deg, #ffd15c, #ff8b3d); }
+    .nav button.market-tab { color: #8a6210; border: 1px solid rgba(207,154,46,0.40); background: rgba(207,154,46,0.14); }
+    .nav button.market-tab.active { color: #3a2906; background: linear-gradient(90deg, #f0b836, #e08a2c); }
 
     .activity-spotlight { border-color: rgba(114,244,255,0.24); background: linear-gradient(180deg, rgba(114,244,255,0.10), rgba(255,255,255,0.04)); }
     .activity-spotlight h3 { font-size: 21px; margin: 8px 0 6px; letter-spacing: -0.04em; }
@@ -602,6 +602,42 @@
     .leaves { opacity: 0.45; }
     .beam { opacity: 0.35; }
     .saltire { box-shadow: 0 0 24px rgba(0,101,189,0.28); }
+
+    /* ---------- first-open hierarchy: one focal point, calmer surroundings ---------- */
+    /* A single dominant "next move" banner so the eye lands in one place, then the
+       shortcut cards and board read as clearly secondary. */
+    .start-strip {
+      display: grid; grid-template-columns: auto 1fr auto; gap: 20px; align-items: center;
+      margin: 18px 20px 4px; padding: 18px 22px; border-radius: var(--radius-lg);
+      background: linear-gradient(135deg, rgba(47,134,181,0.16), rgba(125,95,174,0.10));
+      border: 1px solid rgba(47,134,181,0.32);
+      box-shadow: 0 16px 40px rgba(47,134,181,0.12);
+    }
+    .start-strip .who { display: grid; grid-auto-flow: column; gap: 11px; align-items: center; }
+    .start-strip .who-cap { font-size: 10.5px; font-weight: 800; letter-spacing: 0.12em; text-transform: uppercase; color: var(--subtle); }
+    .start-strip .who-name { font-weight: 850; font-size: 15px; letter-spacing: -0.01em; margin-top: 1px; }
+    .start-strip .lead-label { font-size: 11px; font-weight: 800; letter-spacing: 0.14em; text-transform: uppercase; color: #1f6390; }
+    .start-strip .lead-title { font-family: var(--serif); font-weight: 600; font-size: 23px; letter-spacing: -0.02em; line-height: 1.08; margin-top: 3px; }
+    .start-strip .lead-sub { color: var(--muted); font-size: 13px; margin-top: 5px; line-height: 1.45; max-width: 52ch; }
+    .start-strip .btn { white-space: nowrap; }
+    @media (max-width: 760px) {
+      .start-strip { grid-template-columns: 1fr; gap: 14px; }
+      .start-strip .who { justify-content: start; }
+      .start-strip .btn { width: 100%; }
+    }
+
+    /* zone labels: name each region so the page reads as ordered sections, not a wall */
+    .zone-label { padding: 16px 20px 2px; margin: 0; }
+
+    /* demote the shortcut cards: smaller, quieter — clearly "navigate", not "content" */
+    .planning-hub .hub-card { min-height: 92px; padding: 13px; }
+    .planning-hub .hub-card .hub-icon { font-size: 21px; }
+    .planning-hub .hub-card .hub-title { font-size: 14px; }
+    .planning-hub .hub-card:not(.primary) { background: #fbfdfe; box-shadow: none; }
+
+    /* calm the decorative board chrome so the meaningful tokens/route read first */
+    .bunting { opacity: 0.6; }
+    .cloud { opacity: 0.7; }
   </style>
 </head>
 <body>
@@ -669,6 +705,8 @@
                 <span class="pill warn" id="groupProgressBadge">Group bosses 0%</span>
               </div>
             </div>
+            <div class="start-strip" id="startStrip"></div>
+            <div class="rail-label zone-label">Jump to</div>
             <div class="planning-hub" aria-label="Planning shortcuts">
               <button class="hub-card primary" data-jump="ideas">
                 <span class="hub-icon">🎯</span>
@@ -689,6 +727,7 @@
                 <span class="hub-status">Edit roster</span>
               </button>
             </div>
+            <div class="rail-label zone-label">The journey · everyone's progress</div>
             <div class="board-shell">
               <div class="board" id="questBoard">
                 <svg class="k-scene" viewBox="0 0 1000 660" preserveAspectRatio="xMidYMax slice" aria-hidden="true">
@@ -1549,6 +1588,44 @@
       document.getElementById("nextActions").innerHTML = actions.map(t => `<div class="task-card" style="grid-template-columns:auto 1fr; padding:12px"><div class="task-icon">${t.icon}</div><div><div class="task-title">${t.title}</div><div class="task-desc">${t.desc}</div></div></div>`).join("") || `<div class="info-card"><div class="emoji">🏆</div><h3>All clear</h3><p>No open actions for the selected view.</p></div>`;
     }
 
+    function renderStartStrip() {
+      const host = document.getElementById("startStrip");
+      if (!host) return;
+      const p = selectedPlayer();
+      const v = vibeById(p.vibe);
+      const openPersonal = personalTasks.filter(t => !p.completed[t.id]);
+      const openGroup = groupTasks.filter(t => !state.groupDone[t.id]);
+      let action, target, cta, allDone = false;
+      if (openPersonal.length) {
+        const t = openPersonal[0];
+        action = t;
+        target = t.id === "wishlistVote" ? "ideas" : "tasks";
+        cta = t.id === "wishlistVote" ? "Vote now" : "Open tasks";
+      } else if (openGroup.length) {
+        action = openGroup[0]; target = "tasks"; cta = "Open group tasks";
+      } else {
+        allDone = true;
+        action = { icon: "🏆", title: "You're all set", desc: "Every checkpoint cleared — nice one. Check the votes or the itinerary." };
+        target = "ideas"; cta = "Review votes";
+      }
+      host.innerHTML = `
+        <div class="who">
+          <div class="avatar-dot" style="background:${p.colour}; width:46px; height:46px; font-size:16px">${escapeHtml(p.initials)}</div>
+          <div><div class="who-cap">Viewing as</div><div class="who-name">${escapeHtml(p.name)}${v ? " " + v.emoji : ""}</div></div>
+        </div>
+        <div class="lead">
+          <div class="lead-label">${allDone ? "All done" : "Your next move"}</div>
+          <div class="lead-title">${action.icon} ${escapeHtml(action.title)}</div>
+          <div class="lead-sub">${escapeHtml(action.desc)}</div>
+        </div>
+        <button class="btn" data-go>${cta} ▸</button>`;
+      const goBtn = host.querySelector("[data-go]");
+      if (goBtn) goBtn.addEventListener("click", () => {
+        document.querySelector(`.nav button[data-tab='${target}']`).click();
+        document.getElementById(target).scrollIntoView({ behavior: "smooth", block: "start" });
+      });
+    }
+
     function renderBadges() {
       const vibeSet = state.players.filter(p => p.vibe).length;
       const vibeBadge = document.getElementById("vibeSummaryBadge");
@@ -1653,7 +1730,7 @@
     function escapeAttr(str) { return escapeHtml(str).replace(/'/g, "&#039;"); }
 
     function renderAll() {
-      renderNodes(); renderTokens(); renderPlayerSelect(); renderTravellerGrid(); renderSelectedPanel(); renderVibePicker(); renderTasks(); renderIdeas(); renderBoardIdeaPreview(); renderNextActions(); renderBadges(); renderRosterEditor(); renderHero();
+      renderNodes(); renderTokens(); renderPlayerSelect(); renderTravellerGrid(); renderSelectedPanel(); renderVibePicker(); renderTasks(); renderIdeas(); renderBoardIdeaPreview(); renderNextActions(); renderStartStrip(); renderBadges(); renderRosterEditor(); renderHero();
     }
 
     function toast(message) {

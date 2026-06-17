@@ -792,7 +792,7 @@
               <button class="btn small ghost" id="copySummaryBtn">Copy summary</button>
               <button class="btn small danger" id="resetBtn">Reset board</button>
             </div>
-            <div class="source-note">Saves in your browser for now. Want everyone's votes on one shared board? Live Google Sheets sync can be switched on any time — just ask Jason.</div>
+            <div class="source-note">✅ Live sync is on — everyone's votes and tasks share one board via Google Sheets, and it also saves on your device. Tap the “Live” chip up top to pull the latest. (Simultaneous edits: last save wins.)</div>
           </div>
 
           <aside class="side-stack">
@@ -1079,7 +1079,7 @@
     const STORE_KEY = "skyeTripQuestBoardV1";
     // Paste your Google Apps Script Web App URL here after deployment.
     // It should look like: https://script.google.com/macros/s/AKfycb.../exec
-    const REMOTE_API_URL = ""; // paste this trip's Apps Script /exec URL here
+    const REMOTE_API_URL = "https://script.google.com/macros/s/AKfycbx07mz3rDAnEDdfOVAw9D25Y3lkZGdj86gsaRHi1N3Mec-IKbMKjCjY49mnWV-UZGi3/exec"; // live Google Apps Script /exec sync endpoint
     let remoteSaveTimer = null;
     let remoteLoadAttempted = false;
     let lastSeenUpdatedAt = null;

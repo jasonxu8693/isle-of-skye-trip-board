@@ -94,44 +94,6 @@
       isolation: isolate;
     }
 
-    .hero-art {
-      position: absolute;
-      inset: 0;
-      opacity: 0.95;
-      z-index: -1;
-    }
-
-    .skyline { position: absolute; left: 0; right: 0; bottom: 0; height: 54%; }
-    .building { position: absolute; bottom: 0; width: 6%; border-radius: 18px 18px 0 0; background: linear-gradient(180deg, rgba(255,255,255,0.08), rgba(255,255,255,0.02)); border: 1px solid rgba(255,255,255,0.10); box-shadow: inset 0 0 30px rgba(114,244,255,0.08), 0 0 20px rgba(0,0,0,0.10); }
-    .building:before, .building:after { content: ""; position: absolute; left: 18%; width: 16%; height: 8px; background: rgba(114,244,255,0.72); border-radius: 8px; box-shadow: 22px 0 rgba(255,151,202,0.42), 44px 0 rgba(215,230,255,0.52); }
-    .building:before { top: 22px; }
-    .building:after { top: 58px; }
-    .b1 { left: 3%; height: 38%; }
-    .b2 { left: 11%; height: 48%; width: 7%; }
-    .b3 { left: 20%; height: 31%; }
-    .b4 { right: 22%; height: 42%; }
-    .b5 { right: 12%; height: 55%; width: 8%; }
-    .b6 { right: 3%; height: 34%; }
-
-    .mountain { position: absolute; bottom: -2%; clip-path: polygon(50% 0%, 100% 100%, 0 100%); background: linear-gradient(180deg, rgba(63,78,102,0.72), rgba(21,28,42,0.92)); filter: drop-shadow(0 12px 28px rgba(5,9,18,0.32)); }
-    .m1 { left: 42%; width: 30%; height: 46%; }
-    .m2 { left: 31%; width: 26%; height: 36%; opacity: 0.84; }
-    .m3 { right: 18%; width: 30%; height: 34%; opacity: 0.78; }
-    .moon { position: absolute; right: 9%; top: 9%; width: 106px; height: 106px; border-radius: 50%; background: radial-gradient(circle at 35% 35%, rgba(255,255,255,0.96), rgba(215,230,255,0.96) 38%, rgba(114,244,255,0.88) 68%, rgba(114,244,255,0.30) 100%); box-shadow: 0 0 80px rgba(114,244,255,0.28); overflow: hidden; }
-    .moon:before { content: ""; position: absolute; inset: 0; background: repeating-linear-gradient(45deg, rgba(255,255,255,0.32) 0 8px, rgba(255,255,255,0.08) 8px 16px); mix-blend-mode: screen; }
-    .dragon { display: none; }
-    .dragon span { position: absolute; display: block; border-radius: 999px; background: linear-gradient(90deg, #ff5cc8, #ffd15c); box-shadow: 0 8px 24px rgba(255,92,200,0.3); }
-    .dragon .body { left: 12px; top: 28px; width: 78px; height: 18px; transform: rotate(-8deg); }
-    .dragon .head { right: 12px; top: 18px; width: 30px; height: 28px; }
-    .dragon .wing { left: 34px; top: 0; width: 40px; height: 34px; border-radius: 60% 10% 60% 10%; background: rgba(95,230,255,0.8); transform: rotate(28deg); }
-    .dragon .tail { left: 0; top: 33px; width: 26px; height: 9px; background: #ff8b3d; transform: rotate(18deg); }
-    @keyframes floatDragon { 0%,100% { transform: translateY(0) translateX(0); } 50% { transform: translateY(-15px) translateX(9px); } }
-    .hero:after { content: ""; position: absolute; inset: auto -8% 8% -8%; height: 160px; background:
-      radial-gradient(circle at 20% 0%, rgba(255,255,255,0.16), transparent 28%),
-      radial-gradient(circle at 50% 0%, rgba(114,244,255,0.24), transparent 30%),
-      radial-gradient(circle at 80% 0%, rgba(255,151,202,0.16), transparent 28%);
-      pointer-events: none; filter: blur(18px); opacity: 0.9; }
-
     .hero-content { position: relative; z-index: 1; padding: 28px; display: grid; grid-template-columns: 1.25fr 0.75fr; gap: 28px; min-height: 420px; align-items: end; }
     .eyebrow { display: inline-flex; align-items: center; gap: 8px; width: fit-content; padding: 8px 12px; border: 1px solid rgba(255,255,255,0.16); border-radius: 999px; background: rgba(255,255,255,0.08); backdrop-filter: blur(14px); color: var(--muted); font-size: 13px; letter-spacing: 0.02em; }
     .hero h1 { margin: 18px 0 12px; font-size: clamp(40px, 7vw, 82px); line-height: 0.92; letter-spacing: -0.07em; max-width: 760px; }
@@ -174,55 +136,6 @@
     .panel h2 { font-size: 26px; }
     .panel h3 { font-size: 18px; }
     .panel-sub { color: var(--muted); margin: 6px 0 0; line-height: 1.45; font-size: 14px; }
-
-    .board-shell { position: relative; padding: 16px; }
-    .board {
-      position: relative;
-      min-height: 660px;
-      border-radius: 30px;
-      overflow: hidden;
-      border: 1px solid rgba(255,255,255,0.14);
-      background:
-        radial-gradient(circle at 74% 18%, rgba(255,190,130,0.20), transparent 28%),
-        radial-gradient(circle at 18% 16%, rgba(150,130,210,0.16), transparent 26%),
-        radial-gradient(circle at 50% 92%, rgba(90,150,170,0.14), transparent 28%),
-        linear-gradient(180deg, #10182e 0%, #232a45 40%, #3a2f4e 72%, #52384a 100%);
-      box-shadow: inset 0 0 110px rgba(255,255,255,0.05);
-    }
-    .board:before { content: ""; position: absolute; inset: 0; background-image: url("data:image/svg+xml,%3Csvg width='180' height='180' viewBox='0 0 180 180' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' stroke='rgba(255,255,255,0.07)' stroke-width='1'%3E%3Cpath d='M0 92 C26 70, 44 104, 70 84 S122 70, 180 98'/%3E%3Cpath d='M14 132 C42 112, 63 150, 98 128 S142 120, 170 144'/%3E%3C/g%3E%3C/svg%3E"); opacity: 0.7; }
-    .sea { position: absolute; left: -5%; right: -5%; bottom: -10%; height: 34%; background: linear-gradient(180deg, rgba(120,170,200,0.14), rgba(18, 38, 58, 0.62)); border-radius: 50% 50% 0 0; filter: blur(0.2px); }
-    .island { position: absolute; width: 240px; height: 150px; right: 8%; bottom: 8%; background: linear-gradient(180deg, rgba(63,87,110,0.52), rgba(24, 38, 50, 0.92)); border-radius: 54% 46% 42% 58%; box-shadow: 0 18px 44px rgba(5,9,18,0.24); border: 1px solid rgba(255,255,255,0.14); }
-    .volcano { position: absolute; right: 15%; bottom: 17%; width: 150px; height: 140px; clip-path: polygon(50% 0%, 90% 100%, 10% 100%); background: linear-gradient(180deg, #7e93ae, #2f3a4b); filter: drop-shadow(0 14px 22px rgba(5,9,18,0.28)); }
-    .lava { position: absolute; right: 19.5%; bottom: 27%; width: 56px; height: 86px; clip-path: polygon(50% 0, 64% 28%, 55% 54%, 72% 100%, 35% 100%, 45% 52%, 34% 28%); background: linear-gradient(180deg, #f8fdff, #72f4ff 58%, #ff97ca); opacity: 0.78; animation: lavaPulse 2.2s ease-in-out infinite; }
-    @keyframes lavaPulse { 0%,100% { opacity: 0.45; } 50% { opacity: 0.86; } }
-    .cloud { position: absolute; width: 150px; height: 50px; border-radius: 999px; background: rgba(255,255,255,0.12); filter: blur(0.3px); }
-    .cloud:before, .cloud:after { content: ""; position: absolute; border-radius: 50%; background: inherit; }
-    .cloud:before { width: 70px; height: 70px; left: 25px; top: -36px; }
-    .cloud:after { width: 58px; height: 58px; right: 24px; top: -26px; }
-    .c1 { left: 16%; top: 16%; animation: drift 14s linear infinite; }
-    .c2 { right: 20%; top: 12%; transform: scale(0.7); opacity: 0.7; animation: drift2 17s linear infinite; }
-    @keyframes drift { 50% { transform: translateX(26px); } }
-    @keyframes drift2 { 50% { transform: translateX(-22px) scale(0.7); } }
-
-    .route-svg { position: absolute; inset: 0; width: 100%; height: 100%; z-index: 2; pointer-events: none; }
-    .route-line { fill: none; stroke: rgba(215, 230, 255, 0.72); stroke-width: 8; stroke-linecap: round; stroke-dasharray: 2 18; filter: drop-shadow(0 0 8px rgba(114,244,255,0.34)); }
-    .route-shadow { fill: none; stroke: rgba(0, 0, 0, 0.28); stroke-width: 14; stroke-linecap: round; stroke-dasharray: 2 18; }
-
-    .node { position: absolute; z-index: 5; width: 118px; min-height: 112px; transform: translate(-50%, -50%); display: grid; justify-items: center; gap: 7px; text-align: center; }
-    .node-core { width: 62px; height: 62px; border-radius: 22px; display: grid; place-items: center; font-size: 30px; color: #071226; background: var(--ink); border: 2px solid rgba(255,255,255,0.4); box-shadow: 0 18px 36px rgba(0,0,0,0.3), 0 0 0 6px rgba(255,255,255,0.08); transition: transform 0.2s ease; }
-    .node:hover .node-core { transform: translateY(-4px) rotate(-3deg); }
-    .node-title { font-size: 12px; line-height: 1.15; font-weight: 900; text-shadow: 0 2px 6px rgba(0,0,0,0.6); }
-    .node-meta { font-size: 10px; color: var(--muted); font-weight: 800; text-transform: uppercase; letter-spacing: 0.08em; }
-    .node.group .node-core { background: linear-gradient(135deg, #eef6ff, #8defff); }
-    .node.boss .node-core { background: linear-gradient(135deg, #1c2434, #4e6480); color: white; animation: bossPulse 3s ease-in-out infinite; }
-    .node.personal .node-core { background: linear-gradient(135deg, #f7fbff, #d1e6ff); }
-    @keyframes bossPulse { 0%,100% { box-shadow: 0 18px 36px rgba(0,0,0,0.3), 0 0 0 6px rgba(114,244,255,0.08); } 50% { box-shadow: 0 18px 36px rgba(0,0,0,0.3), 0 0 0 12px rgba(114,244,255,0.16); } }
-
-    .token-layer { position: absolute; inset: 0; z-index: 8; pointer-events: none; }
-    .token { position: absolute; width: 38px; height: 38px; border-radius: 16px 16px 16px 6px; transform: translate(-50%, -50%) rotate(-6deg); display: grid; place-items: center; font-weight: 1000; font-size: 15px; color: #061020; border: 2px solid rgba(255,255,255,0.72); box-shadow: 0 14px 28px rgba(0,0,0,0.35); transition: left 0.45s cubic-bezier(.2,.8,.2,1), top 0.45s cubic-bezier(.2,.8,.2,1), transform 0.2s ease; }
-    .token.active { z-index: 10; transform: translate(-50%, -50%) rotate(4deg) scale(1.1); box-shadow: 0 16px 34px rgba(0,0,0,0.42), 0 0 0 7px rgba(255,255,255,0.13); }
-    .token:after { content: attr(data-name); position: absolute; top: 42px; left: 50%; transform: translateX(-50%); white-space: nowrap; color: var(--ink); background: rgba(0,0,0,0.45); border: 1px solid rgba(255,255,255,0.12); border-radius: 999px; padding: 4px 8px; font-size: 10px; opacity: 0; transition: opacity 0.2s ease; }
-    .token.active:after, .token:hover:after { opacity: 1; }
 
     .side-stack { display: grid; gap: 18px; }
     .player-card { padding: 18px; }
@@ -638,6 +551,194 @@
     /* calm the decorative board chrome so the meaningful tokens/route read first */
     .bunting { opacity: 0.6; }
     .cloud { opacity: 0.7; }
+
+    /* ================================================================
+       v2 rebuild — itinerary-first components (light Skye summer theme)
+       Ported from the Slovenia/Korea boards, re-coloured for the light
+       loch-blue / machair-green / heather / gorse palette.
+       ================================================================ */
+
+    /* nav tab tints */
+    .nav button.plan-tab { color: #1f6390; border: 1px solid rgba(47,134,181,0.38); background: rgba(47,134,181,0.10); }
+    .nav button.plan-tab.active { color: #fff; background: linear-gradient(90deg, #2f86b5, #4aa3d8); }
+    .nav button.desk-tab { color: #1f7d54; border: 1px solid rgba(46,158,110,0.38); background: rgba(46,158,110,0.10); }
+    .nav button.desk-tab.active { color: #fff; background: linear-gradient(90deg, #2e9e6e, #37b380); }
+
+    /* countdown units */
+    .cd-unit { font-size: 0.48em; opacity: 0.8; margin: 0 9px 0 2px; }
+
+    /* who am I */
+    .who-bar { display: flex; flex-wrap: wrap; align-items: center; gap: 8px; margin: 0 0 16px; padding: 10px 13px; border: 1px solid rgba(47,134,181,0.30); border-radius: 14px; background: rgba(47,134,181,0.07); font-size: 13px; color: var(--muted); }
+    .who-bar strong { color: #1f6390; }
+    .who-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(140px, 1fr)); gap: 10px; margin-top: 18px; }
+    .who-btn { display: flex; align-items: center; gap: 10px; padding: 12px 14px; border: 1px solid var(--line); border-radius: 16px; background: #f7fafc; color: var(--ink); font-size: 15px; font-weight: 800; cursor: pointer; text-align: left; }
+    .who-btn:hover { background: #eef3f7; border-color: rgba(22,45,68,0.28); }
+    .who-btn.me { border-color: rgba(46,158,110,0.5); background: rgba(46,158,110,0.10); }
+    .who-dot { width: 12px; height: 12px; border-radius: 50%; flex-shrink: 0; }
+
+    /* ---- Open Decisions desk ---- */
+    .desk-list { display: grid; gap: 14px; }
+    .desk-room { position: relative; overflow: hidden; border: 1px solid var(--line); border-radius: 24px; background: #f7fafc; padding: 16px; display: grid; gap: 13px; box-shadow: 0 10px 26px rgba(22,45,68,0.06); transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease; }
+    .desk-room:hover { transform: translateY(-2px); border-color: rgba(47,134,181,0.30); box-shadow: 0 16px 38px rgba(22,45,68,0.10); }
+    .desk-room.is-decided { border-color: rgba(46,158,110,0.35); background: rgba(46,158,110,0.06); }
+    .desk-head { display: grid; grid-template-columns: auto 1fr auto; gap: 12px; align-items: start; }
+    .desk-emoji { width: 46px; height: 46px; border-radius: 16px; display: grid; place-items: center; font-size: 24px; background: #eaf0f5; border: 1px solid var(--line); }
+    .desk-title { font-weight: 1000; letter-spacing: -0.03em; font-size: 17px; }
+    .desk-desc { color: var(--muted); font-size: 13px; line-height: 1.42; margin-top: 3px; }
+    .crew-row { display: flex; flex-wrap: wrap; gap: 8px; align-items: center; }
+    .crew-label { color: var(--subtle); font-size: 11px; font-weight: 900; text-transform: uppercase; letter-spacing: 0.08em; margin-right: 2px; }
+    .owner-chip { display: inline-flex; align-items: center; gap: 6px; border: 1px solid var(--line); background: #fff; color: var(--ink); border-radius: 999px; padding: 5px 11px 5px 5px; font-size: 12px; font-weight: 800; }
+    .owner-chip .avatar-dot { width: 20px; height: 20px; border-radius: 7px; font-size: 10px; }
+    .owner-chip.empty { color: var(--subtle); font-weight: 700; border-style: dashed; padding: 6px 11px; }
+    .hand-btn { border: 1px solid var(--line); border-radius: 999px; background: #fff; color: var(--muted); padding: 7px 12px; font-weight: 850; font-size: 12px; transition: transform .15s ease, background .15s ease, border-color .15s ease; }
+    .hand-btn:hover { transform: translateY(-1px); border-color: rgba(22,45,68,0.30); }
+    .hand-btn.on { background: rgba(47,134,181,0.12); border-color: rgba(47,134,181,0.42); color: #1f6390; }
+    .hand-btn.drive.on { background: rgba(207,154,46,0.14); border-color: rgba(207,154,46,0.46); color: #936a12; }
+    .opt-list { display: grid; gap: 9px; }
+    .opt-card { position: relative; border: 1px solid var(--line); border-radius: 16px; background: #fff; padding: 11px 12px; }
+    .opt-card.leading { border-color: rgba(207,154,46,0.44); background: rgba(207,154,46,0.07); }
+    .opt-card.chosen { border-color: rgba(46,158,110,0.5); background: rgba(46,158,110,0.09); }
+    .opt-main { display: grid; grid-template-columns: 1fr auto; gap: 10px; align-items: start; }
+    .opt-name { font-weight: 900; font-size: 14px; letter-spacing: -0.01em; }
+    .opt-name a { color: #2f86b5; text-decoration: underline; text-underline-offset: 3px; }
+    .opt-sub { color: var(--muted); font-size: 12px; line-height: 1.4; margin-top: 3px; }
+    .opt-meta { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 8px; }
+    .opt-meta .pill { padding: 5px 9px; font-size: 11px; }
+    .opt-actions { display: grid; gap: 6px; justify-items: end; align-content: start; }
+    .vote-up { border: 1px solid var(--line); border-radius: 12px; background: #f1f5f8; color: var(--muted); padding: 8px 12px; font-weight: 950; font-size: 13px; white-space: nowrap; transition: transform .15s ease, background .15s ease, border-color .15s ease; }
+    .vote-up:hover { transform: translateY(-1px); border-color: rgba(22,45,68,0.28); }
+    .vote-up.on { background: rgba(46,158,110,0.14); border-color: rgba(46,158,110,0.44); color: #1f7d54; }
+    .add-opt { display: grid; grid-template-columns: 1.3fr 1fr 0.7fr auto; gap: 8px; }
+    .add-opt input { padding: 10px 11px; }
+    .add-opt .btn { white-space: nowrap; }
+    .opt-notes-in { margin-top: 8px; padding: 10px 11px; }
+    .room-foot { display: flex; flex-wrap: wrap; gap: 8px; align-items: center; }
+
+    /* ---- Itinerary builder ---- */
+    .plan-toolbar { display: flex; flex-wrap: wrap; gap: 10px; align-items: center; }
+    .plan-days { display: grid; gap: 12px; margin-top: 14px; }
+    .plan-day { border: 1px solid var(--line); border-radius: 20px; background: #f7fafc; padding: 14px; }
+    .plan-day.is-logistics { background: #fbfdfe; border-style: dashed; }
+    .plan-day.is-off { opacity: 0.55; border-style: dashed; }
+    .plan-day-head { display: flex; flex-wrap: wrap; gap: 8px; align-items: center; margin-bottom: 6px; }
+    .plan-date { font-weight: 1000; font-size: 14px; color: #1f6390; }
+    .plan-citytag { font-size: 10px; font-weight: 900; letter-spacing: 0.06em; text-transform: uppercase; padding: 5px 8px; border-radius: 999px; background: rgba(47,134,181,0.13); color: #1f6390; }
+    .plan-citytag.trot { background: rgba(46,158,110,0.13); color: #1f7d54; }
+    .plan-citytag.west { background: rgba(125,95,174,0.13); color: #5e4690; }
+    .plan-stay { font-size: 11px; font-weight: 800; padding: 5px 8px; border-radius: 999px; background: rgba(125,95,174,0.10); color: #5e4690; }
+    .plan-daynote { color: var(--subtle); font-size: 12px; flex-basis: 100%; }
+    .plan-item { display: grid; grid-template-columns: auto 1fr auto auto auto; gap: 9px; align-items: center; padding: 9px 10px; border: 1px solid var(--line); border-radius: 14px; background: #fff; margin-top: 8px; }
+    .plan-item.dinner { border-color: rgba(207,154,46,0.34); background: rgba(207,154,46,0.06); }
+    .plan-item .pi-emoji { font-size: 18px; }
+    .pi-title { font-weight: 850; font-size: 13px; }
+    .pi-sub { color: var(--subtle); font-size: 11px; }
+    a.pi-sub { color: #2f86b5; text-decoration: underline; text-underline-offset: 2px; }
+    .pi-titlewrap { cursor: pointer; min-width: 0; }
+    .pi-titlewrap:hover .pi-title { text-decoration: underline; text-decoration-color: rgba(22,45,68,0.35); text-underline-offset: 3px; }
+    .pi-time { border: 1px solid var(--line); border-radius: 10px; background: #f1f5f8; color: var(--ink); padding: 6px 7px; font-size: 11px; font-weight: 800; width: 88px; }
+    .pi-move { border: 1px solid var(--line); border-radius: 10px; background: #f1f5f8; color: var(--ink); padding: 7px 8px; font-size: 11px; }
+    .pi-move option { color: #111; }
+    .pi-x { border: 1px solid rgba(200,60,60,0.30); border-radius: 10px; background: rgba(200,60,60,0.10); color: #b23535; padding: 7px 9px; font-weight: 900; }
+    .pd-actions { margin-left: auto; display: flex; gap: 6px; }
+    .pd-btn { border: 1px solid var(--line); border-radius: 10px; background: #fff; color: var(--muted); padding: 5px 9px; font-size: 11px; font-weight: 850; transition: border-color 0.15s ease, color 0.15s ease; }
+    .pd-btn:hover { border-color: rgba(22,45,68,0.32); color: var(--ink); }
+    .day-add { display: grid; grid-template-columns: 1fr auto auto; gap: 7px; margin-top: 8px; }
+    .day-add input[type="text"] { padding: 8px 10px; font-size: 12px; border-radius: 12px; background: #fff; border-style: dashed; }
+    .day-add input[type="text"]:focus { border-style: solid; }
+    .plan-empty-day { color: var(--subtle); font-size: 12px; padding: 5px 2px; }
+    .plan-add { display: grid; grid-template-columns: 1fr auto auto auto; gap: 8px; margin-top: 14px; }
+    .plan-add select { width: auto; }
+
+    /* ---- Crew pulse feed ---- */
+    .pulse-feed { display: grid; gap: 8px; margin-top: 12px; max-height: 340px; overflow: auto; }
+    .pulse-row { display: grid; grid-template-columns: auto 1fr; gap: 9px; align-items: start; padding: 9px 10px; border: 1px solid var(--line); border-radius: 14px; background: #f7fafc; }
+    .pulse-row.fresh { border-color: rgba(47,134,181,0.40); background: rgba(47,134,181,0.06); }
+    .pulse-ico { width: 26px; height: 26px; border-radius: 9px; display: grid; place-items: center; font-size: 13px; border: 1px solid rgba(22,45,68,0.18); }
+    .pulse-msg { font-size: 12.5px; line-height: 1.4; }
+    .pulse-time { color: var(--subtle); font-size: 10px; font-weight: 800; margin-top: 2px; }
+
+    /* ---- Visual itinerary poster (dark editorial poster on the light app) ---- */
+    .vitin-head { display: flex; align-items: center; justify-content: space-between; gap: 14px; flex-wrap: wrap; margin-bottom: 14px; }
+    .vitin-modes { display: inline-flex; gap: 6px; padding: 6px; border: 1px solid var(--line); border-radius: 999px; background: #fff; }
+    .vitin-mode { border: 0; border-radius: 999px; padding: 9px 16px; font-weight: 800; font-size: 13px; color: var(--muted); background: transparent; cursor: pointer; transition: background .2s, color .2s; }
+    .vitin-mode.active { color: #fff; background: linear-gradient(135deg, #2f86b5, #4aa3d8); }
+    .vitin-hint { margin: 0; color: var(--subtle); font-size: 12.5px; max-width: 52ch; }
+    .vp-jump { display: flex; flex-wrap: wrap; gap: 7px; margin-bottom: 14px; }
+    .vp-jbtn { border: 1px solid var(--line); background: #fff; color: var(--muted); border-radius: 999px; padding: 7px 13px; font-size: 12.5px; font-weight: 800; cursor: pointer; white-space: nowrap; transition: color .15s, border-color .15s, background .15s; }
+    .vp-jbtn:hover { color: var(--ink); border-color: rgba(22,45,68,0.35); }
+    .vp-jbtn.on { background: linear-gradient(100deg, #2f86b5, #4aa3d8); color: #fff; border-color: transparent; }
+    .vp-vp { position: relative; overflow: hidden; border-radius: var(--radius-xl); border: 1px solid rgba(22,45,68,0.30); background: linear-gradient(180deg, #1d3049 0%, #14243a 100%); box-shadow: 0 18px 60px rgba(22,45,68,0.24); }
+    .vp-track { display: flex; flex-wrap: nowrap; transition: transform .55s cubic-bezier(.4,0,.2,1); }
+    .vp-slide { min-width: 100%; box-sizing: border-box; padding: 30px 34px 34px; position: relative; overflow: hidden; }
+    .vp-mtn { position: absolute; left: 0; right: 0; bottom: 0; width: 100%; height: 92px; opacity: .30; pointer-events: none; }
+    .vp-title-wrap { position: relative; z-index: 1; text-align: center; margin-bottom: 24px; }
+    .vp-eyebrow { font-size: 12px; letter-spacing: .28em; text-transform: uppercase; color: #b9c7d9; font-weight: 700; }
+    .vp-title { font-family: 'Fraunces', Georgia, serif; font-weight: 900; font-size: clamp(40px, 6vw, 66px); line-height: .95; margin: 8px 0 0; color: #eef4fb; letter-spacing: -0.01em; }
+    .vp-sub { font-family: 'Fraunces', Georgia, serif; font-style: italic; font-size: clamp(15px, 2vw, 20px); color: #b9c7d9; margin-top: 6px; }
+    .vp-themes { font-size: 11.5px; letter-spacing: .14em; text-transform: uppercase; color: #8fa2b8; margin-top: 10px; font-weight: 700; }
+    .vp-overview-groups { position: relative; z-index: 1; display: grid; gap: 18px; }
+    .vp-phase { position: relative; overflow: hidden; border-radius: 20px; border: 1px solid rgba(238,244,251,0.12); background: rgba(10,20,33,0.34); padding: 13px 14px 16px; }
+    .vp-phase-title { display: flex; justify-content: space-between; gap: 12px; margin: 0 0 12px; font-size: 11px; font-weight: 900; text-transform: uppercase; letter-spacing: .14em; color: #8fa2b8; }
+    .vp-days { position: relative; display: grid; grid-template-columns: repeat(var(--phase-count, 4), minmax(0, 1fr)); gap: 12px; align-items: start; padding: 4px 2px 0; }
+    .vp-days:before { content: ""; position: absolute; left: 9%; right: 9%; top: 58px; border-top: 2px dashed rgba(238,244,251,0.18); }
+    .vp-daynode { position: relative; min-width: 0; display: flex; flex-direction: column; align-items: center; text-align: center; gap: 9px; background: transparent; border: 0; cursor: pointer; color: inherit; }
+    .vp-daybead { width: min(112px, 100%); max-width: 112px; aspect-ratio: 1; height: auto; border-radius: 50%; object-fit: cover; border: 3px solid currentColor; box-shadow: 0 10px 24px -10px rgba(5,12,22,0.75); background: #1a2b42; transition: transform .25s; }
+    .vp-daynode:hover .vp-daybead { transform: translateY(-3px) scale(1.04); }
+    .vp-daynum { font-size: 11px; font-weight: 800; letter-spacing: .06em; text-transform: uppercase; }
+    .vp-dayname { font-size: 12.5px; font-weight: 600; color: #eef4fb; line-height: 1.25; }
+    .vp-daycount { font-size: 11px; color: #8fa2b8; }
+    .vp-swipe { position: relative; z-index: 1; text-align: center; margin-top: 22px; font-family: 'Fraunces', Georgia, serif; font-style: italic; color: #8fa2b8; font-size: 13px; }
+    .vp-dayhead { position: relative; z-index: 1; display: flex; justify-content: space-between; align-items: flex-start; gap: 14px; }
+    .vp-dayeyebrow { font-size: 11.5px; letter-spacing: .16em; text-transform: uppercase; font-weight: 800; }
+    .vp-daytitle { font-family: 'Fraunces', Georgia, serif; font-weight: 900; font-size: clamp(24px, 3.4vw, 32px); line-height: 1.04; margin: 4px 0 0; color: #eef4fb; }
+    .vp-daynote { position: relative; z-index: 1; color: #b9c7d9; font-size: 12.5px; margin: 10px 0 0; max-width: 64ch; line-height: 1.5; }
+    .vp-daydetails { position: relative; z-index: 1; display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 10px; margin-top: 14px; }
+    .vp-detail { border: 1px solid rgba(238,244,251,0.12); border-radius: 16px; background: rgba(238,244,251,0.06); padding: 11px 12px; min-height: 76px; }
+    .vp-detail span { display: block; font-size: 10px; font-weight: 900; letter-spacing: .12em; text-transform: uppercase; color: #8fa2b8; margin-bottom: 5px; }
+    .vp-detail strong { display: block; color: #eef4fb; font-size: 13px; line-height: 1.35; }
+    .vp-empty { position: relative; z-index: 1; display: flex; align-items: center; gap: 16px; margin-top: 12px; padding: 18px; border: 1px dashed rgba(238,244,251,0.22); border-radius: 18px; background: rgba(10,20,33,0.4); }
+    .vp-empty img { width: 116px; height: 116px; border-radius: 50%; object-fit: cover; border: 3px solid rgba(238,244,251,0.5); flex: none; }
+    .vp-empty div { color: #b9c7d9; font-size: 13.5px; line-height: 1.55; }
+    .vp-empty b { color: #eef4fb; }
+    .vpa { position: relative; z-index: 1; display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 14px; margin-top: 18px; }
+    .vpa-card { display: flex; flex-direction: column; border: 1px solid rgba(238,244,251,0.12); border-radius: 18px; background: rgba(10,20,33,0.5); overflow: hidden; }
+    .vpa-img { width: 100%; aspect-ratio: 3/2; height: auto; object-fit: cover; display: block; transition: transform .4s ease; }
+    .vpa-card:hover .vpa-img { transform: scale(1.05); }
+    .vpa-imgfb { width: 100%; aspect-ratio: 3/2; display: grid; place-items: center; font-size: 54px; background: linear-gradient(135deg, rgba(238,244,251,0.12), rgba(10,20,33,0.5)); }
+    .vpa-txt { padding: 12px 15px 15px; }
+    .vpa-txt h4 { margin: 0 0 4px; font-size: 16px; font-weight: 800; letter-spacing: -0.01em; color: #eef4fb; }
+    .vpa-when { font-size: 11.5px; font-weight: 800; color: #8fa2b8; letter-spacing: .02em; }
+    .vpa-txt p { margin: 4px 0 0; font-size: 13px; color: #b9c7d9; line-height: 1.5; }
+    .vp-nav { display: flex; align-items: center; justify-content: center; gap: 14px; margin-top: 16px; }
+    .vp-arrow { width: 38px; height: 38px; border-radius: 50%; border: 1px solid var(--line); background: #fff; color: var(--ink); font-size: 17px; cursor: pointer; }
+    .vp-arrow:hover { background: #eef3f7; }
+    .vp-dots { display: flex; gap: 8px; align-items: center; }
+    .vp-dot { width: 9px; height: 9px; border-radius: 50%; border: 0; background: rgba(22,45,68,0.25); cursor: pointer; padding: 0; transition: width .2s, background .2s; }
+    .vp-dot.on { background: #2f86b5; width: 24px; border-radius: 5px; }
+    @media (max-width: 620px) {
+      .vp-slide { padding: 22px 16px 26px; }
+      .vp-phase { padding: 12px 10px 14px; }
+      .vp-days { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 15px 10px; }
+      .vp-days:before { display: none; }
+      .vp-daybead { width: min(104px, 36vw); }
+      .vp-daydetails { grid-template-columns: 1fr; }
+    }
+    @media (prefers-reduced-motion: reduce) { .vp-track { transition: none; } }
+
+    /* ---- Mobile dock ---- */
+    .dock { display: none; }
+    @media (max-width: 620px) {
+      .dock { position: fixed; left: 10px; right: 10px; bottom: 10px; z-index: 60; display: flex; gap: 4px; padding: 8px; padding-bottom: calc(8px + env(safe-area-inset-bottom)); border: 1px solid var(--line); border-radius: 24px; background: rgba(255,255,255,0.95); backdrop-filter: blur(20px); box-shadow: 0 18px 50px rgba(22,45,68,0.22); overflow-x: auto; scrollbar-width: none; }
+      .dock::-webkit-scrollbar { display: none; }
+      .dock button { flex: 1 0 auto; min-width: 54px; display: grid; justify-items: center; gap: 3px; border: 0; background: transparent; color: var(--subtle); border-radius: 16px; padding: 7px 6px; font-size: 9.5px; font-weight: 850; }
+      .dock button .d-ico { font-size: 18px; line-height: 1; }
+      .dock button.active { color: #fff; background: linear-gradient(135deg, #2f86b5, #4aa3d8); }
+      .app { padding-bottom: 104px; }
+      .toast { bottom: 88px; }
+      .add-opt, .plan-add { grid-template-columns: 1fr; }
+      .plan-add select { width: 100%; }
+      .plan-item { grid-template-columns: auto 1fr; }
+    }
   </style>
 </head>
 <body>
@@ -653,11 +754,10 @@
           <h1><span>Isle of Skye</span><span class="shine">road trip board</span></h1>
           <p>The car, the castles, the hikes — and who's keen for what.</p>
           <div class="hero-actions">
-            <button class="btn" data-jump="board">Open board</button>
-            <button class="btn secondary" data-jump="itinerary">Itinerary</button>
-            <button class="btn ghost" data-jump="ideas">Activity Market</button>
-            <button class="btn ghost" data-jump="tasks">Boss tasks</button>
-            <button class="btn ghost" data-jump="settings">Set your vibe</button>
+            <button class="btn" data-jump="plan">🗓️ Itinerary</button>
+            <button class="btn secondary" data-jump="ideas">🎯 Activity Market</button>
+            <button class="btn ghost" data-jump="desk">🛎️ Open Decisions</button>
+            <button class="btn ghost" data-jump="intel">🧭 Essentials</button>
           </div>
         </div>
         <aside class="stat-card">
@@ -671,209 +771,80 @@
             </div>
           </div>
           <div class="glass">
-            <div class="label">Group progress</div>
-            <div class="big"><span id="heroProgressPct">0%</span></div>
-            <div class="progress-bar" style="margin-top:12px"><div class="progress-fill" id="heroProgressFill"></div></div>
-            <div class="micro" id="heroProgressSub" style="margin-top:10px">Group bosses cleared together.</div>
+            <div class="label">Still to sort</div>
+            <div class="big"><span id="heroOpenCount">—</span></div>
+            <div class="micro" id="heroOpenSub">open decisions in the desk.</div>
+            <div class="pill-row"><button class="btn small secondary" data-jump="desk">Open decisions ▸</button></div>
           </div>
         </aside>
       </div>
     </header>
 
     <nav class="nav" aria-label="App sections">
-      <button class="active" data-tab="board">🗺️ Board</button>
-      <button data-tab="tasks">🎬 Group tasks</button>
+      <button class="plan-tab active" data-tab="plan">🗓️ Itinerary</button>
       <button class="market-tab" data-tab="ideas">🎯 Activity Market</button>
-      <button data-tab="itinerary">📅 Itinerary</button>
-      <button data-tab="settings">⚙️ Roster &amp; vibes</button>
+      <button class="desk-tab" data-tab="desk">🛎️ Open Decisions</button>
+      <button data-tab="intel">🧭 Essentials</button>
       <button class="sync-chip" id="syncChip" title="Tap to pull the latest from the group">
         <span class="dot"></span><span class="ico">↻</span><span id="syncChipText">Live</span>
       </button>
     </nav>
 
     <main>
-      <section id="board" class="section active">
-        <div class="layout">
-          <div class="panel">
-            <div class="panel-head">
+      <section id="plan" class="section active">
+        <div class="vitin-head">
+          <div class="vitin-modes">
+            <button class="vitin-mode active" data-vitin="poster" type="button">🗺️ Visual itinerary</button>
+            <button class="vitin-mode" data-vitin="edit" type="button">✎ Edit plan</button>
+          </div>
+          <p class="vitin-hint" id="vitinHint">An illustrated day-by-day — swipe through the days or tap a day on the overview. Use “Edit plan” to add or change stops.</p>
+        </div>
+        <div id="vitinPoster" class="vitin-poster" aria-live="polite"></div>
+        <div class="layout" id="planEditor" style="display:none">
+          <div class="panel pad">
+            <div class="panel-head" style="padding:0 0 18px; border-bottom:0">
               <div>
-                <h2>Trip board</h2>
-                <p class="panel-sub">Track progress, votes and group decisions.</p>
+                <h2>Itinerary</h2>
+                <p class="panel-sub">Build it together — add stops to any day, set times to order them, move things between days.</p>
               </div>
               <div class="pill-row" style="margin:0">
-                <span class="pill hot" id="vibeSummaryBadge">0/7 vibes set</span>
-                <span class="pill warn" id="groupProgressBadge">Group bosses 0%</span>
+                <span class="pill hot" id="planCountBadge">0 placed</span>
               </div>
             </div>
-            <div class="start-strip" id="startStrip"></div>
-            <div class="rail-label zone-label">Jump to</div>
-            <div class="planning-hub" aria-label="Planning shortcuts">
-              <button class="hub-card primary" data-jump="ideas">
-                <span class="hub-icon">🎯</span>
-                <span class="hub-title">Activity Market</span>
-                <span class="hub-copy">Vote on Skye stops, tours and dinners.</span>
-                <span class="hub-status" id="boardVoteStatus">0 votes cast</span>
-              </button>
-              <button class="hub-card" data-jump="tasks">
-                <span class="hub-icon">🏔️</span>
-                <span class="hub-title">Group tasks</span>
-                <span class="hub-copy">Flights, car hire, the stay, dinners and the itinerary.</span>
-                <span class="hub-status">Shared progress</span>
-              </button>
-              <button class="hub-card" data-jump="settings">
-                <span class="hub-icon">👥</span>
-                <span class="hub-title">Roster</span>
-                <span class="hub-copy">Names, roles and tokens.</span>
-                <span class="hub-status">Edit roster</span>
-              </button>
+            <div class="idea-help" id="planSummary" style="margin-bottom:14px">Add things to each day below.</div>
+            <div class="plan-toolbar">
+              <button class="btn small secondary" id="planCopyBtn">Copy itinerary</button>
+              <button class="btn small ghost" id="planClearBtn">Clear all</button>
             </div>
-            <div class="rail-label zone-label">The journey · everyone's progress</div>
-            <div class="board-shell">
-              <div class="board" id="questBoard">
-                <svg class="k-scene" viewBox="0 0 1000 660" preserveAspectRatio="xMidYMax slice" aria-hidden="true">
-                  <defs>
-                    <linearGradient id="cuillin" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#8ba2c0"/><stop offset="1" stop-color="#5a7396"/></linearGradient>
-                    <linearGradient id="hill" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#7bac6e"/><stop offset="1" stop-color="#447a4c"/></linearGradient>
-                    <linearGradient id="heather" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#9a86a8"/><stop offset="1" stop-color="#5f7050"/></linearGradient>
-                    <radialGradient id="glow" cx="0.5" cy="0.5" r="0.5"><stop offset="0" stop-color="#fff0c4" stop-opacity="0.75"/><stop offset="1" stop-color="#fff0c4" stop-opacity="0"/></radialGradient>
-                  </defs>
-                  <ellipse cx="720" cy="318" rx="280" ry="130" fill="url(#glow)"/>
-                  <path fill="url(#cuillin)" opacity="0.95" d="M0 350 L80 250 L140 300 L210 205 L270 285 L340 215 L410 295 L480 235 L560 300 L640 215 L720 295 L800 245 L880 310 L1000 250 L1000 660 L0 660 Z"/>
-                  <path fill="url(#hill)" d="M0 432 Q150 360 320 420 T660 420 T1000 412 L1000 660 L0 660 Z"/>
-                  <path fill="url(#heather)" d="M0 524 Q220 474 460 512 T1000 502 L1000 660 L0 660 Z"/>
-                  <g transform="translate(250 432)">
-                    <path fill="#6b7e9a" d="M-11 0 C -17 -64 -7 -126 1 -158 C 5 -116 15 -66 17 0 Z"/>
-                    <path fill="#56698c" d="M15 0 C 13 -42 19 -82 27 -100 C 31 -62 31 -30 31 0 Z"/>
-                  </g>
-                  <g transform="translate(150 470)" fill="#8295ac">
-                    <rect x="-26" y="-32" width="52" height="32"/>
-                    <rect x="-30" y="-44" width="13" height="44"/>
-                    <rect x="17" y="-40" width="12" height="40"/>
-                    <rect x="-6" y="-50" width="14" height="50"/>
-                    <rect x="-31" y="-50" width="3" height="7"/><rect x="-24" y="-50" width="3" height="7"/><rect x="22" y="-46" width="3" height="7"/>
-                  </g>
-                  <g transform="translate(835 466)">
-                    <path fill="#6b7e9a" d="M-44 70 Q-18 2 12 -4 Q 44 2 58 70 Z"/>
-                    <rect x="4" y="-46" width="12" height="44" fill="#eef2f8"/>
-                    <rect x="2" y="-54" width="16" height="10" fill="#9c2b2e"/>
-                    <circle cx="10" cy="-58" r="5" fill="#ffe39a"><animate attributeName="opacity" values="0.45;1;0.45" dur="2.6s" repeatCount="indefinite"/></circle>
-                  </g>
-                  <g transform="translate(404 602)">
-                    <rect x="-12" y="18" width="5" height="16" fill="#7a3f1c"/><rect x="7" y="18" width="5" height="16" fill="#7a3f1c"/><rect x="-26" y="20" width="5" height="14" fill="#6e3717"/>
-                    <ellipse cx="0" cy="6" rx="34" ry="20" fill="#a85a2a"/>
-                    <ellipse cx="-30" cy="-3" rx="15" ry="18" fill="#bd6e36"/>
-                    <path d="M-45 -10 Q-54 -19 -47 -24" stroke="#e8dcc0" stroke-width="4" fill="none" stroke-linecap="round"/>
-                    <path d="M-15 -10 Q-6 -19 -13 -24" stroke="#e8dcc0" stroke-width="4" fill="none" stroke-linecap="round"/>
-                    <path d="M-38 -7 Q-31 3 -31 6" stroke="#7a3f1c" stroke-width="3" fill="none"/>
-                    <circle cx="-31" cy="4" r="3" fill="#241208"/>
-                  </g>
-                  <g>
-                    <g transform="translate(690 606)"><ellipse rx="11" ry="8" fill="#eef0f6"/><circle cx="-10" cy="-1" r="4" fill="#2a2636"/></g>
-                    <g transform="translate(730 616)"><ellipse rx="9" ry="7" fill="#eef0f6"/><circle cx="-8" cy="-1" r="3.4" fill="#2a2636"/></g>
-                  </g>
-                </svg>
-                <div class="saltire" aria-hidden="true"></div>
-                <div class="bunting" aria-hidden="true"><span class="flag"></span><span class="flag"></span><span class="flag"></span><span class="flag"></span><span class="flag"></span><span class="flag"></span><span class="flag"></span></div>
-                <div class="cloud c1"></div><div class="cloud c2"></div>
-                <div class="beam" aria-hidden="true"></div>
-                <div class="sea"></div>
-                <div class="leaves" id="leaves" aria-hidden="true"></div>
-                <svg class="route-svg" viewBox="0 0 1000 660" preserveAspectRatio="none" aria-hidden="true">
-                  <path class="route-shadow" d="M105 540 C145 410 255 455 255 342 C255 230 385 248 420 150 C460 42 640 98 655 220 C672 356 765 298 835 390 C900 475 850 560 745 555" />
-                  <path class="route-line" d="M105 540 C145 410 255 455 255 342 C255 230 385 248 420 150 C460 42 640 98 655 220 C672 356 765 298 835 390 C900 475 850 560 745 555" />
-                </svg>
-                <div id="nodes"></div>
-                <div class="token-layer" id="tokens"></div>
-              </div>
+            <div class="plan-days" id="planDays"></div>
+            <div class="plan-add">
+              <input type="text" id="planAddTitle" placeholder="Add anything — e.g. Coral Beach detour, or fish &amp; chips in Portree" />
+              <input type="time" id="planAddTime" class="pi-time" style="width:auto" aria-label="Time (optional)" />
+              <select id="planAddDay" aria-label="Day to add to"></select>
+              <button class="btn small" id="planAddBtn">Add</button>
             </div>
-            <div class="quest-controls">
-              <button class="btn small" id="advanceBtn">Move player forward</button>
-              <button class="btn small secondary" id="undoBtn">Move player back</button>
-              <button class="btn small ghost" id="copySummaryBtn">Copy summary</button>
-              <button class="btn small danger" id="resetBtn">Reset board</button>
-            </div>
-            <div class="source-note">✅ Live sync is on — everyone's votes and tasks share one board via Google Sheets, and it also saves on your device. Tap the “Live” chip up top to pull the latest. (Simultaneous edits: last save wins.)</div>
+            <div class="source-note" style="margin:18px -20px -20px">✅ Live sync is on — the itinerary, votes and decisions share one board via Google Sheets, and it also saves on your device. Tap the “Live” chip up top to pull the latest. (Simultaneous edits: last save wins.)</div>
           </div>
-
           <aside class="side-stack">
-            <div class="panel player-card">
-              <div class="label">Selected player</div>
-              <div class="select-row">
-                <select id="playerSelect" aria-label="Selected traveller"></select>
-                <button class="btn small secondary" id="focusPlayerBtn">Focus</button>
-              </div>
-              <div class="progress-wrap">
-                <div class="progress-head"><span id="selectedName">Jason</span><span id="selectedProgress">0%</span></div>
-                <div class="progress-bar"><div class="progress-fill" id="selectedProgressFill"></div></div>
-              </div>
-              <div class="pill-row">
-                <span class="pill" id="selectedRole">🧭 No role yet</span>
-                <span class="pill" id="selectedStage">Spawn point</span>
-              </div>
-              <div class="vibe-block">
-                <div class="label">Their vibe</div>
-                <div class="vibe-picker" id="vibePicker"></div>
-              </div>
-            </div>
-
             <div class="panel pad">
-              <div class="label">Roster</div>
-              <div class="traveller-grid" id="travellerGrid"></div>
+              <div class="label">⛅ Weather call</div>
+              <p class="panel-sub" style="margin:6px 0 12px">Trotternish (Sun) and West Skye (Mon) stay swappable until 48h out — give Trotternish the clearest forecast. One tap swaps the whole day.</p>
+              <button class="btn small" id="swapDaysBtn">⛅ Swap Trotternish ↔ West Skye</button>
             </div>
-
-            <div class="panel pad activity-spotlight">
-              <div class="label">Next thing</div>
-              <h3>Vote first. Lock it later.</h3>
-              <p>Keep the good ideas alive until the group picks a shortlist.</p>
-              <div class="mini-idea-list" id="boardIdeaPreview"></div>
-              <button class="btn small" data-jump="ideas">Activity Market</button>
-            </div>
-
             <div class="panel pad">
-              <div class="label">Next three actions</div>
-              <div id="nextActions" class="task-list" style="margin-top:12px"></div>
+              <div class="label">💡 Shortlisted ideas</div>
+              <p class="panel-sub" style="margin-top:4px">Won the vote in the Activity Market + decided dinners — add the ones you want to a day.</p>
+              <div class="mini-idea-list" id="planFeed" style="margin-top:12px"></div>
+              <button class="btn small ghost" id="planLockBtn" style="margin-top:6px">🔒 Lock this itinerary</button>
+            </div>
+            <div class="info-card">
+              <div class="emoji">🧭</div>
+              <h3>How to build it</h3>
+              <p>Type into the <strong>＋ Add</strong> row on any day (set a time to order things). Tap an item's title to rename, ✎ a day's note, 🚫 to drop a day. Every change syncs to the whole group.</p>
             </div>
           </aside>
         </div>
       </section>
-
-      <section id="tasks" class="section">
-        <div class="layout">
-          <div class="panel">
-            <div class="panel-head">
-              <div>
-                <h2>Group tasks</h2>
-                <p class="panel-sub">The shared checklist — tick one and it's done for the whole group.</p>
-              </div>
-              <span class="pill warn" id="groupTasksBadge" style="align-self:center">0% done</span>
-            </div>
-            <div style="padding:20px">
-              <div class="task-list" id="groupTasks"></div>
-            </div>
-          </div>
-          <aside class="side-stack">
-            <div class="panel pad">
-              <div class="label">Why these matter</div>
-              <div class="info-card" style="margin-top:12px">
-                <div class="emoji">🚗</div>
-                <h3>Car hire first</h3>
-                <p>No car, no Skye. Lock the INV hire with a Fri ~20:15 pickup before anything else.</p>
-              </div>
-              <div class="info-card" style="margin-top:12px">
-                <div class="emoji">🅿️</div>
-                <h3>Beat the car parks</h3>
-                <p>Storr, Quiraing and Fairy Pools fill by mid-morning. Early starts = a parking space.</p>
-              </div>
-              <div class="info-card" style="margin-top:12px">
-                <div class="emoji">🦟</div>
-                <h3>Midges & weather</h3>
-                <p>Pack Smidge + a head net for the Quiraing, and keep Days 2/3 swappable for the forecast.</p>
-              </div>
-            </div>
-          </aside>
-        </div>
-      </section>
-
 
       <section id="ideas" class="section">
         <div class="layout">
@@ -889,14 +860,15 @@
               </div>
             </div>
             <div class="flow-steps">
-              <div class="flow-step"><strong>1. Pick yourself</strong><span>Use the player dropdown.</span></div>
+              <div class="flow-step"><strong>1. Pick yourself</strong><span>In the crew panel →</span></div>
               <div class="flow-step"><strong>2. Vote lightly</strong><span>Keen, maybe or no.</span></div>
-              <div class="flow-step"><strong>3. Shortlist later</strong><span>Shortlist the strongest ideas later.</span></div>
+              <div class="flow-step"><strong>3. Add winners to a day</strong><span>From the Itinerary tab.</span></div>
             </div>
             <div class="idea-toolbar">
               <div class="idea-help">Rule of thumb: 4+ keen = shortlist · 2+ no = discuss · mostly maybe = optional.</div>
               <button class="btn small secondary" id="copyIdeasBtn">Copy vote summary</button>
             </div>
+            <div class="who-bar">🙋 You're voting as <strong id="whoName">—</strong> <button class="btn small ghost" id="changeWhoBtn" style="margin-left:auto">Not you? Pick yourself</button></div>
             <div class="idea-grid" id="ideaGrid"></div>
             <h3 style="margin:24px 0 8px">Add a new idea</h3>
             <div class="add-idea-form">
@@ -908,6 +880,15 @@
           </div>
           <aside class="side-stack">
             <div class="panel pad">
+              <div class="label">👥 The crew</div>
+              <p class="panel-sub" style="margin:6px 0 12px">Pick yourself, then vote — so every vote is attributed to you.</p>
+              <div class="select-row" style="margin-bottom:14px">
+                <select id="playerSelect" aria-label="You are"></select>
+              </div>
+              <div class="traveller-grid" id="travellerGrid"></div>
+              <details style="margin-top:14px"><summary class="label" style="cursor:pointer">✎ Rename crew</summary><div id="rosterEditor" class="task-list" style="margin-top:10px"></div></details>
+            </div>
+            <div class="panel pad">
               <div class="label">Decision logic</div>
               <div class="idea-summary-grid">
                 <div class="mini-score"><div class="num" id="hotIdeaCount">0</div><div class="txt">Strong shortlist ideas</div></div>
@@ -915,41 +896,88 @@
                 <div class="mini-score"><div class="num" id="blockedIdeaCount">0</div><div class="txt">Needs discussion</div></div>
               </div>
               <div class="info-card" style="margin-top:14px">
-                <div class="emoji">💡</div>
-                <h3>Wishlist checkpoint</h3>
-                <p>Vote on one idea to clear your wishlist checkpoint.</p>
-              </div>
-              <div class="info-card" style="margin-top:12px">
                 <div class="emoji">🥃</div>
                 <h3>Book the popular ones</h3>
-                <p>Talisker tours and Scorrybreac / Three Chimneys fill weeks ahead in peak summer. Vote, then book early.</p>
+                <p>Talisker tours and Scorrybreac / Three Chimneys fill weeks ahead in peak summer. Vote, then book early via Open Decisions.</p>
+              </div>
+              <div class="info-card" style="margin-top:12px">
+                <div class="emoji">🅿️</div>
+                <h3>Early starts win</h3>
+                <p>Storr, Quiraing and Fairy Pools car parks fill by mid-morning — anything voted in gets an early slot on the day.</p>
               </div>
             </div>
           </aside>
         </div>
       </section>
 
-      <section id="itinerary" class="section">
+      <section id="desk" class="section">
+        <div class="layout">
+          <div class="panel pad">
+            <div class="panel-head" style="padding:0 0 18px; border-bottom:0">
+              <div>
+                <h2>Open Decisions</h2>
+                <p class="panel-sub">Everything still to sort before Skye — put your hand up, share options, vote, book it.</p>
+              </div>
+              <div class="pill-row" style="margin:0">
+                <span class="pill done" id="deskDecidedBadge">0 booked</span>
+                <span class="pill warn" id="deskOpenBadge">0 open</span>
+                <span class="pill hot" id="deskOptionsBadge">0 options shared</span>
+              </div>
+            </div>
+            <div class="idea-help" style="margin-bottom:14px">🙋 Tap <strong>“I'll look into this”</strong> to own a job · 📋 share options with a link + price · 👍 the group votes · ✔️ lock the pick and it moves to Booked. Pick yourself in the Activity Market's crew panel first.</div>
+            <div class="desk-list" id="deskList"></div>
+            <h3 style="margin:26px 0 4px">Start a new decision room</h3>
+            <p class="panel-sub">Anything the group needs to sort — a dinner, a detour, who's bringing the Smidge.</p>
+            <div class="add-opt" style="grid-template-columns:1.3fr 1.7fr auto; margin-top:12px">
+              <input type="text" id="newRoomTitle" placeholder="What's the decision? e.g. Boat trip from Portree" />
+              <input type="text" id="newRoomDesc" placeholder="One line of detail (optional)" />
+              <button class="btn small" id="addRoomBtn">Add room</button>
+            </div>
+          </div>
+          <aside class="side-stack">
+            <div class="panel pad">
+              <div class="label">✅ Booked</div>
+              <p class="panel-sub" style="margin:6px 0 12px">Locked-in decisions — what's feeding the trip.</p>
+              <div id="deskBooked"></div>
+            </div>
+            <div class="panel pad">
+              <div class="label">📡 Crew pulse <span class="pill" id="pulseBadge" style="margin-left:6px">live</span></div>
+              <p class="panel-sub" style="margin:6px 0 0">What's happened since you last looked.</p>
+              <div class="pulse-feed" id="pulseFeed"></div>
+            </div>
+            <div class="panel pad">
+              <div class="label">How it flows</div>
+              <div class="flow-step" style="margin-top:12px"><strong>1. Own it 🙋</strong><span>Take a job — car, tour, dinner.</span></div>
+              <div class="flow-step" style="margin-top:10px"><strong>2. Share options 📋</strong><span>Post links + prices for the group.</span></div>
+              <div class="flow-step" style="margin-top:10px"><strong>3. Book it ✔️</strong><span>Lock the pick once it's sorted.</span></div>
+            </div>
+          </aside>
+        </div>
+      </section>
+
+      <section id="intel" class="section">
         <div class="panel pad">
           <div class="panel-head" style="padding:0 0 18px; border-bottom:0">
             <div>
-              <h2>Itinerary</h2>
-              <p class="panel-sub">Five days, hour by hour — Inverness, the drive-up, Trotternish, West Skye and home.</p>
+              <h2>Skye Essentials 🏴󠁧󠁢󠁳󠁣󠁴󠁿</h2>
+              <p class="panel-sub">The on-the-ground cheat sheet — save this to your phone before you lose signal in Trotternish.</p>
             </div>
             <div class="pill-row" style="margin:0">
-              <span class="pill done">✈️ Flights booked</span>
-              <span class="pill done">🛏️ Stay booked</span>
-              <span class="pill warn">🚗 Car hire TBC</span>
+              <span class="pill done">🛏️ Stay booked &amp; paid</span>
+              <span class="pill warn">🦟 Midge season</span>
+              <span class="pill hot">💷 Carry parking coins</span>
             </div>
           </div>
+
           <div class="rail-label">Skye in five frames</div>
           <div class="photo-rail" style="margin-bottom:24px">
-            <div class="poster tall"><img loading="lazy" src="images/storr.jpg" alt="The Old Man of Storr" /><div class="cap"><b>Old Man of Storr</b><span>Trotternish · the Day 2 hike</span></div></div>
-            <div class="poster"><img loading="lazy" src="images/quiraing.jpg" alt="The Quiraing" /><div class="cap"><b>The Quiraing</b><span>Landslip ridge · Day 2</span></div></div>
-            <div class="poster"><img loading="lazy" src="images/fairy.jpg" alt="The Fairy Pools" /><div class="cap"><b>Fairy Pools</b><span>Under the Cuillin · Day 3</span></div></div>
-            <div class="poster"><img loading="lazy" src="images/neist.jpg" alt="Neist Point lighthouse" /><div class="cap"><b>Neist Point</b><span>Sunset lighthouse · Day 3</span></div></div>
+            <div class="poster tall"><img loading="lazy" src="images/storr.jpg" alt="The Old Man of Storr" /><div class="cap"><b>Old Man of Storr</b><span>Trotternish · the early hike</span></div></div>
+            <div class="poster"><img loading="lazy" src="images/quiraing.jpg" alt="The Quiraing" /><div class="cap"><b>The Quiraing</b><span>Landslip ridge · 10 min from base</span></div></div>
+            <div class="poster"><img loading="lazy" src="images/fairy.jpg" alt="The Fairy Pools" /><div class="cap"><b>Fairy Pools</b><span>Under the Cuillin · West Skye day</span></div></div>
+            <div class="poster"><img loading="lazy" src="images/neist.jpg" alt="Neist Point lighthouse" /><div class="cap"><b>Neist Point</b><span>Sunset lighthouse · West Skye day</span></div></div>
             <div class="poster"><img loading="lazy" src="images/coo.jpg" alt="A Highland cow on Skye" /><div class="cap"><b>A proper coo</b><span>Compulsory photo stop</span></div></div>
           </div>
+
           <div class="grid-3">
             <div class="info-card"><div class="emoji">📅</div><h3>Dates</h3><p>Fri 24 to Tue 28 Jul 2026. 4 nights — 1 in Inverness, 3 at Staffin (Solas Alainn).</p></div>
             <div class="info-card"><div class="emoji">✈️</div><h3>Route</h3><p>easyJet London Luton → Inverness, then self-drive the A82/A87 via Loch Ness and the Skye Bridge.</p></div>
@@ -962,86 +990,12 @@
             <div class="info-card"><div class="emoji">🏞️</div><h3>Right under the Quiraing</h3><p>Detached cottage overlooking Staffin Bay in the far north of Trotternish. Walk to Mackenzie's store &amp; fuel; An Corran (dinosaur) beach and Mealt Falls 5 min; Old Man of Storr 15 min. Side parking, wildflower garden, fast WiFi. Directions land 14 days out.</p></div>
           </div>
 
-          <h3 style="margin:26px 0 14px; font-size:18px">Day by day</h3>
-          <p class="panel-sub" style="margin:-8px 0 16px">Times are a guide — Days 3 (Trotternish) and 4 (West Skye) stay swappable until 48h out, so the clearest forecast gets Trotternish. Early starts beat the car parks.</p>
-
-          <article class="info-card" style="padding:0; overflow:hidden; min-height:0; margin-bottom:16px">
-            <div class="day-photo"><img loading="lazy" src="images/portree.jpg" alt="Portree harbour" /><div class="dl"><div class="dd">Fri 24 Jul · Day 1</div><div class="dt">Fly to Inverness</div></div></div>
-            <div style="padding:14px">
-              <div class="timeline">
-                <div class="timeline-item"><div class="timeline-date">18:30</div><div><div class="timeline-title">Fly London Luton → Inverness</div><div class="timeline-body">easyJet EZY623, lands ~20:00. Backpack only.</div></div></div>
-                <div class="timeline-item"><div class="timeline-date">20:00</div><div><div class="timeline-title">Collect the hire car(s)</div><div class="timeline-body">INV airport desk — confirm it's staffed past 20:00 before booking.</div></div></div>
-                <div class="timeline-item"><div class="timeline-date">20:45</div><div><div class="timeline-title">Overnight south Inverness</div><div class="timeline-body">15 min to the Royal Apartment, Broom Dr. Sleep here, drive to Skye tomorrow.</div></div></div>
-                <div class="timeline-item"><div class="timeline-date">21:15</div><div><div class="timeline-title">Late supplies</div><div class="timeline-body">Tesco Extra Inshes (open late) or a takeaway — most kitchens shut by 21:00.</div></div></div>
-              </div>
-            </div>
-          </article>
-
-          <article class="info-card" style="padding:0; overflow:hidden; min-height:0; margin-bottom:16px">
-            <div class="day-photo"><img loading="lazy" src="images/eilean.jpg" alt="Eilean Donan Castle at dusk" /><div class="dl"><div class="dd">Sat 25 Jul · Day 2</div><div class="dt">The drive-up to Skye</div></div></div>
-            <div style="padding:14px">
-              <div class="timeline">
-                <div class="timeline-item"><div class="timeline-date">09:00</div><div><div class="timeline-title">Check out, A82 south along Loch Ness</div><div class="timeline-body">The scenic gateway west — out by the 10:00 checkout.</div></div></div>
-                <div class="timeline-item"><div class="timeline-date">09:30</div><div><div class="timeline-title">Urquhart Castle (optional)</div><div class="timeline-body">Ruined castle on Loch Ness, £14.50. Skip if the day's running tight.</div></div></div>
-                <div class="timeline-item"><div class="timeline-date">12:00</div><div><div class="timeline-title">Lunch — Fort Augustus / Invermoriston</div><div class="timeline-body">Last proper food stop before Skye.</div></div></div>
-                <div class="timeline-item"><div class="timeline-date">13:45</div><div><div class="timeline-title">Eilean Donan Castle</div><div class="timeline-body">Scotland's most photographed castle, on the way in.</div></div></div>
-                <div class="timeline-item"><div class="timeline-date">15:15</div><div><div class="timeline-title">Cross the Skye Bridge</div><div class="timeline-body">Onto the island — free since 2004.</div></div></div>
-                <div class="timeline-item"><div class="timeline-date">15:30</div><div><div class="timeline-title">Portree — fuel + Co-op shop</div><div class="timeline-body">Top up the tank and grab supplies; sparse fuel north of here.</div></div></div>
-                <div class="timeline-item"><div class="timeline-date">17:00</div><div><div class="timeline-title">Check in — Solas Alainn, Staffin</div><div class="timeline-body">Dinner at the Hungry Gull (Staffin) or back in Portree (30 min).</div></div></div>
-              </div>
-            </div>
-          </article>
-
-          <article class="info-card" style="padding:0; overflow:hidden; min-height:0; margin-bottom:16px">
-            <div class="day-photo"><img loading="lazy" src="images/quiraing.jpg" alt="The Quiraing" /><div class="dl"><div class="dd">Sun 26 Jul · Day 3 · give it the clearest day</div><div class="dt">Trotternish loop</div></div></div>
-            <div style="padding:14px">
-              <div class="timeline">
-                <div class="timeline-item"><div class="timeline-date">07:30</div><div><div class="timeline-title">Old Man of Storr</div><div class="timeline-body">Early start to beat the car park (20 min from the Staffin base). 1.5–2.5 hr return hike.</div></div></div>
-                <div class="timeline-item"><div class="timeline-date">10:10</div><div><div class="timeline-title">Rigg Viewpoint · Lealt Falls · Kilt Rock</div><div class="timeline-body">Quick roadside stops north along the A855 — Kilt Rock & Mealt Falls is the highlight.</div></div></div>
-                <div class="timeline-item"><div class="timeline-date">11:30</div><div><div class="timeline-title">Staffin Bay + An Corran beach (optional)</div><div class="timeline-body">Dinosaur footprints, 10 min from base.</div></div></div>
-                <div class="timeline-item"><div class="timeline-date">13:00</div><div><div class="timeline-title">Quiraing</div><div class="timeline-body">Full 7km ridge circuit (2.5–4 hr) or the quick main viewpoint. 10 min from base.</div></div></div>
-                <div class="timeline-item"><div class="timeline-date">16:20</div><div><div class="timeline-title">Brother's Point (optional) → Fairy Glen</div><div class="timeline-body">Hidden coast, then the surreal mini-hills near Uig.</div></div></div>
-                <div class="timeline-item"><div class="timeline-date">18:30</div><div><div class="timeline-title">Back to base — dinner in Portree</div><div class="timeline-body">Scorrybreac or Sea Breezes on the harbour.</div></div></div>
-              </div>
-            </div>
-          </article>
-
-          <article class="info-card" style="padding:0; overflow:hidden; min-height:0; margin-bottom:16px">
-            <div class="day-photo"><img loading="lazy" src="images/neist.jpg" alt="Neist Point" /><div class="dl"><div class="dd">Mon 27 Jul · Day 4 · the big drive day</div><div class="dt">West Skye</div></div></div>
-            <div style="padding:14px">
-              <div class="timeline">
-                <div class="timeline-item"><div class="timeline-date">07:30</div><div><div class="timeline-title">Early start from Staffin</div><div class="timeline-body">It's a long way west and back — fuel up first.</div></div></div>
-                <div class="timeline-item"><div class="timeline-date">08:00</div><div><div class="timeline-title">Fairy Pools</div><div class="timeline-body">Arrive early — the car park fills by 10:00. ~1–1.5 hr return walk.</div></div></div>
-                <div class="timeline-item"><div class="timeline-date">10:00</div><div><div class="timeline-title">Talisker Bay → Talisker Distillery</div><div class="timeline-body">Black-sand bay, then the booked distillery tour (~11:45).</div></div></div>
-                <div class="timeline-item"><div class="timeline-date">13:30</div><div><div class="timeline-title">Dunvegan Castle</div><div class="timeline-body">800-year MacLeod seat — add the seal boat if keen.</div></div></div>
-                <div class="timeline-item"><div class="timeline-date">14:30</div><div><div class="timeline-title">Coral Beach (optional)</div><div class="timeline-body">Turquoise maerl beach, ~1 hr round trip. Skip if tight.</div></div></div>
-                <div class="timeline-item"><div class="timeline-date">16:00</div><div><div class="timeline-title">Coastal drive — Glendale · Waterstein · Milovaig</div><div class="timeline-body">One of the best scenic stretches on the island.</div></div></div>
-                <div class="timeline-item"><div class="timeline-date">20:00</div><div><div class="timeline-title">Neist Point for sunset</div><div class="timeline-body">Arrive ~1.5 hr early for parking; sunset ~21:45. Best on Skye.</div></div></div>
-                <div class="timeline-item"><div class="timeline-date">22:00</div><div><div class="timeline-title">Drive home</div><div class="timeline-body">~1h45 back to Staffin. Late one.</div></div></div>
-              </div>
-            </div>
-          </article>
-
-          <article class="info-card" style="padding:0; overflow:hidden; min-height:0; margin-bottom:8px">
-            <div class="day-photo"><img loading="lazy" src="images/cuillin.jpg" alt="The Cuillin from Sligachan" /><div class="dl"><div class="dd">Tue 28 Jul · Day 5</div><div class="dt">Highlands &amp; home</div></div></div>
-            <div style="padding:14px">
-              <div class="timeline">
-                <div class="timeline-item"><div class="timeline-date">08:00</div><div><div class="timeline-title">Slow Portree morning</div><div class="timeline-body">The Lump viewpoint over the bay (optional).</div></div></div>
-                <div class="timeline-item"><div class="timeline-date">10:30</div><div><div class="timeline-title">Depart → Sligachan Old Bridge</div><div class="timeline-body">Classic Cuillin viewpoint, ~11:00.</div></div></div>
-                <div class="timeline-item"><div class="timeline-date">12:00</div><div><div class="timeline-title">Eilean Donan Castle</div><div class="timeline-body">Second look on the way out, or push on.</div></div></div>
-                <div class="timeline-item"><div class="timeline-date">13:45</div><div><div class="timeline-title">Plockton — lunch</div><div class="timeline-body">Palm-tree fishing village, prettiest stop on the return.</div></div></div>
-                <div class="timeline-item"><div class="timeline-date">15:00</div><div><div class="timeline-title">Drive to Inverness Airport</div><div class="timeline-body">Return the car ~16:30 (fuel up at Invermoriston/Broadford).</div></div></div>
-                <div class="timeline-item"><div class="timeline-date">19:30</div><div><div class="timeline-title">Fly Inverness → London Luton</div><div class="timeline-body">easyJet EZY624, lands ~21:00. Trains run past midnight.</div></div></div>
-              </div>
-            </div>
-          </article>
-
           <h3 style="margin:24px 0 12px">Planning watchouts</h3>
           <div class="grid-2">
             <div class="info-card"><div class="emoji">🅿️</div><h3>Parking fills early</h3><p>Storr, Quiraing and Fairy Pools fill by mid-morning. Arrive before 09:00; carry the RingGo app and ~£40 in coins.</p></div>
             <div class="info-card"><div class="emoji">🛣️</div><h3>Single-track roads</h3><p>Trotternish and Glendale are single-track — use the passing places and expect 30–40 mph averages.</p></div>
             <div class="info-card"><div class="emoji">⛽</div><h3>Fuel is sparse</h3><p>Fill up at Portree or Broadford — don't push past half a tank heading to Neist Point or the Quiraing.</p></div>
-            <div class="info-card"><div class="emoji">🌦️</div><h3>Weather flex</h3><p>Keep the Trotternish and West Skye days swappable until 48h out — give Trotternish the clearest forecast.</p></div>
+            <div class="info-card"><div class="emoji">🌦️</div><h3>Weather flex</h3><p>Keep the Trotternish and West Skye days swappable until 48h out — the ⛅ swap button on the Itinerary tab flips them in one tap.</p></div>
             <div class="info-card"><div class="emoji">🧭</div><h3>The base is far north</h3><p>Staffin puts Trotternish on the doorstep — Storr, Kilt Rock, Quiraing and Fairy Glen are all 5–20 min, so give that the clearest day. The trade-off: West Skye (Fairy Pools, Neist) is ~1h15–1h45 each way, so that day starts early and ends late after the sunset.</p></div>
           </div>
 
@@ -1054,56 +1008,40 @@
           </div>
         </div>
       </section>
-
-      <section id="settings" class="section">
-        <div class="layout">
-          <div class="panel pad">
-            <h2>Roster settings</h2>
-            <p class="panel-sub">Rename placeholders once the group is confirmed.</p>
-            <div id="rosterEditor" class="task-list" style="margin-top:18px"></div>
-          </div>
-          <aside class="panel pad">
-            <h3>Export snapshot</h3>
-            <p class="panel-sub">Copy the current board state manually.</p>
-            <button class="btn small" id="exportBtn" style="margin-top:14px">Copy JSON snapshot</button>
-            <button class="btn small secondary" id="importBtn" style="margin-top:14px">Paste JSON snapshot</button>
-          </aside>
-        </div>
-      </section>
     </main>
   </div>
 
-  <div class="toast" id="toast"></div>
+  <nav class="dock" aria-label="Quick navigation">
+    <button data-tab="plan" class="active"><span class="d-ico">🗓️</span>Plan</button>
+    <button data-tab="ideas"><span class="d-ico">🎯</span>Market</button>
+    <button data-tab="desk"><span class="d-ico">🛎️</span>Decide</button>
+    <button data-tab="intel"><span class="d-ico">🧭</span>Skye</button>
+  </nav>
 
+  <div class="modal" id="whoModal">
+    <div class="modal-card">
+      <h2>Who are you?</h2>
+      <p>Tap your name so your votes and jobs stay separate from everyone else's. This is saved on your device — you're only asked once.</p>
+      <div class="who-grid" id="whoGrid"></div>
+      <p class="panel-sub" style="margin-top:16px">Rename anyone under <strong>👥 The crew</strong> in the Activity Market. Reopen this any time from the “not you?” button when you vote.</p>
+    </div>
+  </div>
+
+  <div class="toast" id="toast"></div>
   <script>
-    const STORE_KEY = "skyeTripQuestBoardV1";
-    // Paste your Google Apps Script Web App URL here after deployment.
-    // It should look like: https://script.google.com/macros/s/AKfycb.../exec
-    const REMOTE_API_URL = "https://script.google.com/macros/s/AKfycbx07mz3rDAnEDdfOVAw9D25Y3lkZGdj86gsaRHi1N3Mec-IKbMKjCjY49mnWV-UZGi3/exec"; // live Google Apps Script /exec sync endpoint
+    const STORE_KEY = "skyeTripBoardV2";
+    const LEGACY_STORE_KEY = "skyeTripQuestBoardV1";
+    const WHOAMI_KEY = "skyeWhoami";
+    const PULSE_SEEN_KEY = "skyePulseSeenV1";
+    // Live Google Apps Script /exec sync endpoint (same sheet as the v1 board).
+    const REMOTE_API_URL = "https://script.google.com/macros/s/AKfycbx07mz3rDAnEDdfOVAw9D25Y3lkZGdj86gsaRHi1N3Mec-IKbMKjCjY49mnWV-UZGi3/exec";
     let remoteSaveTimer = null;
-    let remoteLoadAttempted = false;
     let lastSeenUpdatedAt = null;
     let lastSyncedAt = null;
     let pendingSave = false;
     let lastLocalSaveAt = 0;
 
-    const checkpoints = [
-      { id: "spawn", title: "Luton check-in", meta: "Start", icon: "✈️", type: "personal", x: 10.5, y: 82 },
-      { id: "squad", title: "Squad locked", meta: "P1", icon: "🧭", type: "personal", x: 22, y: 61 },
-      { id: "outbound", title: "Flights booked", meta: "P1", icon: "🎟️", type: "personal", x: 26, y: 39 },
-      { id: "flightBoss", title: "Car hire locked", meta: "Boss", icon: "🚗", type: "boss", x: 42, y: 22 },
-      { id: "seoul", title: "Skye Bridge", meta: "Cross", icon: "🌉", type: "group", x: 63, y: 31 },
-      { id: "jejuHop", title: "Trotternish day", meta: "Trek", icon: "🥾", type: "personal", x: 74, y: 45 },
-      { id: "basecamp", title: "Stay sorted", meta: "Boss", icon: "🛏️", type: "boss", x: 84, y: 61 },
-      { id: "wheels", title: "West Skye day", meta: "Drive", icon: "🏞️", type: "boss", x: 76, y: 75 },
-      { id: "entry", title: "Packed for Skye", meta: "Kit", icon: "🎒", type: "personal", x: 58, y: 77 },
-      { id: "final", title: "Offline ready", meta: "Clear", icon: "✨", type: "personal", x: 42, y: 68 }
-    ];
-
     const colours = ["#5aa8c8", "#b48fce", "#dcc488", "#82ccae", "#8fa9d6", "#7fb0c4", "#e8edf4"];
-    const roles = ["🚗 Driver", "🗺️ Navigator", "📸 Photographer", "🥃 Whisky Scout", "💷 Money Manager", "🌦️ Forecaster", "🧭 Trail Lead"];
-
-    // Each traveller picks their own vibe — shown on their token and roster card.
     const vibes = [
       { id: "foodie", emoji: "🦞", name: "Foodie", tag: "Seafood and good food" },
       { id: "spontaneous", emoji: "🎒", name: "Spontaneous", tag: "Go with the flow" },
@@ -1114,8 +1052,8 @@
     ];
     function vibeById(id) { return vibes.find(v => v.id === id) || null; }
 
-    const TRIP_START = new Date(2026, 6, 24); // 24 Jul 2026 (month is 0-indexed)
-
+    const TRIP_START = new Date(2026, 6, 24, 18, 30); // EZY623 departs 24 Jul 2026 18:30
+    const TRIP_END = new Date(2026, 6, 28, 23, 59);
 
     const defaultIdeas = [
       { id: "talisker", emoji: "🥃", title: "Talisker distillery tour", city: "Carbost", desc: "The 1hr immersive tour at Skye's oldest working distillery, ~£25pp. Book ahead — peak summer fills early.", img: "images/act-talisker.jpg", link: "https://www.malts.com/en-row/distilleries/talisker" },
@@ -1128,55 +1066,173 @@
       { id: "anCorran", emoji: "🦕", title: "An Corran dinosaur beach", city: "Staffin", desc: "Beach with dinosaur footprints, 10 min from the Staffin base. Quick optional stop on the Trotternish day.", link: "https://maps.google.com/?q=An+Corran+Beach+Staffin" }
     ];
 
+    // Open Decisions — own a job, share options, group votes, lock the pick.
+    const defaultDesk = {
+      rooms: [
+        { id: "car_hire", emoji: "🚗", kind: "car", title: "Car hire — Inverness Airport", desc: "THE priority. Mid-size with boot space, Fri 24 Jul ~20:15 pickup at INV, back ~16:30 Tue. Confirm the desk is staffed past 20:00 — the flight lands ~20:00.", owners: [], drivers: [], options: [], status: "open", chosen: null },
+        { id: "flights_rest", emoji: "✈️", kind: "custom", title: "Remaining flights — 4 seats", desc: "Jason + Kat are booked on easyJet EZY623 LTN→INV Fri 24 Jul 18:30 (return EZY624 Tue 19:30). Get the other four on the same flights.", owners: [], options: [], status: "open", chosen: null },
+        { id: "talisker_tour", emoji: "🥃", kind: "custom", title: "Talisker distillery tour", desc: "Book the ~11:45 slot for the West Skye day. ~£25pp — peak-summer tours sell out weeks ahead.", owners: [], options: [], status: "open", chosen: null },
+        { id: "dinner_big", emoji: "🍽️", kind: "dinner", title: "The standout dinner", desc: "Scorrybreac (Portree, ~£70pp) vs Three Chimneys (~£100–140pp, pairs with West Skye). Pick one and book — both fill weeks ahead.", owners: [], options: [], status: "open", chosen: null },
+        { id: "stay_shares", emoji: "💷", kind: "custom", title: "Stay shares — £288 each", desc: "Solas Alainn is paid in full (£1,726). Everyone sends their £288 share back to Jason.", owners: [], options: [], status: "open", chosen: null },
+        { id: "offline_pack", emoji: "📲", kind: "custom", title: "Offline pack", desc: "Offline Google Maps for Skye, bookings saved, parking notes, midge kit and emergency info — before you lose signal in Trotternish.", owners: [], options: [], status: "open", chosen: null },
+        { id: "stay_skye", emoji: "🛏️", kind: "accom", title: "The stay — Solas Alainn, Staffin", desc: "3-bed / 3-bath cottage under the Quiraing, sleeps 6.", owners: [0], options: [{ id: "opt_solas", by: 0, title: "Solas Alainn, Staffin — booking #42401", link: "", price: "£1,726 total · ~£288pp", notes: "Check-in Sat 25 Jul from 17:00 · out Tue 28 by 10:00. Linen, towels & final clean included.", votes: {} }], status: "decided", chosen: "opt_solas" }
+      ]
+    };
+
+    // Itinerary skeleton — the five fixed days.
+    const TRIP_DAYS = [
+      { id: "d24", iso: "2026-07-24", date: "Fri 24 Jul", city: "Inverness", logistics: true, stay: "Royal Apartment, Inverness", note: "Fly LTN → INV tonight — sleep south Inverness, drive to Skye tomorrow." },
+      { id: "d25", iso: "2026-07-25", date: "Sat 25 Jul", city: "Inverness → Skye", stay: "Solas Alainn, Staffin", note: "The drive-up — Loch Ness, Eilean Donan, over the Skye Bridge. Check-in from 17:00." },
+      { id: "d26", iso: "2026-07-26", date: "Sun 26 Jul", city: "Trotternish", stay: "Solas Alainn, Staffin", note: "Give this the clearest forecast — everything is 5–20 min from base. Swappable with Monday until 48h out." },
+      { id: "d27", iso: "2026-07-27", date: "Mon 27 Jul", city: "West Skye", stay: "Solas Alainn, Staffin", note: "The big drive day — early start, Talisker tour, Neist Point sunset ~21:45, home late." },
+      { id: "d28", iso: "2026-07-28", date: "Tue 28 Jul", city: "Skye → Home", logistics: true, note: "Out of the cottage by 10:00 — Sligachan and Plockton on the way to INV. Fly 19:30." }
+    ];
+
+    // Seeded starter itinerary (from the locked day-by-day). Dropped in once on
+    // first load of a board with no plan; after that the group's edits win.
+    const SKYE_SEED = [
+      { dayId: "d24", time: "18:30", title: "Fly London Luton → Inverness · easyJet EZY623 (lands ~20:00)", emoji: "✈️", kind: "flight" },
+      { dayId: "d24", time: "20:00", title: "Collect the hire car(s) at INV airport", emoji: "🚗" },
+      { dayId: "d24", time: "20:45", title: "Check in — Royal Apartment, Broom Dr (south Inverness)", emoji: "🏨" },
+      { dayId: "d24", time: "21:15", title: "Late supplies — Tesco Extra Inshes or a takeaway", emoji: "🛒" },
+      { dayId: "d25", time: "09:00", title: "Check out — A82 south along Loch Ness", emoji: "🚙" },
+      { dayId: "d25", time: "09:30", title: "Urquhart Castle (optional, £14.50)", emoji: "🏰" },
+      { dayId: "d25", time: "12:00", title: "Lunch — Fort Augustus / Invermoriston", emoji: "🍽️" },
+      { dayId: "d25", time: "13:45", title: "Eilean Donan Castle", emoji: "🏰" },
+      { dayId: "d25", time: "15:15", title: "Cross the Skye Bridge", emoji: "🌉" },
+      { dayId: "d25", time: "15:30", title: "Portree — fuel + Co-op supplies", emoji: "⛽" },
+      { dayId: "d25", time: "17:00", title: "Check in — Solas Alainn, Staffin", emoji: "🏡" },
+      { dayId: "d25", time: "19:30", title: "Dinner — Hungry Gull (Staffin) or Portree", emoji: "🍽️", kind: "dinner" },
+      { dayId: "d26", time: "07:30", title: "Old Man of Storr hike (beat the car park)", emoji: "🥾" },
+      { dayId: "d26", time: "10:10", title: "Rigg Viewpoint · Lealt Falls · Kilt Rock", emoji: "📸" },
+      { dayId: "d26", time: "11:30", title: "Staffin Bay + An Corran dinosaur beach (optional)", emoji: "🦕" },
+      { dayId: "d26", time: "13:00", title: "The Quiraing — full circuit or main viewpoint", emoji: "🥾" },
+      { dayId: "d26", time: "16:20", title: "Brother's Point (optional) → Fairy Glen", emoji: "🧚" },
+      { dayId: "d26", time: "18:30", title: "Dinner in Portree — Scorrybreac or Sea Breezes", emoji: "🍽️", kind: "dinner" },
+      { dayId: "d27", time: "07:30", title: "Early start — fuel up first, long way west", emoji: "⛽" },
+      { dayId: "d27", time: "08:00", title: "Fairy Pools (car park fills by 10:00)", emoji: "💦" },
+      { dayId: "d27", time: "10:00", title: "Talisker Bay → Talisker Distillery tour (~11:45)", emoji: "🥃" },
+      { dayId: "d27", time: "13:30", title: "Dunvegan Castle (+ seal boat if keen)", emoji: "🏰" },
+      { dayId: "d27", time: "14:30", title: "Coral Beach (optional, ~1hr round trip)", emoji: "🏖️" },
+      { dayId: "d27", time: "16:00", title: "Coastal drive — Glendale · Waterstein · Milovaig", emoji: "🚙" },
+      { dayId: "d27", time: "20:00", title: "Neist Point for sunset (arrive early for parking)", emoji: "🌅" },
+      { dayId: "d27", time: "22:00", title: "Drive home — ~1h45 back to Staffin", emoji: "🌙" },
+      { dayId: "d28", time: "08:00", title: "Slow Portree morning — The Lump viewpoint (optional)", emoji: "☕" },
+      { dayId: "d28", time: "10:30", title: "Depart — Sligachan Old Bridge (Cuillin view)", emoji: "🏔️" },
+      { dayId: "d28", time: "12:00", title: "Eilean Donan second look — or push on", emoji: "🏰" },
+      { dayId: "d28", time: "13:45", title: "Plockton — lunch in the palm-tree village", emoji: "🍽️" },
+      { dayId: "d28", time: "15:00", title: "Drive to Inverness Airport — fuel + return car ~16:30", emoji: "🚗" },
+      { dayId: "d28", time: "19:30", title: "Fly Inverness → London Luton · EZY624 (lands ~21:00)", emoji: "✈️", kind: "flight" }
+    ];
+    function normalizePlan(plan) {
+      const p = (plan && typeof plan === "object") ? plan : { generatedAt: null, items: [] };
+      if (!Array.isArray(p.items)) p.items = [];
+      if (!p.dayMeta || typeof p.dayMeta !== "object") p.dayMeta = {};
+      // One-time seed: merge the starter itinerary in, skipping any stop the
+      // group already added (matched by title). Runs once, then `seeded` locks it.
+      if (!p.seeded) {
+        const have = new Set(p.items.map(it => (it.title || "").trim().toLowerCase()));
+        const add = SKYE_SEED
+          .filter(s => !have.has(s.title.trim().toLowerCase()))
+          .map((s, i) => ({ id: `seed_${i}`, dayId: s.dayId, title: s.title, emoji: s.emoji || "📍", city: "", kind: s.kind || "activity", note: "", time: s.time || "" }));
+        p.items = p.items.concat(add);
+        p.seeded = true;
+      }
+      return p;
+    }
+
     const defaultState = {
       selectedPlayer: 0,
       ideas: structuredClone(defaultIdeas),
       ideaVotes: {},
       players: [
-        { name: "Jason", initials: "J", colour: colours[0], role: roles[0], vibe: "planner", progress: 2, completed: { squad: true, outbound: true } },
-        { name: "Kat", initials: "K", colour: colours[1], role: roles[1], vibe: "foodie", progress: 2, completed: { squad: true, outbound: true } },
-        { name: "Traveller 3", initials: "T3", colour: colours[2], role: roles[2], vibe: null, progress: 0, completed: {} },
-        { name: "Traveller 4", initials: "T4", colour: colours[3], role: roles[3], vibe: null, progress: 0, completed: {} },
-        { name: "Traveller 5", initials: "T5", colour: colours[4], role: roles[4], vibe: null, progress: 0, completed: {} },
-        { name: "Traveller 6", initials: "T6", colour: colours[5], role: roles[5], vibe: null, progress: 0, completed: {} }
+        { name: "Jason", initials: "J", colour: colours[0], vibe: "planner" },
+        { name: "Kat", initials: "K", colour: colours[1], vibe: "foodie" },
+        { name: "Traveller 3", initials: "T3", colour: colours[2], vibe: null },
+        { name: "Traveller 4", initials: "T4", colour: colours[3], vibe: null },
+        { name: "Traveller 5", initials: "T5", colour: colours[4], vibe: null },
+        { name: "Traveller 6", initials: "T6", colour: colours[5], vibe: null }
       ],
-      groupDone: {
-        flightKraken: false,
-        seoulJejuSplit: false,
-        accommodation: true,
-        vehicle: false,
-        activityShortlist: false,
-        itinerary: false,
-        foodBars: false,
-        offlinePack: false
-      }
+      groupDone: { itinerary: false },
+      desk: structuredClone(defaultDesk),
+      plan: { generatedAt: null, items: [] },
+      feed: []
     };
+    const DEFAULT_ROOM_IDS = defaultDesk.rooms.map(r => r.id);
 
-    const groupTasks = [
-      { id: "flightKraken", icon: "🛫", title: "Lock all 6 flights", desc: "Jason + Kat booked. Get the other 4 on the same easyJet LTN→INV.", priority: "P1" },
-      { id: "seoulJejuSplit", icon: "🌦️", title: "Lock the day order", desc: "Keep Trotternish (Day 2) and West Skye (Day 3) swappable until 48h out for weather.", priority: "P1" },
-      { id: "accommodation", icon: "🛏️", title: "Stay booked — settle shares", desc: "Solas Alainn, Staffin booked + paid in full (£1,726, ~£288 pp). Collect everyone's share back to Jason.", priority: "P2" },
-      { id: "vehicle", icon: "🚗", title: "Book the car hire", desc: "Enterprise/Hertz at INV, Fri ~20:15 pickup. Confirm the desk is open past 20:00.", priority: "P1" },
-      { id: "activityShortlist", icon: "🥾", title: "Pick the activity shortlist", desc: "Lock the strongest voted ideas into the plan.", priority: "P2" },
-      { id: "itinerary", icon: "🗺️", title: "Lock the itinerary", desc: "Confirm Storr, Quiraing, Fairy Pools, Neist Point and the return drive.", priority: "P2" },
-      { id: "foodBars", icon: "🍽️", title: "Book Talisker + a standout dinner", desc: "Talisker tour + Scorrybreac or Three Chimneys — peak summer fills early.", priority: "P2" },
-      { id: "offlinePack", icon: "📲", title: "Generate the offline pack", desc: "Offline maps, parking notes, midge kit, bookings and emergency info.", priority: "P3" }
-    ];
+    // Keep the current default activity set (plus any group-added "custom_" ideas),
+    // refresh default desk rooms to the latest copy while preserving live data, and
+    // strip the retired v1 quest fields off players. Without these, edits to the
+    // code defaults never reach a board whose state is already cached in the sheet.
+    function normalizeIdeas(stored) {
+      const base = structuredClone(defaultIdeas);
+      if (!Array.isArray(stored)) return base;
+      const custom = stored.filter(i => i && typeof i.id === "string" && i.id.indexOf("custom_") === 0);
+      return [...base, ...custom];
+    }
+    function normalizePlayers(stored) {
+      if (!Array.isArray(stored) || !stored.length) return structuredClone(defaultState.players);
+      return stored.map((p, i) => ({
+        name: (p && p.name) || `Traveller ${i + 1}`,
+        initials: (p && p.initials) || makeInitials((p && p.name) || "", i),
+        colour: (p && p.colour) || colours[i % colours.length],
+        vibe: (p && p.vibe) || null
+      }));
+    }
+    function normalizeDeskRooms(stored) {
+      const base = structuredClone(defaultDesk.rooms);
+      if (!Array.isArray(stored)) return base;
+      const byId = {}; stored.forEach(r => { if (r && r.id) byId[r.id] = r; });
+      const merged = base.map(d => {
+        const s = byId[d.id]; if (!s) return d;
+        const out = { ...d, owners: Array.isArray(s.owners) ? s.owners : d.owners, options: Array.isArray(s.options) && s.options.length ? s.options : d.options, status: s.status || d.status, chosen: s.chosen != null ? s.chosen : d.chosen };
+        if (d.kind === "car") out.drivers = Array.isArray(s.drivers) ? s.drivers : [];
+        return out;
+      });
+      const custom = stored.filter(r => r && typeof r.id === "string" && !DEFAULT_ROOM_IDS.includes(r.id));
+      return [...merged, ...custom];
+    }
+
+    // One-time migration from the v1 quest board: keep the group's votes, ideas,
+    // crew names/vibes and itinerary-lock flag; drop the retired quest fields.
+    function legacyState() {
+      try {
+        const raw = localStorage.getItem(LEGACY_STORE_KEY);
+        if (!raw) return null;
+        const old = JSON.parse(raw);
+        return {
+          selectedPlayer: typeof old.selectedPlayer === "number" ? old.selectedPlayer : 0,
+          ideas: normalizeIdeas(old.ideas),
+          ideaVotes: old.ideaVotes || {},
+          players: normalizePlayers(old.players),
+          groupDone: { itinerary: !!(old.groupDone && old.groupDone.itinerary) }
+        };
+      } catch (e) { return null; }
+    }
 
     let state = loadState();
 
     function loadState() {
       try {
         const raw = localStorage.getItem(STORE_KEY);
-        if (!raw) return structuredClone(defaultState);
+        if (!raw) {
+          const s = structuredClone(defaultState);
+          const legacy = legacyState();
+          if (legacy) Object.assign(s, legacy);
+          s.plan = normalizePlan(s.plan);
+          return s;
+        }
         const parsed = JSON.parse(raw);
         return {
           ...structuredClone(defaultState),
           ...parsed,
-          players: parsed.players || structuredClone(defaultState.players),
-          groupDone: { ...defaultState.groupDone, ...(parsed.groupDone || {}) },
-          ideas: parsed.ideas || structuredClone(defaultIdeas),
-          ideaVotes: parsed.ideaVotes || {}
+          players: normalizePlayers(parsed.players),
+          groupDone: { itinerary: !!(parsed.groupDone && parsed.groupDone.itinerary) },
+          ideas: normalizeIdeas(parsed.ideas),
+          ideaVotes: parsed.ideaVotes || {},
+          desk: parsed.desk ? { rooms: normalizeDeskRooms(parsed.desk.rooms) } : structuredClone(defaultDesk),
+          plan: normalizePlan(parsed.plan),
+          feed: Array.isArray(parsed.feed) ? parsed.feed : []
         };
       } catch (e) {
         return structuredClone(defaultState);
@@ -1199,10 +1255,13 @@
       state = {
         ...structuredClone(defaultState),
         ...remote,
-        players: remote.players || structuredClone(defaultState.players),
-        groupDone: { ...defaultState.groupDone, ...(remote.groupDone || {}) },
-        ideas: remote.ideas || structuredClone(defaultIdeas),
-        ideaVotes: remote.ideaVotes || {}
+        players: normalizePlayers(remote.players),
+        groupDone: { itinerary: !!(remote.groupDone && remote.groupDone.itinerary) },
+        ideas: normalizeIdeas(remote.ideas),
+        ideaVotes: remote.ideaVotes || {},
+        desk: remote.desk ? { rooms: normalizeDeskRooms(remote.desk.rooms) } : structuredClone(defaultDesk),
+        plan: normalizePlan(remote.plan),
+        feed: Array.isArray(remote.feed) ? remote.feed : []
       };
       if (typeof localSelected === "number" && state.players[localSelected]) {
         state.selectedPlayer = localSelected;
@@ -1217,35 +1276,31 @@
       const m = Math.round(s / 60);
       if (m < 60) return `${m}m ago`;
       const h = Math.round(m / 60);
-      return `${h}h ago`;
+      if (h < 48) return `${h}h ago`;
+      return `${Math.round(h / 24)}d ago`;
     }
 
     function setSyncChip(kind) {
       const chip = document.getElementById("syncChip");
       const textEl = document.getElementById("syncChipText");
-      const stamp = document.getElementById("syncTabStamp");
       if (chip) chip.classList.remove("syncing", "offline");
       if (kind === "disabled") {
         if (chip) chip.classList.add("offline");
         if (textEl) textEl.textContent = "Local only";
-        if (stamp) stamp.textContent = "Live sync is not configured on this copy of the board.";
         return;
       }
       if (kind === "syncing") {
         if (chip) chip.classList.add("syncing");
         if (textEl) textEl.textContent = "Syncing…";
-        if (stamp) stamp.textContent = "Checking the group sheet…";
         return;
       }
       if (kind === "offline") {
         if (chip) chip.classList.add("offline");
         if (textEl) textEl.textContent = "Offline";
-        if (stamp) stamp.textContent = "Could not reach the sheet. Your changes are still saved on this device.";
         return;
       }
       const rel = lastSyncedAt ? relTime(lastSyncedAt) : null;
       if (textEl) textEl.textContent = rel ? `Live · ${rel}` : "Live";
-      if (stamp) stamp.textContent = rel ? `Last synced ${rel}.` : "Connected to the group sheet.";
     }
 
     function remotePull(opts) {
@@ -1276,7 +1331,6 @@
           }
           lastSeenUpdatedAt = remoteStamp || lastSeenUpdatedAt;
           lastSyncedAt = Date.now();
-          remoteLoadAttempted = true;
           setSyncChip("live");
         } else {
           setSyncChip(lastSyncedAt ? "live" : "offline");
@@ -1296,9 +1350,7 @@
 
     function startSyncLoops() {
       if (!hasRemoteSync()) { setSyncChip("disabled"); return; }
-      // Quietly check for group updates in the background.
       setInterval(() => remotePull({ poll: true }), 25000);
-      // Keep the "synced 2m ago" label fresh.
       setInterval(() => {
         const chip = document.getElementById("syncChip");
         if (chip && lastSyncedAt && !chip.classList.contains("syncing") && !chip.classList.contains("offline")) {
@@ -1347,103 +1399,75 @@
       }, 1300);
     }
 
-    function clamp(n, min, max) { return Math.max(min, Math.min(max, n)); }
     function selectedPlayer() { return state.players[state.selectedPlayer] || state.players[0]; }
+    function makeInitials(name, idx) {
+      const clean = (name || "").trim();
+      if (!clean) return `T${idx + 1}`;
+      const parts = clean.split(/\s+/).slice(0, 2).map(x => x[0]).join("").toUpperCase();
+      return parts || `T${idx + 1}`;
+    }
+    function escapeHtml(str) { return String(str || "").replace(/[&<>"]/g, s => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", "\"": "&quot;" }[s])); }
+    function escapeAttr(str) { return escapeHtml(str).replace(/'/g, "&#039;"); }
+    function buzz(ms) { try { if (navigator.vibrate) navigator.vibrate(ms); } catch (e) {} }
 
-    function computePlayerProgress(player) {
-      // Tokens advance via the manual move buttons and the voting nudge (updateWishlistCheckpoint).
-      return clamp(player.progress || 0, 0, checkpoints.length - 1);
+    // ---- Who am I (per-device identity) ----
+    function whoamiSaved() { try { const v = localStorage.getItem(WHOAMI_KEY); return v == null ? null : Number(v); } catch (e) { return null; } }
+    function rememberWhoami(idx) { try { localStorage.setItem(WHOAMI_KEY, String(idx)); } catch (e) {} }
+    function openWhoModal() {
+      const grid = document.getElementById("whoGrid"), modal = document.getElementById("whoModal");
+      if (!grid || !modal) return;
+      grid.innerHTML = state.players.map((p, idx) => `<button class="who-btn ${idx === state.selectedPlayer ? "me" : ""}" data-who="${idx}"><span class="who-dot" style="background:${p.colour || '#5aa8c8'}"></span>${escapeHtml(p.name)}</button>`).join("");
+      grid.querySelectorAll("[data-who]").forEach(b => b.addEventListener("click", () => {
+        const idx = Number(b.dataset.who);
+        state.selectedPlayer = idx;
+        rememberWhoami(idx);
+        modal.classList.remove("active");
+        saveState(); renderAll(); toast(`You're set as ${state.players[idx].name}`);
+      }));
+      modal.classList.add("active");
+    }
+    function renderWho() {
+      const el = document.getElementById("whoName");
+      if (el) el.textContent = selectedPlayer().name;
     }
 
-    function renderNodes() {
-      const holder = document.getElementById("nodes");
-      holder.innerHTML = checkpoints.map(cp => `
-        <div class="node ${cp.type}" style="left:${cp.x}%; top:${cp.y}%" title="${cp.title}">
-          <div class="node-core">${cp.icon}</div>
-          <div class="node-title">${cp.title}</div>
-          <div class="node-meta">${cp.meta}</div>
-        </div>
-      `).join("");
+    // ---- Crew pulse: a lightweight synced activity feed ----
+    const pulseSeenAt = Number(localStorage.getItem(PULSE_SEEN_KEY) || 0);
+    function logEvent(emoji, msg) {
+      if (!Array.isArray(state.feed)) state.feed = [];
+      state.feed.unshift({ t: Date.now(), by: state.selectedPlayer, emoji, msg });
+      if (state.feed.length > 40) state.feed.length = 40;
     }
-
-    function renderTokens() {
-      const holder = document.getElementById("tokens");
-      const used = {};
-      holder.innerHTML = state.players.map((p, idx) => {
-        const progress = computePlayerProgress(p);
-        p.progress = progress;
-        const cp = checkpoints[progress];
-        const key = progress;
-        used[key] = used[key] || 0;
-        const stackIndex = used[key]++;
-        const angle = (stackIndex / 7) * Math.PI * 2;
-        const radius = stackIndex === 0 ? 0 : 2.7 + Math.floor((stackIndex - 1) / 6) * 2;
-        const x = cp.x + Math.cos(angle) * radius;
-        const y = cp.y + Math.sin(angle) * radius;
-        const v = vibeById(p.vibe);
-        return `<div class="token ${idx === state.selectedPlayer ? "active" : ""}" data-name="${escapeHtml(p.name)}${v ? " · " + v.name : ""}" style="left:${x}%; top:${y}%; background:${p.colour}" onclick="void(0)">${escapeHtml(p.initials)}${v ? `<span class="token-vibe">${v.emoji}</span>` : ""}</div>`;
-      }).join("");
-    }
-
-    function renderPlayerSelect() {
-      const sel = document.getElementById("playerSelect");
-      sel.innerHTML = state.players.map((p, idx) => `<option value="${idx}" ${idx === state.selectedPlayer ? "selected" : ""}>${escapeHtml(p.name)}</option>`).join("");
-    }
-
-    function renderTravellerGrid() {
-      const holder = document.getElementById("travellerGrid");
-      holder.innerHTML = state.players.map((p, idx) => {
-        const progress = computePlayerProgress(p);
-        const v = vibeById(p.vibe);
-        return `<div class="traveller-row" role="button" tabindex="0" data-player="${idx}">
-          <div class="avatar-dot" style="background:${p.colour}">${escapeHtml(p.initials)}</div>
-          <div><div class="traveller-name">${escapeHtml(p.name)}${v ? `<span class="traveller-vibe">${v.emoji}</span>` : ""}</div><div class="traveller-progress">${v ? v.name + " · " : ""}${checkpoints[progress].title}</div></div>
-          <span class="pill ${idx === state.selectedPlayer ? "done" : ""}">${Math.round(progress / (checkpoints.length - 1) * 100)}%</span>
+    function renderPulse() {
+      const holder = document.getElementById("pulseFeed");
+      if (!holder) return;
+      const feed = (Array.isArray(state.feed) ? state.feed : []).filter(e => e && e.t);
+      const isFresh = e => e.t > pulseSeenAt && e.by !== state.selectedPlayer;
+      const freshCount = feed.filter(isFresh).length;
+      const badge = document.getElementById("pulseBadge");
+      if (badge) {
+        badge.textContent = freshCount ? `${freshCount} new` : "live";
+        badge.className = freshCount ? "pill hot" : "pill";
+      }
+      holder.innerHTML = feed.length ? feed.slice(0, 14).map(e => {
+        const p = state.players[e.by];
+        return `<div class="pulse-row ${isFresh(e) ? "fresh" : ""}">
+          <span class="pulse-ico" style="background:${p ? p.colour : "#eaf0f5"}">${e.emoji || "✨"}</span>
+          <div><div class="pulse-msg">${escapeHtml(e.msg)}</div><div class="pulse-time">${relTime(e.t)}</div></div>
         </div>`;
-      }).join("");
-      holder.querySelectorAll(".traveller-row").forEach(row => {
-        row.addEventListener("click", () => { state.selectedPlayer = Number(row.dataset.player); saveState(); renderAll(); });
-      });
+      }).join("") : `<div class="micro">Quiet so far — votes, bookings and plan changes will show up here.</div>`;
+      // Only mark the feed "seen" while the desk tab is actually on screen.
+      const deskEl = document.getElementById("desk");
+      if (deskEl && deskEl.classList.contains("active") && feed.length) {
+        localStorage.setItem(PULSE_SEEN_KEY, String(feed[0].t));
+      }
     }
 
-    function renderSelectedPanel() {
-      const p = selectedPlayer();
-      const progress = computePlayerProgress(p);
-      const percent = Math.round(progress / (checkpoints.length - 1) * 100);
-      document.getElementById("selectedName").textContent = p.name;
-      document.getElementById("selectedProgress").textContent = `${percent}%`;
-      document.getElementById("selectedProgressFill").style.width = `${percent}%`;
-      document.getElementById("selectedRole").textContent = p.role || "🧭 No role yet";
-      document.getElementById("selectedStage").textContent = checkpoints[progress].title;
-    }
-
-    function renderTasks() {
-      const groupHolder = document.getElementById("groupTasks");
-      groupHolder.innerHTML = groupTasks.map(task => {
-        const done = !!state.groupDone[task.id];
-        return `<label class="task-card ${done ? "group-done" : ""}">
-          <div class="task-icon">${task.icon}</div>
-          <div><div class="task-title">${task.title}</div><div class="task-desc">${task.desc}</div><div class="task-tags"><span class="tag ${task.priority.toLowerCase()}">${task.priority}</span><span class="tag">Group boss</span></div></div>
-          <input class="toggle group-toggle" type="checkbox" data-task="${task.id}" ${done ? "checked" : ""}/>
-        </label>`;
-      }).join("");
-      groupHolder.querySelectorAll(".group-toggle").forEach(toggle => {
-        toggle.addEventListener("change", e => {
-          state.groupDone[e.target.dataset.task] = e.target.checked;
-          saveState();
-          renderAll();
-          if (e.target.checked) celebrate();
-          toast(e.target.checked ? "Group boss cleared" : "Group boss reopened");
-        });
-      });
-    }
-
-
+    // ---- Activity Market ----
     function allIdeas() {
       if (!state.ideas || !Array.isArray(state.ideas)) state.ideas = structuredClone(defaultIdeas);
       return state.ideas;
     }
-
     function tallyIdea(ideaId) {
       const votes = state.ideaVotes?.[ideaId] || {};
       const tally = { keen: 0, maybe: 0, no: 0, total: 0 };
@@ -1451,24 +1475,12 @@
       tally.score = tally.keen * 2 + tally.maybe - tally.no * 2;
       return tally;
     }
-
     function ideaStatus(tally) {
       if (tally.keen >= 4 && tally.no <= 1) return { label: "Shortlist", cls: "hot" };
       if (tally.no >= 2) return { label: "Discuss", cls: "cold" };
       if (tally.total === 0) return { label: "Unvoted", cls: "" };
       return { label: "Maybe", cls: "watch" };
     }
-
-    function selectedPlayerVoteCount(playerIdx = state.selectedPlayer) {
-      return allIdeas().filter(idea => state.ideaVotes?.[idea.id]?.[playerIdx]).length;
-    }
-
-    function updateWishlistCheckpoint() {
-      const p = selectedPlayer();
-      p.completed.wishlistVote = selectedPlayerVoteCount(state.selectedPlayer) > 0;
-      if (p.completed.wishlistVote && (p.progress || 0) < 4) p.progress = 4;
-    }
-
     function renderIdeas() {
       const holder = document.getElementById("ideaGrid");
       if (!holder) return;
@@ -1501,10 +1513,18 @@
         btn.addEventListener("click", () => {
           const ideaId = btn.dataset.idea;
           const vote = btn.dataset.vote;
+          const idea = allIdeas().find(i => i.id === ideaId);
+          const title = idea ? idea.title : "an idea";
           state.ideaVotes[ideaId] = state.ideaVotes[ideaId] || {};
-          if (state.ideaVotes[ideaId][state.selectedPlayer] === vote) delete state.ideaVotes[ideaId][state.selectedPlayer];
-          else state.ideaVotes[ideaId][state.selectedPlayer] = vote;
-          updateWishlistCheckpoint();
+          if (state.ideaVotes[ideaId][state.selectedPlayer] === vote) {
+            delete state.ideaVotes[ideaId][state.selectedPlayer];
+            logEvent("🗳️", `${selectedPlayer().name} took back their vote on “${title}”`);
+          } else {
+            state.ideaVotes[ideaId][state.selectedPlayer] = vote;
+            const word = vote === "keen" ? "✅ keen on" : vote === "maybe" ? "🤷 maybe on" : "❌ a no on";
+            logEvent("🗳️", `${selectedPlayer().name} is ${word} “${title}”`);
+          }
+          buzz(6);
           saveState(); renderAll(); toast(`${selectedPlayer().name} voted on an idea`);
         });
       });
@@ -1518,146 +1538,33 @@
       document.getElementById("blockedIdeaCount").textContent = blocked;
       document.getElementById("ideasHotBadge").textContent = `${hot} shortlist ideas`;
       document.getElementById("ideasVotesBadge").textContent = `${totalVotes} votes cast`;
-      renderBoardIdeaPreview();
     }
 
-    function renderBoardIdeaPreview() {
-      const holder = document.getElementById("boardIdeaPreview");
-      const status = document.getElementById("boardVoteStatus");
-      if (!holder || !status) return;
-      const ideas = allIdeas();
-      const totalVotes = ideas.reduce((sum, idea) => sum + tallyIdea(idea.id).total, 0);
-      const selectedVotes = selectedPlayerVoteCount(state.selectedPlayer);
-      status.textContent = `${totalVotes} votes cast · ${selectedVotes} by selected player`;
-      holder.innerHTML = ideas.slice(0, 4).map(idea => {
-        const tally = tallyIdea(idea.id);
-        const status = ideaStatus(tally);
-        return `<div class="mini-idea-row">
-          <span>${idea.emoji || "💡"}</span>
-          <div><div class="mini-idea-name">${escapeHtml(idea.title)}</div><div class="mini-idea-meta">${tally.keen} keen · ${tally.maybe} maybe · ${tally.no} no</div></div>
-          <span class="idea-status ${status.cls}">${status.label}</span>
+    // ---- Crew panel ----
+    function renderPlayerSelect() {
+      const sel = document.getElementById("playerSelect");
+      sel.innerHTML = state.players.map((p, idx) => `<option value="${idx}" ${idx === state.selectedPlayer ? "selected" : ""}>${escapeHtml(p.name)}</option>`).join("");
+    }
+    function renderTravellerGrid() {
+      const holder = document.getElementById("travellerGrid");
+      holder.innerHTML = state.players.map((p, idx) => {
+        const v = vibeById(p.vibe);
+        return `<div class="traveller-row" role="button" tabindex="0" data-player="${idx}">
+          <div class="avatar-dot" style="background:${p.colour}">${escapeHtml(p.initials)}</div>
+          <div><div class="traveller-name">${escapeHtml(p.name)}${v ? `<span class="traveller-vibe">${v.emoji}</span>` : ""}</div><div class="traveller-progress">${v ? v.name : "no vibe yet"}</div></div>
+          ${idx === state.selectedPlayer ? `<span class="pill done">You</span>` : ""}
         </div>`;
       }).join("");
-    }
-
-    function renderNextActions() {
-      const actions = groupTasks.filter(t => !state.groupDone[t.id]).slice(0, 3);
-      document.getElementById("nextActions").innerHTML = actions.map(t => `<div class="task-card" style="grid-template-columns:auto 1fr; padding:12px"><div class="task-icon">${t.icon}</div><div><div class="task-title">${t.title}</div><div class="task-desc">${t.desc}</div></div></div>`).join("") || `<div class="info-card"><div class="emoji">🏆</div><h3>All clear</h3><p>Every group task is done.</p></div>`;
-    }
-
-    function renderStartStrip() {
-      const host = document.getElementById("startStrip");
-      if (!host) return;
-      const p = selectedPlayer();
-      const v = vibeById(p.vibe);
-      const openGroup = groupTasks.filter(t => !state.groupDone[t.id]);
-      let action, target, cta, allDone = false;
-      if (selectedPlayerVoteCount(state.selectedPlayer) === 0) {
-        // Personal nudge: get your votes in first.
-        action = { icon: "🎯", title: "Vote on the activities", desc: "Tell the group what you're keen for in the Activity Market." };
-        target = "ideas"; cta = "Vote now";
-      } else if (openGroup.length) {
-        action = openGroup[0]; target = "tasks"; cta = "Open group tasks";
-      } else {
-        allDone = true;
-        action = { icon: "🏆", title: "You're all set", desc: "Every group task is done — nice one. Check the votes or the itinerary." };
-        target = "ideas"; cta = "Review votes";
-      }
-      host.innerHTML = `
-        <div class="who">
-          <div class="avatar-dot" style="background:${p.colour}; width:46px; height:46px; font-size:16px">${escapeHtml(p.initials)}</div>
-          <div><div class="who-cap">Viewing as</div><div class="who-name">${escapeHtml(p.name)}${v ? " " + v.emoji : ""}</div></div>
-        </div>
-        <div class="lead">
-          <div class="lead-label">${allDone ? "All done" : "Your next move"}</div>
-          <div class="lead-title">${action.icon} ${escapeHtml(action.title)}</div>
-          <div class="lead-sub">${escapeHtml(action.desc)}</div>
-        </div>
-        <button class="btn" data-go>${cta} ▸</button>`;
-      const goBtn = host.querySelector("[data-go]");
-      if (goBtn) goBtn.addEventListener("click", () => {
-        document.querySelector(`.nav button[data-tab='${target}']`).click();
-        document.getElementById(target).scrollIntoView({ behavior: "smooth", block: "start" });
+      holder.querySelectorAll(".traveller-row").forEach(row => {
+        row.addEventListener("click", () => { state.selectedPlayer = Number(row.dataset.player); rememberWhoami(state.selectedPlayer); saveState(); renderAll(); });
       });
     }
-
-    function renderBadges() {
-      const vibeSet = state.players.filter(p => p.vibe).length;
-      const vibeBadge = document.getElementById("vibeSummaryBadge");
-      if (vibeBadge) vibeBadge.textContent = `${vibeSet}/${state.players.length} vibes set`;
-      const groupTotal = groupTasks.length;
-      const groupDone = Object.values(state.groupDone).filter(Boolean).length;
-      const percent = Math.round(groupDone / groupTotal * 100);
-      const gpb = document.getElementById("groupProgressBadge");
-      if (gpb) gpb.textContent = `Group bosses ${percent}%`;
-      const gtb = document.getElementById("groupTasksBadge");
-      if (gtb) gtb.textContent = `${groupDone}/${groupTotal} done · ${percent}%`;
-    }
-
-    function renderHero() {
-      const days = Math.ceil((TRIP_START - new Date()) / 86400000);
-      const daysEl = document.getElementById("countdownDays");
-      const subEl = document.getElementById("countdownSub");
-      if (daysEl) {
-        if (days > 1) { daysEl.textContent = `${days} days`; if (subEl) subEl.textContent = "until you fly to Inverness · 24 Jul 2026"; }
-        else if (days === 1) { daysEl.textContent = "1 day"; if (subEl) subEl.textContent = "Inverness tomorrow — pack the waterproofs"; }
-        else if (days === 0) { daysEl.textContent = "Today ✈️"; if (subEl) subEl.textContent = "Departure day"; }
-        else { daysEl.textContent = "In Skye 🏴󠁧󠁢󠁳󠁣󠁴󠁿"; if (subEl) subEl.textContent = "Inverness + Isle of Skye · 24 to 28 Jul 2026"; }
-      }
-      const groupDone = Object.values(state.groupDone).filter(Boolean).length;
-      const pct = Math.round(groupDone / groupTasks.length * 100);
-      const pctEl = document.getElementById("heroProgressPct");
-      const fillEl = document.getElementById("heroProgressFill");
-      const subP = document.getElementById("heroProgressSub");
-      if (pctEl) pctEl.textContent = `${pct}%`;
-      if (fillEl) fillEl.style.width = `${pct}%`;
-      if (subP) subP.textContent = `${groupDone} of ${groupTasks.length} group bosses cleared together.`;
-      const tcp = document.getElementById("travellerCountPill");
-      if (tcp) tcp.textContent = `${state.players.length} travellers`;
-    }
-
-    function renderVibePicker() {
-      const holder = document.getElementById("vibePicker");
-      if (!holder) return;
-      const p = selectedPlayer();
-      holder.innerHTML = vibes.map(v => `
-        <button class="vibe-chip ${p.vibe === v.id ? "active" : ""}" data-vibe="${v.id}" title="${escapeAttr(v.tag)}">
-          <span class="vibe-emoji">${v.emoji}</span><span class="vibe-name">${v.name}</span>
-        </button>`).join("");
-      holder.querySelectorAll(".vibe-chip").forEach(btn => {
-        btn.addEventListener("click", () => {
-          const player = selectedPlayer();
-          player.vibe = player.vibe === btn.dataset.vibe ? null : btn.dataset.vibe;
-          saveState();
-          renderAll();
-          const chosen = vibeById(player.vibe);
-          toast(chosen ? `${player.name}: ${chosen.name} ${chosen.emoji}` : `${player.name} cleared their vibe`);
-        });
-      });
-    }
-
-    function spawnLeaves() {
-      // Light Skye drizzle — thin streaks rather than falling leaves.
-      const holder = document.getElementById("leaves");
-      if (!holder) return;
-      let html = "";
-      for (let i = 0; i < 22; i++) {
-        const left = Math.round(Math.random() * 100);
-        const dur = (1.3 + Math.random() * 1.4).toFixed(2);
-        const delay = (Math.random() * 3).toFixed(2);
-        const h = (12 + Math.random() * 10).toFixed(0);
-        html += `<span class="leaf" style="left:${left}%; height:${h}px; animation-duration:${dur}s; animation-delay:-${delay}s;"></span>`;
-      }
-      holder.innerHTML = html;
-    }
-
     function renderRosterEditor() {
       const holder = document.getElementById("rosterEditor");
       holder.innerHTML = state.players.map((p, idx) => `<div class="roster-row">
         <div class="avatar-dot" style="background:${p.colour}; width:42px; height:42px">${escapeHtml(p.initials)}</div>
-        <div class="roster-fields">
+        <div class="roster-fields" style="grid-template-columns:1.2fr 1fr">
           <input type="text" value="${escapeAttr(p.name)}" data-field="name" data-idx="${idx}" aria-label="Name for traveller ${idx + 1}" placeholder="Name" />
-          <input type="text" value="${escapeAttr(p.role)}" data-field="role" data-idx="${idx}" aria-label="Role for traveller ${idx + 1}" placeholder="Role" />
           <select data-field="vibe" data-idx="${idx}" aria-label="Vibe for traveller ${idx + 1}">
             <option value="">Pick a vibe…</option>
             ${vibes.map(v => `<option value="${v.id}" ${p.vibe === v.id ? "selected" : ""}>${v.emoji} ${v.name}</option>`).join("")}
@@ -1670,24 +1577,568 @@
         state.players[idx][field] = field === "vibe" ? (e.target.value || null) : e.target.value;
         if (field === "name") state.players[idx].initials = makeInitials(e.target.value, idx);
         saveState();
-        renderPlayerSelect(); renderTravellerGrid(); renderTokens(); renderSelectedPanel(); renderVibePicker(); renderNextActions(); renderBadges();
+        renderWho(); renderPlayerSelect(); renderTravellerGrid();
       };
       holder.querySelectorAll("input").forEach(el => el.addEventListener("input", onChange));
       holder.querySelectorAll("select").forEach(el => el.addEventListener("change", onChange));
     }
 
-    function makeInitials(name, idx) {
-      const clean = (name || "").trim();
-      if (!clean) return `T${idx + 1}`;
-      const parts = clean.split(/\s+/).slice(0, 2).map(x => x[0]).join("").toUpperCase();
-      return parts || `T${idx + 1}`;
+    // ---- Open Decisions desk ----
+    function ensureDesk() {
+      if (!state.desk || typeof state.desk !== "object") state.desk = structuredClone(defaultDesk);
+      if (!Array.isArray(state.desk.rooms)) state.desk.rooms = structuredClone(defaultDesk.rooms);
+      state.desk.rooms.forEach(r => {
+        if (!Array.isArray(r.owners)) r.owners = [];
+        if (!Array.isArray(r.options)) r.options = [];
+        if (r.kind === "car" && !Array.isArray(r.drivers)) r.drivers = [];
+        r.options.forEach(o => { if (!o.votes || typeof o.votes !== "object") o.votes = {}; });
+        if (!r.status) r.status = "open";
+      });
+    }
+    function deskRoom(id) { ensureDesk(); return state.desk.rooms.find(r => r.id === id); }
+    function optVotes(o) { return Object.keys(o.votes || {}).length; }
+
+    function toggleOwner(id) {
+      const r = deskRoom(id); if (!r) return;
+      const idx = state.selectedPlayer;
+      const on = r.owners.includes(idx);
+      r.owners = on ? r.owners.filter(x => x !== idx) : [...r.owners, idx];
+      logEvent("🙋", on ? `${selectedPlayer().name} stepped off “${r.title}”` : `${selectedPlayer().name} is on “${r.title}”`);
+      saveState(); renderAll();
+      toast(on ? `${selectedPlayer().name} stepped off ${r.title}` : `${selectedPlayer().name} is on it 🙋`);
+    }
+    function toggleDriver(id) {
+      const r = deskRoom(id); if (!r || r.kind !== "car") return;
+      const idx = state.selectedPlayer;
+      const on = r.drivers.includes(idx);
+      r.drivers = on ? r.drivers.filter(x => x !== idx) : [...r.drivers, idx];
+      if (!on && !r.owners.includes(idx)) r.owners.push(idx);
+      logEvent("🚗", on ? `${selectedPlayer().name} is off driving duty` : `${selectedPlayer().name} will drive on Skye`);
+      saveState(); renderAll();
+      toast(on ? `${selectedPlayer().name} is off driving` : `${selectedPlayer().name} will drive 🚗`);
+    }
+    function addDeskOption(id, data) {
+      const r = deskRoom(id); if (!r) return;
+      if (!data.title) { toast("Give the option a name first"); return; }
+      let link = (data.link || "").trim();
+      if (link && !/^https?:\/\//i.test(link)) link = "https://" + link;
+      r.options.push({ id: `op_${Date.now()}_${Math.floor(Math.random() * 1000)}`, by: state.selectedPlayer, title: data.title.trim(), link, price: (data.price || "").trim(), notes: (data.notes || "").trim(), votes: { [state.selectedPlayer]: true } });
+      logEvent("📋", `${selectedPlayer().name} shared “${data.title.trim()}” in ${r.title}`);
+      saveState(); renderAll(); toast(`${selectedPlayer().name} shared an option`);
+    }
+    function removeDeskOption(roomId, optId) {
+      const r = deskRoom(roomId); if (!r) return;
+      r.options = r.options.filter(o => o.id !== optId);
+      if (r.chosen === optId) { r.chosen = null; r.status = "open"; }
+      saveState(); renderAll(); toast("Option removed");
+    }
+    function toggleOptionVote(roomId, optId) {
+      const r = deskRoom(roomId); if (!r) return;
+      const o = r.options.find(x => x.id === optId); if (!o) return;
+      const idx = state.selectedPlayer;
+      if (o.votes[idx]) { delete o.votes[idx]; }
+      else { o.votes[idx] = true; logEvent("👍", `${selectedPlayer().name} backed “${o.title}” in ${r.title}`); }
+      buzz(6);
+      saveState(); renderAll();
+    }
+    function decideRoom(roomId, optId) {
+      const r = deskRoom(roomId); if (!r) return;
+      r.status = "decided"; r.chosen = optId;
+      const o = r.options.find(x => x.id === optId);
+      logEvent("✅", `${r.title} booked: “${o ? o.title : r.title}”`);
+      buzz(14);
+      saveState(); renderAll(); celebrate();
+      toast(`Booked: ${o ? o.title : r.title}`);
+    }
+    function reopenRoom(roomId) {
+      const r = deskRoom(roomId); if (!r) return;
+      r.status = "open"; r.chosen = null;
+      logEvent("🔓", `${selectedPlayer().name} reopened “${r.title}”`);
+      saveState(); renderAll(); toast(`${r.title} reopened`);
+    }
+    function addDeskRoom(title, desc) {
+      ensureDesk();
+      if (!(title || "").trim()) { toast("Name the decision first"); return; }
+      state.desk.rooms.push({ id: `room_${Date.now()}`, emoji: "📌", kind: "custom", title: title.trim(), desc: (desc || "Group decision — put your hand up, share options, vote.").trim(), owners: [], options: [], status: "open", chosen: null });
+      logEvent("🛎️", `${selectedPlayer().name} opened a decision room: “${title.trim()}”`);
+      saveState(); renderAll(); toast("Decision room added");
+    }
+    function removeDeskRoom(roomId) {
+      ensureDesk();
+      state.desk.rooms = state.desk.rooms.filter(r => r.id !== roomId);
+      saveState(); renderAll(); toast("Room removed");
     }
 
-    function escapeHtml(str) { return String(str || "").replace(/[&<>"]/g, s => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", "\"": "&quot;" }[s])); }
-    function escapeAttr(str) { return escapeHtml(str).replace(/'/g, "&#039;"); }
+    function deskRoomCard(r) {
+      const idx = state.selectedPlayer;
+      const avatar = i => { const p = state.players[i]; return p ? `<span class="avatar-dot" style="background:${p.colour}">${escapeHtml(p.initials)}</span>` : ""; };
+      const nameOf = i => { const p = state.players[i]; return p ? escapeHtml(p.name) : "—"; };
+      const decided = r.status === "decided";
+      const opts = (r.options || []).slice().sort((a, b) => optVotes(b) - optVotes(a));
+      const topVotes = opts.length ? optVotes(opts[0]) : 0;
+      const ownerChips = r.owners.length
+        ? r.owners.map(i => `<span class="owner-chip">${avatar(i)}${nameOf(i)}</span>`).join("")
+        : `<span class="owner-chip empty">No one yet</span>`;
+      const meOwner = r.owners.includes(idx);
+
+      let driveRow = "";
+      if (r.kind === "car") {
+        const dchips = (r.drivers && r.drivers.length)
+          ? r.drivers.map(i => `<span class="owner-chip">🚗 ${avatar(i)}${nameOf(i)}</span>`).join("")
+          : `<span class="owner-chip empty">No driver yet</span>`;
+        const meDriver = r.drivers && r.drivers.includes(idx);
+        driveRow = `<div class="crew-row"><span class="crew-label">Driving</span>${dchips}<button class="hand-btn drive ${meDriver ? "on" : ""}" data-desk="drive" data-room="${r.id}">${meDriver ? "🚗 You're driving" : "🚗 I'll drive"}</button></div>`;
+      }
+
+      const optHtml = opts.length ? opts.map(o => {
+        const v = optVotes(o);
+        const leading = !decided && v > 0 && v === topVotes;
+        const chosen = decided && r.chosen === o.id;
+        const mine = o.by === idx;
+        const voted = !!o.votes[idx];
+        const name = o.link ? `<a href="${escapeAttr(o.link)}" target="_blank" rel="noopener">${escapeHtml(o.title)} ↗</a>` : escapeHtml(o.title);
+        const meta = [];
+        if (o.price) meta.push(`<span class="pill">${escapeHtml(o.price)}</span>`);
+        meta.push(`<span class="pill">by ${nameOf(o.by)}</span>`);
+        if (leading) meta.push(`<span class="pill warn">👑 Leading</span>`);
+        if (chosen) meta.push(`<span class="pill done">✅ Chosen</span>`);
+        return `<div class="opt-card ${leading ? "leading" : ""} ${chosen ? "chosen" : ""}">
+          <div class="opt-main">
+            <div><div class="opt-name">${name}</div>${o.notes ? `<div class="opt-sub">${escapeHtml(o.notes)}</div>` : ""}<div class="opt-meta">${meta.join("")}</div></div>
+            <div class="opt-actions">
+              <button class="vote-up ${voted ? "on" : ""}" data-desk="vote" data-room="${r.id}" data-opt="${o.id}">👍 ${v}</button>
+              ${!decided ? `<button class="btn small secondary" data-desk="pick" data-room="${r.id}" data-opt="${o.id}">✔️ Book</button>` : ""}
+              ${(!decided && mine) ? `<button class="btn small danger" data-desk="delopt" data-room="${r.id}" data-opt="${o.id}">🗑️</button>` : ""}
+            </div>
+          </div>
+        </div>`;
+      }).join("") : `<div class="plan-empty-day">No options shared yet. Add the first one below.</div>`;
+
+      const addForm = !decided ? `<div class="add-opt">
+        <input type="text" data-room="${r.id}" data-f="title" placeholder="Option name (e.g. Enterprise INV)" />
+        <input type="text" data-room="${r.id}" data-f="link" placeholder="Link (optional)" />
+        <input type="text" data-room="${r.id}" data-f="price" placeholder="Price (optional)" />
+        <button class="btn small" data-desk="addopt" data-room="${r.id}">Add option</button>
+      </div>
+      <input type="text" class="opt-notes-in" data-room="${r.id}" data-f="notes" placeholder="One-line note (optional)" />` : "";
+
+      const removable = !DEFAULT_ROOM_IDS.includes(r.id);
+      const footer = (decided || removable) ? `<div class="room-foot">
+        ${decided ? `<button class="btn small ghost" data-desk="reopen" data-room="${r.id}">Reopen</button>` : ""}
+        ${removable ? `<button class="btn small danger" data-desk="delroom" data-room="${r.id}">🗑️ Remove room</button>` : ""}
+      </div>` : "";
+
+      return `<article class="desk-room ${decided ? "is-decided" : ""}">
+        <div class="desk-head">
+          <div class="desk-emoji">${r.emoji || "📌"}</div>
+          <div><div class="desk-title">${escapeHtml(r.title)}</div><div class="desk-desc">${escapeHtml(r.desc || "")}</div></div>
+          <span class="idea-status ${decided ? "hot" : ""}">${decided ? "Booked" : "Open"}</span>
+        </div>
+        <div class="crew-row"><span class="crew-label">On it</span>${ownerChips}<button class="hand-btn ${meOwner ? "on" : ""}" data-desk="hand" data-room="${r.id}">${meOwner ? "✋ You're on it" : "🙋 I'll look into this"}</button></div>
+        ${driveRow}
+        <div class="opt-list">${optHtml}</div>
+        ${addForm}
+        ${footer}
+      </article>`;
+    }
+
+    function bindDeskActions(container) {
+      container.querySelectorAll("[data-desk]").forEach(btn => {
+        btn.addEventListener("click", () => {
+          const act = btn.dataset.desk, room = btn.dataset.room, opt = btn.dataset.opt;
+          if (act === "hand") toggleOwner(room);
+          else if (act === "drive") toggleDriver(room);
+          else if (act === "vote") toggleOptionVote(room, opt);
+          else if (act === "pick") { if (confirm("Book this as the group's pick?")) decideRoom(room, opt); }
+          else if (act === "reopen") reopenRoom(room);
+          else if (act === "delopt") removeDeskOption(room, opt);
+          else if (act === "delroom") { if (confirm("Remove this whole decision room for everyone?")) removeDeskRoom(room); }
+          else if (act === "addopt") {
+            const get = f => { const el = container.querySelector(`input[data-room="${room}"][data-f="${f}"]`); return el ? el.value : ""; };
+            addDeskOption(room, { title: get("title"), link: get("link"), price: get("price"), notes: get("notes") });
+          }
+        });
+      });
+    }
+
+    function renderDesk() {
+      ensureDesk();
+      const holder = document.getElementById("deskList");
+      if (!holder) return;
+      const rooms = state.desk.rooms;
+      const open = rooms.filter(r => r.status !== "decided");
+      const booked = rooms.filter(r => r.status === "decided");
+      holder.innerHTML = open.length ? open.map(deskRoomCard).join("") : `<p class="panel-sub" style="padding:8px 2px">No open jobs — it's all booked 🎉</p>`;
+      bindDeskActions(holder);
+
+      const bookedHolder = document.getElementById("deskBooked");
+      if (bookedHolder) {
+        bookedHolder.innerHTML = booked.length ? booked.map(r => {
+          const o = (r.options || []).find(x => x.id === r.chosen);
+          const meta = escapeHtml(r.title) + (o && o.price ? " · " + escapeHtml(o.price) : "");
+          return `<div class="mini-idea-row"><span>${r.emoji || "✅"}</span><div><div class="mini-idea-name">${escapeHtml(o ? o.title : r.title)}</div><div class="mini-idea-meta">${meta}</div></div><span class="idea-status hot">Booked</span></div>`;
+        }).join("") : `<div class="micro">Nothing booked yet — mark a decision Booked and it lands here.</div>`;
+      }
+
+      const decidedCount = booked.length;
+      const openCount = open.length;
+      const optCount = rooms.reduce((s, r) => s + (r.options ? r.options.length : 0), 0);
+      const db = document.getElementById("deskDecidedBadge"); if (db) db.textContent = `${decidedCount} booked`;
+      const ob = document.getElementById("deskOpenBadge"); if (ob) ob.textContent = `${openCount} open`;
+      const opb = document.getElementById("deskOptionsBadge"); if (opb) opb.textContent = `${optCount} option${optCount === 1 ? "" : "s"} shared`;
+    }
+
+    // ---- Itinerary builder ----
+    function ensurePlan() {
+      if (!state.plan || typeof state.plan !== "object") state.plan = { generatedAt: null, items: [] };
+      if (!Array.isArray(state.plan.items)) state.plan.items = [];
+      if (!state.plan.dayMeta || typeof state.plan.dayMeta !== "object") state.plan.dayMeta = {};
+    }
+    function dayMeta(dayId) { ensurePlan(); return state.plan.dayMeta[dayId] || {}; }
+    function setDayMeta(dayId, patch) { ensurePlan(); state.plan.dayMeta[dayId] = { ...dayMeta(dayId), ...patch }; saveState(); renderAll(); }
+    function dayIsOff(dayId) { return !!dayMeta(dayId).off; }
+    function dayNote(d) { const m = dayMeta(d.id); return m.note != null ? m.note : (d.note || ""); }
+    function toggleDayOff(dayId, off) {
+      const d = TRIP_DAYS.find(x => x.id === dayId); if (!d) return;
+      if (off) {
+        const n = state.plan.items.filter(it => it.dayId === dayId).length;
+        if (n && !confirm(`${d.date} has ${n} item${n > 1 ? "s" : ""} on it — they'll be hidden until the day is re-added. Drop the day?`)) return;
+      }
+      setDayMeta(dayId, { off });
+      toast(off ? `${d.date} dropped from the trip` : `${d.date} is back in the trip`);
+    }
+    function editDayNote(dayId) {
+      const d = TRIP_DAYS.find(x => x.id === dayId); if (!d) return;
+      const next = prompt(`Note for ${d.date}`, dayNote(d) || "");
+      if (next === null) return;
+      setDayMeta(dayId, { note: next.trim() });
+      toast("Day note updated");
+    }
+    function planWinners() {
+      const ideas = allIdeas();
+      let w = ideas.filter(i => ideaStatus(tallyIdea(i.id)).label === "Shortlist");
+      if (w.length === 0) w = ideas.filter(i => tallyIdea(i.id).score > 0);
+      return w.slice().sort((a, b) => tallyIdea(b.id).score - tallyIdea(a.id).score);
+    }
+    function changeItemDay(itemId, dayId) { ensurePlan(); const it = state.plan.items.find(x => x.id === itemId); if (it) { it.dayId = dayId; saveState(); renderAll(); } }
+    function removePlanItem(itemId) { ensurePlan(); state.plan.items = state.plan.items.filter(x => x.id !== itemId); saveState(); renderAll(); toast("Removed from itinerary"); }
+    function guessEmoji(title) {
+      const t = (title || "").toLowerCase();
+      if (/(flight|fly\b|✈|airport|inv|ltn)/.test(t)) return "✈️";
+      if (/(taxi|transfer|bus|drive|pick.?up|car)/.test(t)) return "🚗";
+      if (/(dinner|lunch|breakfast|food|eat|restaurant|pub)/.test(t)) return "🍽️";
+      if (/(check.?in|check.?out|hotel|cottage|stay|accom)/.test(t)) return "🏡";
+      if (/(hike|walk|storr|quiraing|circuit|trail)/.test(t)) return "🥾";
+      if (/(castle|eilean|dunvegan|urquhart)/.test(t)) return "🏰";
+      if (/(distillery|talisker|whisky|dram)/.test(t)) return "🥃";
+      return "📍";
+    }
+    function addPlanItem(dayId, title, time) {
+      ensurePlan();
+      if (!(title || "").trim()) { toast("Type something to add"); return; }
+      state.plan.items.push({ id: `pl_x_${Date.now()}`, dayId, title: title.trim(), emoji: guessEmoji(title), city: "", kind: "activity", note: "", time: time || "" });
+      const d = TRIP_DAYS.find(x => x.id === dayId);
+      logEvent("🗓️", `${selectedPlayer().name} added “${title.trim()}” to ${d ? d.date : "the plan"}`);
+      saveState(); renderAll(); toast("Added to the day");
+    }
+    function changeItemTime(itemId, time) { ensurePlan(); const it = state.plan.items.find(x => x.id === itemId); if (it) { it.time = time || ""; saveState(); renderAll(); } }
+    function renamePlanItem(itemId) {
+      ensurePlan(); const it = state.plan.items.find(x => x.id === itemId); if (!it) return;
+      const next = prompt("Rename this item", it.title);
+      if (next === null) return;
+      const t = next.trim(); if (!t) return;
+      it.title = t;
+      saveState(); renderAll(); toast("Renamed");
+    }
+    function clearPlan() { state.plan = normalizePlan({ generatedAt: null, items: [], seeded: true }); saveState(); renderAll(); toast("Itinerary cleared"); }
+
+    // ⛅ Weather swap: move every stop + note between the Trotternish (d26) and
+    // West Skye (d27) days in one tap.
+    function swapWeatherDays() {
+      ensurePlan();
+      const A = "d26", B = "d27";
+      state.plan.items.forEach(it => {
+        if (it.dayId === A) it.dayId = B;
+        else if (it.dayId === B) it.dayId = A;
+      });
+      const ma = state.plan.dayMeta[A], mb = state.plan.dayMeta[B];
+      state.plan.dayMeta[A] = mb || {}; state.plan.dayMeta[B] = ma || {};
+      logEvent("⛅", `${selectedPlayer().name} swapped the Trotternish and West Skye days`);
+      buzz(10); saveState(); renderAll(); toast("Swapped Trotternish ↔ West Skye ⛅");
+    }
+
+    function renderPlan() {
+      ensurePlan();
+      const holder = document.getElementById("planDays");
+      if (!holder) return;
+      const items = state.plan.items;
+      const winners = planWinners();
+
+      const ps = document.getElementById("planSummary");
+      if (ps) ps.textContent = items.length
+        ? `${items.length} item${items.length > 1 ? "s" : ""} on the plan. Add more with the ＋ row on any day; set times to order them.`
+        : "Add items to each day below. Vote on ideas in the Activity Market for inspiration.";
+
+      const dayOpts = sel => TRIP_DAYS.map(d => `<option value="${d.id}" ${d.id === sel ? "selected" : ""}>${d.date}${dayIsOff(d.id) ? " · off" : ""}</option>`).join("");
+      const flightChip = x => `<span class="arr-chip" title="${escapeAttr(x.p.name)}"><span class="ac-dot" style="background:${x.p.colour}"></span>${escapeHtml(x.p.initials)}</span>`;
+
+      const cityTag = city => { const c = (city || "").toLowerCase(); if (c.includes("west")) return "west"; if (c.includes("trotternish")) return "trot"; return ""; };
+
+      holder.innerHTML = TRIP_DAYS.map(d => {
+        const dayItems = items.filter(it => it.dayId === d.id).slice().sort((a, b) => (a.time || "99:99").localeCompare(b.time || "99:99"));
+        const tagCls = cityTag(d.city);
+        if (dayIsOff(d.id)) {
+          return `<div class="plan-day is-off">
+            <div class="plan-day-head">
+              <span class="plan-date">${d.date}</span>
+              <span class="plan-citytag ${tagCls}">${escapeHtml(d.city)}</span>
+              <span class="plan-daynote">Not in the trip${dayItems.length ? ` · ${dayItems.length} item${dayItems.length > 1 ? "s" : ""} parked here` : ""}.</span>
+              <span class="pd-actions"><button class="pd-btn" data-plan="dayon" data-day="${d.id}">↩️ Re-add day</button></span>
+            </div>
+          </div>`;
+        }
+        const itemsHtml = dayItems.map(it => {
+          const sub = it.kind === "dinner"
+            ? (it.note ? `<a href="${escapeAttr(it.note)}" target="_blank" rel="noopener" class="pi-sub">booking ↗</a>` : `<span class="pi-sub">group dinner</span>`)
+            : (it.city ? `<span class="pi-sub">${escapeHtml(it.city)}</span>` : "");
+          return `<div class="plan-item ${it.kind === "dinner" ? "dinner" : ""}">
+            <span class="pi-emoji">${it.emoji || "📍"}</span>
+            <div class="pi-titlewrap" data-plan="rename" data-item="${it.id}" title="Tap to rename"><div class="pi-title">${escapeHtml(it.title)}</div>${sub}</div>
+            <input type="time" class="pi-time" data-plan="time" data-item="${it.id}" value="${escapeAttr(it.time || "")}" aria-label="Time (optional)" />
+            <select class="pi-move" data-plan="move" data-item="${it.id}" aria-label="Move to another day">${dayOpts(it.dayId)}</select>
+            <button class="pi-x" data-plan="del" data-item="${it.id}" aria-label="Remove">✕</button>
+          </div>`;
+        }).join("") || `<div class="plan-empty-day">${d.logistics ? "Travel / logistics day." : "Open — drop an activity here."}</div>`;
+        const note = dayNote(d);
+        return `<div class="plan-day ${d.logistics ? "is-logistics" : ""}">
+          <div class="plan-day-head">
+            <span class="plan-date">${d.date}</span>
+            <span class="plan-citytag ${tagCls}">${escapeHtml(d.city)}</span>
+            ${d.stay ? `<span class="plan-stay">🛏 ${escapeHtml(d.stay)}</span>` : ""}
+            ${note ? `<span class="plan-daynote">${escapeHtml(note)}</span>` : ""}
+            <span class="pd-actions">
+              <button class="pd-btn" data-plan="note" data-day="${d.id}" title="Edit the day note">✎ Note</button>
+              <button class="pd-btn" data-plan="dayoff" data-day="${d.id}" title="Drop this day from the trip">🚫</button>
+            </span>
+          </div>
+          ${itemsHtml}
+          <div class="day-add">
+            <input type="text" data-dayadd="${d.id}" data-f="title" placeholder="＋ Add to ${d.date}…" />
+            <input type="time" class="pi-time" data-dayadd="${d.id}" data-f="time" aria-label="Time (optional)" />
+            <button class="pd-btn" data-plan="dayadd" data-day="${d.id}">Add</button>
+          </div>
+        </div>`;
+      }).join("");
+
+      holder.querySelectorAll('[data-plan="dayadd"]').forEach(b => b.addEventListener("click", () => {
+        const day = b.dataset.day;
+        const tEl = holder.querySelector(`input[data-dayadd="${day}"][data-f="title"]`);
+        const tmEl = holder.querySelector(`input[data-dayadd="${day}"][data-f="time"]`);
+        addPlanItem(day, tEl ? tEl.value : "", tmEl ? tmEl.value : "");
+      }));
+      holder.querySelectorAll('input[data-dayadd][data-f="title"]').forEach(inp => inp.addEventListener("keydown", e => {
+        if (e.key === "Enter") { const btn = holder.querySelector(`[data-plan="dayadd"][data-day="${inp.dataset.dayadd}"]`); if (btn) btn.click(); }
+      }));
+      holder.querySelectorAll('[data-plan="move"]').forEach(sel => sel.addEventListener("change", () => changeItemDay(sel.dataset.item, sel.value)));
+      holder.querySelectorAll('[data-plan="del"]').forEach(b => b.addEventListener("click", () => removePlanItem(b.dataset.item)));
+      holder.querySelectorAll('[data-plan="time"]').forEach(inp => inp.addEventListener("change", () => changeItemTime(inp.dataset.item, inp.value)));
+      holder.querySelectorAll('[data-plan="rename"]').forEach(el => el.addEventListener("click", () => renamePlanItem(el.dataset.item)));
+      holder.querySelectorAll('[data-plan="dayoff"]').forEach(b => b.addEventListener("click", () => toggleDayOff(b.dataset.day, true)));
+      holder.querySelectorAll('[data-plan="dayon"]').forEach(b => b.addEventListener("click", () => toggleDayOff(b.dataset.day, false)));
+      holder.querySelectorAll('[data-plan="note"]').forEach(b => b.addEventListener("click", () => editDayNote(b.dataset.day)));
+
+      const feed = document.getElementById("planFeed");
+      if (feed) {
+        const dinners = state.desk ? state.desk.rooms.filter(r => r.kind === "dinner" && r.status === "decided") : [];
+        feed.innerHTML = (winners.map(i => `<div class="mini-idea-row"><span>${i.emoji || "📍"}</span><div><div class="mini-idea-name">${escapeHtml(i.title)}</div><div class="mini-idea-meta">${escapeHtml(i.city || "TBC")} · score ${tallyIdea(i.id).score}</div></div><span class="idea-status hot">In</span></div>`).join("")
+          + dinners.map(r => { const o = (r.options || []).find(x => x.id === r.chosen); return `<div class="mini-idea-row"><span>${r.emoji || "🍽️"}</span><div><div class="mini-idea-name">${escapeHtml(o ? o.title : r.title)}</div><div class="mini-idea-meta">Booked dinner</div></div><span class="idea-status hot">In</span></div>`; }).join(""))
+          || `<div class="micro">Nothing shortlisted yet. Win some votes in the Activity Market.</div>`;
+      }
+
+      const cb = document.getElementById("planCountBadge"); if (cb) cb.textContent = `${items.length} placed`;
+      const lockBtn = document.getElementById("planLockBtn"); if (lockBtn) lockBtn.textContent = state.groupDone.itinerary ? "✅ Itinerary locked (tap to unlock)" : "🔒 Lock this itinerary";
+      const addDay = document.getElementById("planAddDay");
+      if (addDay) { const cur = addDay.value; addDay.innerHTML = TRIP_DAYS.map(d => `<option value="${d.id}">${d.date}${dayIsOff(d.id) ? " · off" : ""}</option>`).join(""); if (cur) addDay.value = cur; }
+    }
+
+    // ---- Hero: countdown + open-decisions stat ----
+    function renderHero() {
+      const now = new Date();
+      const daysEl = document.getElementById("countdownDays");
+      const subEl = document.getElementById("countdownSub");
+      if (daysEl) {
+        if (now < TRIP_START) {
+          const mins = Math.floor((TRIP_START - now) / 60000);
+          const d = Math.floor(mins / 1440), h = Math.floor((mins % 1440) / 60), m = mins % 60;
+          daysEl.innerHTML = `${d}<span class="cd-unit">d</span>${h}<span class="cd-unit">h</span>${m}<span class="cd-unit">m</span>`;
+          if (subEl) subEl.textContent = d >= 1 ? "until you fly to Inverness · 24 Jul 2026" : "Inverness today — pack the waterproofs ✈️";
+        } else if (now <= TRIP_END) {
+          daysEl.textContent = "On Skye 🏴󠁧󠁢󠁳󠁣󠁴󠁿";
+          if (subEl) subEl.textContent = "Inverness + Isle of Skye · 24 to 28 Jul 2026";
+        } else {
+          daysEl.textContent = "That's a wrap 🏔️";
+          if (subEl) subEl.textContent = "Inverness + Isle of Skye · Jul 2026";
+        }
+      }
+      ensureDesk();
+      const rooms = (state.desk && state.desk.rooms) ? state.desk.rooms : [];
+      const openCount = rooms.filter(r => r.status !== "decided").length;
+      const oc = document.getElementById("heroOpenCount");
+      if (oc) oc.textContent = openCount;
+      const os = document.getElementById("heroOpenSub");
+      if (os) os.textContent = openCount ? `open decision${openCount === 1 ? "" : "s"} left in the desk.` : "everything's booked — nice one. 🎉";
+      const tcp = document.getElementById("travellerCountPill");
+      if (tcp) tcp.textContent = `${state.players.length} travellers`;
+    }
+
+    // ---- Visual itinerary: illustrated poster carousel (overview + per-day slides) ----
+    const DAY_ACCENT = { d24: "#5a8fc2", d25: "#7d5fae", d26: "#2e9e6e", d27: "#cf9a2e", d28: "#5aa8c8" };
+    const DAY_SCENE = { d24: "portree.jpg", d25: "eilean.jpg", d26: "quiraing.jpg", d27: "neist.jpg", d28: "cuillin.jpg" };
+    const DAY_DETAILS = {
+      d24: { sleep: "Royal Apartment, south Inverness", move: "Fly LTN→INV, then hire cars from the airport", prep: "Confirm the INV desk is staffed past 20:00; late Tesco for supplies" },
+      d25: { sleep: "Solas Alainn, Staffin", move: "Self-drive A82/A87 — Loch Ness, Eilean Donan, Skye Bridge", prep: "Fuel + Co-op in Portree before heading north; check-in from 17:00" },
+      d26: { sleep: "Solas Alainn, Staffin", move: "Short hops around Trotternish — all 5–20 min from base", prep: "Early Storr start beats the car park; midge net for the Quiraing" },
+      d27: { sleep: "Solas Alainn, Staffin", move: "Long drive west and back — single-track roads, fuel first", prep: "Book Talisker ~11:45; arrive Neist ~1.5hr before the 21:45 sunset" },
+      d28: { sleep: "Home", move: "Drive Skye → Inverness Airport, return the cars ~16:30", prep: "Out of the cottage by 10:00; fuel at Invermoriston/Broadford" }
+    };
+    const VP_MTN = `<svg class="vp-mtn" viewBox="0 0 800 90" preserveAspectRatio="none" aria-hidden="true"><path d="M0 90 L90 34 L170 64 L270 24 L360 60 L470 30 L560 60 L650 26 L740 56 L800 40 L800 90Z" fill="rgba(120,150,185,0.42)"/><path d="M0 90 L140 58 L280 76 L420 50 L560 76 L680 54 L800 68 L800 90Z" fill="rgba(70,100,135,0.5)"/></svg>`;
+    let vitinIdx = 0, vitinPosterMode = true, vitinSig = "";
+
+    function sceneForItem(it) {
+      const t = (it.title || "").toLowerCase();
+      if (/(old man of storr|\bstorr\b)/.test(t)) return "storr.jpg";
+      if (/(quiraing)/.test(t)) return "quiraing.jpg";
+      if (/(fairy pool)/.test(t)) return "fairy.jpg";
+      if (/(neist)/.test(t)) return "neist.jpg";
+      if (/(eilean donan)/.test(t)) return "eilean.jpg";
+      if (/(dunvegan)/.test(t)) return "act-dunvegan.jpg";
+      if (/(urquhart)/.test(t)) return "act-urquhart.jpg";
+      if (/(talisker|distillery|whisky)/.test(t)) return "act-talisker.jpg";
+      if (/(sligachan|cuillin)/.test(t)) return "cuillin.jpg";
+      if (/(portree|co-op|the lump)/.test(t)) return "portree.jpg";
+      if (/(fairy glen|brother)/.test(t)) return "quiraing.jpg";
+      if (/(coral beach|beach|talisker bay)/.test(t)) return "neist.jpg";
+      if (/(castle|plockton)/.test(t)) return "eilean.jpg";
+      return null;
+    }
+
+    function applyVitinMode() {
+      const poster = document.getElementById("vitinPoster"), editor = document.getElementById("planEditor"), hint = document.getElementById("vitinHint");
+      if (poster) poster.style.display = vitinPosterMode ? "" : "none";
+      if (editor) editor.style.display = vitinPosterMode ? "none" : "";
+      document.querySelectorAll(".vitin-mode").forEach(b => b.classList.toggle("active", (b.dataset.vitin === "poster") === vitinPosterMode));
+      if (hint) hint.textContent = vitinPosterMode
+        ? "An illustrated day-by-day — swipe through the days or tap a day on the overview. Use “Edit plan” to add or change stops."
+        : "Build it by hand — add stops to any day, set times, rename, or drop a day. Everything syncs to the group.";
+    }
+
+    function renderVisualItinerary() {
+      const host = document.getElementById("vitinPoster");
+      if (!host) return;
+      ensurePlan();
+      const items = state.plan.items || [];
+      applyVitinMode();
+      const sig = JSON.stringify({ i: items.map(it => [it.dayId, it.title, it.time, it.emoji, it.kind]), m: state.plan.dayMeta });
+      if (sig === vitinSig && host.children.length) return;
+      vitinSig = sig;
+      const total = 1 + TRIP_DAYS.length;
+
+      const overviewNode = (d, idx) => {
+        const ac = DAY_ACCENT[d.id] || "#2f86b5";
+        const scene = DAY_SCENE[d.id] ? `images/${DAY_SCENE[d.id]}` : "";
+        const n = items.filter(it => it.dayId === d.id).length;
+        const cnt = dayIsOff(d.id) ? "Not in the trip" : (n ? `${n} stop${n > 1 ? "s" : ""}` : "Tap to plan");
+        return `<button class="vp-daynode" style="color:${ac}" data-goslide="${idx + 1}">
+          ${scene ? `<img class="vp-daybead" src="${scene}" alt="${escapeAttr(d.city)}" loading="lazy" onerror="this.outerHTML='<span class=&quot;vp-daybead&quot; style=&quot;display:grid;place-items:center;font-size:30px&quot;>📍</span>'">` : `<span class="vp-daybead" style="display:grid;place-items:center;font-size:30px">📍</span>`}
+          <span class="vp-daynum">Day ${idx + 1} · ${escapeHtml(d.date.split(" ").slice(0, 2).join(" "))}</span>
+          <span class="vp-dayname">${escapeHtml(d.city)}</span>
+          <span class="vp-daycount">${cnt}</span>
+        </button>`;
+      };
+      const overviewGroups = [
+        { title: "Getting there", range: "24–25 Jul", ids: ["d24", "d25"] },
+        { title: "On the island", range: "26–27 Jul", ids: ["d26", "d27"] },
+        { title: "Home run", range: "28 Jul", ids: ["d28"] }
+      ].map(group => {
+        const groupDays = group.ids.map(id => ({ d: TRIP_DAYS.find(x => x.id === id), idx: TRIP_DAYS.findIndex(x => x.id === id) })).filter(x => x.d);
+        return `<div class="vp-phase"><div class="vp-phase-title"><span>${escapeHtml(group.title)}</span><span>${escapeHtml(group.range)}</span></div>
+          <div class="vp-days" style="--phase-count:${groupDays.length}">${groupDays.map(x => overviewNode(x.d, x.idx)).join("")}</div>
+        </div>`;
+      }).join("");
+      const overview = `<section class="vp-slide">${VP_MTN}
+        <div class="vp-title-wrap">
+          <div class="vp-eyebrow">The crew · 24–28 Jul 2026</div>
+          <div class="vp-title">Isle of Skye</div>
+          <div class="vp-sub">Inverness · Trotternish · West Skye</div>
+          <div class="vp-themes">Lochs · Castles · Cuillin · Sea cliffs · Whisky</div>
+        </div>
+        <div class="vp-overview-groups">${overviewGroups}</div>
+        <div class="vp-swipe">Swipe through for each day →</div>
+      </section>`;
+
+      const daySlides = TRIP_DAYS.map((d, idx) => {
+        const ac = DAY_ACCENT[d.id] || "#2f86b5";
+        const hero = DAY_SCENE[d.id] ? `images/${DAY_SCENE[d.id]}` : "";
+        const dayItems = items.filter(it => it.dayId === d.id).slice().sort((a, b) => (a.time || "99:99").localeCompare(b.time || "99:99"));
+        const head = `<div class="vp-dayhead"><div>
+            <div class="vp-dayeyebrow" style="color:${ac}">Day ${idx + 1} · ${escapeHtml(d.date)}</div>
+            <div class="vp-daytitle">${escapeHtml(d.city)}</div>
+          </div></div>`;
+        let body;
+        if (dayIsOff(d.id)) {
+          body = `<div class="vp-empty"><div><b>${escapeHtml(d.date)} isn't in the trip.</b><br>Re-add it from “✎ Edit plan”.</div></div>`;
+        } else if (!dayItems.length) {
+          body = `<div class="vp-empty">${hero ? `<img src="${hero}" alt="" loading="lazy">` : ""}<div><b>Nothing planned yet.</b><br>Tap <b>✎ Edit plan</b> to add stops to ${escapeHtml(d.date)}.</div></div>`;
+        } else {
+          const usedScenes = new Set();
+          const cards = dayItems.map(it => {
+            let fn = sceneForItem(it);
+            if (fn && usedScenes.has(fn)) fn = null;
+            if (fn) usedScenes.add(fn);
+            const img = fn
+              ? `<img class="vpa-img" src="images/${fn}" alt="${escapeAttr(it.title)}" loading="lazy" onerror="this.outerHTML='<div class=&quot;vpa-imgfb&quot;>${it.emoji || "📍"}</div>'">`
+              : `<div class="vpa-imgfb">${it.emoji || "📍"}</div>`;
+            const sub = (it.kind === "dinner") ? "Group dinner" : (it.note || "");
+            const meta = (it.time || sub) ? `<p>${it.time ? `<span class="vpa-when">${escapeHtml(it.time)}</span>` : ""}${it.time && sub ? " · " : ""}${escapeHtml(sub)}</p>` : "";
+            return `<div class="vpa-card">${img}<div class="vpa-txt"><h4>${escapeHtml(it.title)}</h4>${meta}</div></div>`;
+          }).join("");
+          body = `<div class="vpa">${cards}</div>`;
+        }
+        const note = dayNote(d);
+        const noteHtml = (note && !dayIsOff(d.id)) ? `<p class="vp-daynote">${escapeHtml(note)}</p>` : "";
+        const dd = DAY_DETAILS[d.id];
+        const detailsHtml = (dd && !dayIsOff(d.id)) ? `<div class="vp-daydetails">
+          <div class="vp-detail"><span>Sleep</span><strong>${escapeHtml(dd.sleep)}</strong></div>
+          <div class="vp-detail"><span>Getting around</span><strong>${escapeHtml(dd.move)}</strong></div>
+          <div class="vp-detail"><span>Book / bring</span><strong>${escapeHtml(dd.prep)}</strong></div>
+        </div>` : "";
+        return `<section class="vp-slide">${VP_MTN}${head}${noteHtml}${detailsHtml}${body}</section>`;
+      }).join("");
+
+      const dotsHtml = Array.from({ length: total }, (_, k) => `<button class="vp-dot${k === 0 ? " on" : ""}" data-goslide="${k}" aria-label="Slide ${k + 1}"></button>`).join("");
+      const jumpHtml = `<button class="vp-jbtn${vitinIdx === 0 ? " on" : ""}" data-goslide="0">🗺 Overview</button>` + TRIP_DAYS.map((d, idx) => `<button class="vp-jbtn${vitinIdx === idx + 1 ? " on" : ""}" data-goslide="${idx + 1}">${escapeHtml(d.date.split(" ").slice(0, 2).join(" "))}</button>`).join("");
+      host.innerHTML = `<div class="vp-jump" id="vpJump">${jumpHtml}</div><div class="vp-vp"><div class="vp-track" id="vpTrack">${overview}${daySlides}</div></div>
+        <div class="vp-nav"><button class="vp-arrow" id="vpPrev" aria-label="Previous day">‹</button><div class="vp-dots" id="vpDots">${dotsHtml}</div><button class="vp-arrow" id="vpNext" aria-label="Next day">›</button></div>`;
+
+      const track = host.querySelector("#vpTrack"), dotsWrap = host.querySelector("#vpDots");
+      function go(n) {
+        vitinIdx = Math.max(0, Math.min(total - 1, n));
+        track.style.transform = `translateX(-${vitinIdx * 100}%)`;
+        dotsWrap.querySelectorAll(".vp-dot").forEach((dn, k) => dn.classList.toggle("on", k === vitinIdx));
+        host.querySelectorAll(".vp-jump .vp-jbtn").forEach((jb, k) => jb.classList.toggle("on", k === vitinIdx));
+      }
+      host.querySelectorAll("[data-goslide]").forEach(b => b.addEventListener("click", () => go(parseInt(b.dataset.goslide, 10))));
+      host.querySelector("#vpPrev").addEventListener("click", () => go(vitinIdx - 1));
+      host.querySelector("#vpNext").addEventListener("click", () => go(vitinIdx + 1));
+      let x0 = null;
+      track.addEventListener("touchstart", e => { x0 = e.touches[0].clientX; }, { passive: true });
+      track.addEventListener("touchend", e => { if (x0 === null) return; const dx = e.changedTouches[0].clientX - x0; if (Math.abs(dx) > 40) go(vitinIdx + (dx < 0 ? 1 : -1)); x0 = null; });
+      go(Math.min(vitinIdx, total - 1));
+    }
 
     function renderAll() {
-      renderNodes(); renderTokens(); renderPlayerSelect(); renderTravellerGrid(); renderSelectedPanel(); renderVibePicker(); renderTasks(); renderIdeas(); renderBoardIdeaPreview(); renderNextActions(); renderStartStrip(); renderBadges(); renderRosterEditor(); renderHero();
+      ensureDesk(); ensurePlan();
+      renderWho(); renderPlayerSelect(); renderTravellerGrid(); renderIdeas(); renderRosterEditor(); renderHero(); renderDesk(); renderPlan(); renderVisualItinerary(); renderPulse();
     }
 
     function toast(message) {
@@ -1698,9 +2149,10 @@
     }
 
     function celebrate() {
+      buzz([12, 40, 12]);
       const wrap = document.createElement("div");
       wrap.className = "confetti-wrap";
-      const cols = ["#72f4ff", "#ff97ca", "#8be8d4", "#ffd15c", "#8fa9ff", "#f7fbff"];
+      const cols = ["#2f86b5", "#2e9e6e", "#cf9a2e", "#7d5fae", "#4aa3d8", "#82ccae"];
       for (let i = 0; i < 26; i++) {
         const p = document.createElement("span");
         p.className = "confetti";
@@ -1715,29 +2167,39 @@
       setTimeout(() => wrap.remove(), 2600);
     }
 
-    document.querySelectorAll(".nav button").forEach(btn => {
+    // ---- Tabs ----
+    function setActiveTab(tab) {
+      document.querySelectorAll(".nav button[data-tab], .dock button[data-tab]").forEach(b => {
+        const on = b.dataset.tab === tab;
+        b.classList.toggle("active", on);
+        if (on) b.setAttribute("aria-current", "page"); else b.removeAttribute("aria-current");
+      });
+      document.querySelectorAll(".section").forEach(s => s.classList.toggle("active", s.id === tab));
+      if (tab === "desk") renderPulse();
+    }
+    document.querySelectorAll(".nav button, .dock button").forEach(btn => {
       btn.addEventListener("click", () => {
         if (!btn.dataset.tab) return; // the sync chip is a nav button with no tab
-        document.querySelectorAll(".nav button").forEach(x => x.classList.remove("active"));
-        document.querySelectorAll(".section").forEach(x => x.classList.remove("active"));
-        btn.classList.add("active");
-        document.getElementById(btn.dataset.tab).classList.add("active");
+        setActiveTab(btn.dataset.tab);
+        if (btn.closest(".dock")) document.getElementById(btn.dataset.tab).scrollIntoView({ behavior: "smooth", block: "start" });
       });
     });
-
     document.querySelectorAll("[data-jump]").forEach(btn => {
       btn.addEventListener("click", () => {
         const target = btn.dataset.jump;
-        document.querySelector(`.nav button[data-tab='${target}']`).click();
+        setActiveTab(target);
         document.getElementById(target).scrollIntoView({ behavior: "smooth", block: "start" });
       });
     });
 
-    document.getElementById("playerSelect").addEventListener("change", e => { state.selectedPlayer = Number(e.target.value); saveState(); renderAll(); });
-    document.getElementById("focusPlayerBtn").addEventListener("click", () => toast(`${selectedPlayer().name} is selected`));
-    document.getElementById("advanceBtn").addEventListener("click", () => { const p = selectedPlayer(); p.progress = clamp((p.progress || 0) + 1, 0, checkpoints.length - 1); saveState(); renderAll(); toast(`${p.name} moved forward`); });
-    document.getElementById("undoBtn").addEventListener("click", () => { const p = selectedPlayer(); p.progress = clamp((p.progress || 0) - 1, 0, checkpoints.length - 1); saveState(); renderAll(); toast(`${p.name} moved back`); });
-    document.getElementById("resetBtn").addEventListener("click", () => { if (confirm("Reset this browser's Skye board state?")) { localStorage.removeItem(STORE_KEY); state = loadState(); renderAll(); toast("Board reset"); } });
+    // ---- Wiring ----
+    document.getElementById("playerSelect")?.addEventListener("change", e => { state.selectedPlayer = Number(e.target.value); rememberWhoami(state.selectedPlayer); saveState(); renderAll(); });
+    document.getElementById("changeWhoBtn")?.addEventListener("click", openWhoModal);
+    document.querySelectorAll(".vitin-mode").forEach(b => b.addEventListener("click", () => {
+      vitinPosterMode = b.dataset.vitin === "poster";
+      applyVitinMode();
+      if (vitinPosterMode) renderVisualItinerary();
+    }));
 
     document.getElementById("addIdeaBtn").addEventListener("click", () => {
       const title = document.getElementById("newIdeaTitle").value.trim();
@@ -1746,6 +2208,7 @@
       if (!title) { toast("Add an idea name first"); return; }
       state.ideas = allIdeas();
       state.ideas.push({ id: `custom_${Date.now()}`, emoji: "💡", title, city, desc });
+      logEvent("💡", `${selectedPlayer().name} pitched a new idea: “${title}”`);
       document.getElementById("newIdeaTitle").value = "";
       document.getElementById("newIdeaCity").value = "";
       document.getElementById("newIdeaDesc").value = "";
@@ -1766,44 +2229,45 @@
       await navigator.clipboard.writeText(lines.join("\n")); toast("Idea results copied");
     });
 
-
-    document.getElementById("copySummaryBtn").addEventListener("click", async () => {
-      const groupDoneCount = Object.values(state.groupDone).filter(Boolean).length;
-      const lines = [
-        "Isle of Skye Trip — Board Summary",
-        "Dates: 24 to 28 Jul 2026",
-        "Route: London Luton → Inverness → Isle of Skye",
-        `Group boss progress: ${groupDoneCount}/${groupTasks.length}`,
-        "",
-        "Traveller progress:",
-        ...state.players.map(p => { const v = vibeById(p.vibe); return `• ${p.name}${v ? ` (${v.name})` : ""}: ${checkpoints[computePlayerProgress(p)].title}`; }),
-        "",
-        "Shortlist ideas:",
-        ...allIdeas().filter(i => ideaStatus(tallyIdea(i.id)).label === "Shortlist").map(i => `• ${i.title} (${i.city})`),
-        "",
-        "Open group bosses:",
-        ...groupTasks.filter(t => !state.groupDone[t.id]).map(t => `• ${t.title}`)
-      ];
-      await navigator.clipboard.writeText(lines.join("\n")); toast("Summary copied");
+    const addRoomBtn = document.getElementById("addRoomBtn");
+    if (addRoomBtn) addRoomBtn.addEventListener("click", () => {
+      const t = document.getElementById("newRoomTitle"), d = document.getElementById("newRoomDesc");
+      addDeskRoom(t.value, d.value); t.value = ""; d.value = "";
     });
 
-    document.getElementById("exportBtn").addEventListener("click", async () => { await navigator.clipboard.writeText(JSON.stringify(state, null, 2)); toast("JSON snapshot copied"); });
-    document.getElementById("importBtn").addEventListener("click", async () => {
-      const raw = prompt("Paste JSON snapshot");
-      if (!raw) return;
-      try { state = { ...structuredClone(defaultState), ...JSON.parse(raw) }; saveState(); renderAll(); toast("Snapshot imported"); } catch (e) { alert("Invalid JSON snapshot"); }
+    const planClearBtn = document.getElementById("planClearBtn");
+    if (planClearBtn) planClearBtn.addEventListener("click", () => { if (state.plan.items.length && confirm("Clear the whole itinerary?")) clearPlan(); });
+    const planAddBtn = document.getElementById("planAddBtn");
+    if (planAddBtn) planAddBtn.addEventListener("click", () => { const t = document.getElementById("planAddTitle"), tm = document.getElementById("planAddTime"), dsel = document.getElementById("planAddDay"); addPlanItem(dsel.value || "d26", t.value, tm ? tm.value : ""); t.value = ""; if (tm) tm.value = ""; });
+    const swapDaysBtn = document.getElementById("swapDaysBtn");
+    if (swapDaysBtn) swapDaysBtn.addEventListener("click", () => { if (confirm("Swap everything on the Trotternish day (Sun) with the West Skye day (Mon)?")) swapWeatherDays(); });
+    const planLockBtn = document.getElementById("planLockBtn");
+    if (planLockBtn) planLockBtn.addEventListener("click", () => { state.groupDone.itinerary = !state.groupDone.itinerary; logEvent(state.groupDone.itinerary ? "🔒" : "🔓", `${selectedPlayer().name} ${state.groupDone.itinerary ? "locked" : "unlocked"} the itinerary`); if (state.groupDone.itinerary) { celebrate(); } saveState(); renderAll(); toast(state.groupDone.itinerary ? "Itinerary locked 🔒" : "Itinerary unlocked"); });
+    const planCopyBtn = document.getElementById("planCopyBtn");
+    if (planCopyBtn) planCopyBtn.addEventListener("click", async () => {
+      const lines = ["Isle of Skye Trip — Itinerary", "Fri 24 – Tue 28 Jul 2026 · Inverness + Isle of Skye", ""];
+      TRIP_DAYS.forEach(d => {
+        if (dayIsOff(d.id)) return;
+        const its = state.plan.items.filter(it => it.dayId === d.id).slice().sort((a, b) => (a.time || "99:99").localeCompare(b.time || "99:99"));
+        const note = dayNote(d);
+        lines.push(`${d.date} — ${d.city}${note ? ` (${note})` : ""}`);
+        if (its.length) its.forEach(it => lines.push(`  • ${it.time ? it.time + " — " : ""}${it.title}`));
+        else lines.push("  • —");
+      });
+      await navigator.clipboard.writeText(lines.join("\n")); toast("Itinerary copied");
     });
 
     document.getElementById("syncChip").addEventListener("click", () => remotePull({ manual: true }));
-    const syncRefreshBtn = document.getElementById("syncRefreshBtn");
-    if (syncRefreshBtn) syncRefreshBtn.addEventListener("click", () => remotePull({ manual: true }));
 
-    spawnLeaves();
+    // ---- Boot ----
     renderAll();
     setSyncChip(hasRemoteSync() ? "syncing" : "disabled");
     remotePull({ initial: true });
     startSyncLoops();
-    setInterval(renderHero, 3600000); // refresh the countdown hourly
+    setInterval(renderHero, 60000); // keep the countdown ticking
+    const savedWho = whoamiSaved();
+    if (savedWho != null && state.players[savedWho]) { state.selectedPlayer = savedWho; renderAll(); }
+    else openWhoModal();
   </script>
 </body>
 </html>

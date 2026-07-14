@@ -1133,7 +1133,13 @@
       { id: "dunveganSeals", emoji: "🦭", title: "Dunvegan seal boat", city: "Dunvegan", desc: "Add the seal-colony boat trip (+£10) to the 800-year MacLeod clan castle visit.", img: "images/scene-dunvegan.jpg", link: "https://www.dunvegancastle.com/" },
       { id: "coralBeach", emoji: "🏖️", title: "Coral Beach detour", city: "near Dunvegan", desc: "White maerl / turquoise beach, ~1hr round trip. Nice-to-have — skip if the West Skye day runs tight.", img: "images/scene-coralbeach.jpg", link: "https://maps.google.com/?q=Claigan+Coral+Beach+Skye" },
       { id: "quiraingCircuit", emoji: "🥾", title: "Full Quiraing circuit", city: "Trotternish", desc: "The full 7km / 2.5–4hr ridge loop vs the quick main viewpoint. Best scenery payoff if everyone's up for it.", img: "images/scene-quiraing.jpg", link: "https://www.walkhighlands.co.uk/skye/quiraing.shtml" },
-      { id: "anCorran", emoji: "🦕", title: "An Corran dinosaur beach", city: "Staffin", desc: "Beach with dinosaur footprints, 10 min from the Staffin base. Quick optional stop on the Trotternish day.", img: "images/scene-ancorran.jpg", link: "https://maps.google.com/?q=An+Corran+Beach+Staffin" }
+      { id: "anCorran", emoji: "🦕", title: "An Corran dinosaur beach", city: "Staffin", desc: "Beach with dinosaur footprints, 10 min from the Staffin base. Quick optional stop on the Trotternish day.", img: "images/scene-ancorran.jpg", link: "https://maps.google.com/?q=An+Corran+Beach+Staffin" },
+      { id: "liz_blabheinn", emoji: "⛰️", title: "Blà Bheinn summit hike", city: "Torrin", desc: "Liz's wildcard: a challenging 8km / 5–6hr Munro day. This replaces most of a sightseeing day; only for confident hillwalkers in a clear, low-wind forecast.", img: "images/scene-cuillin.jpg", link: "https://www.walkhighlands.co.uk/skye/blabheinn.shtml" },
+      { id: "liz_leanto", emoji: "☕", title: "Lean To Coffee", city: "Ashaig, near Broadford", desc: "Croft coffee, bakes and toasties near the Skye Bridge. Best fitted to Tuesday's outbound drive if the seasonal opening hours work.", img: "images/scene-dinner.jpg", link: "https://maps.google.com/?q=Lean+To+Coffee+Ashaig+Skye" },
+      { id: "liz_birch", emoji: "☕", title: "Birch", city: "Portree", desc: "Speciality coffee and locally sourced café food. Best fit is Tuesday's early Portree stop before Sligachan.", img: "images/scene-portree.jpg", link: "https://birch.coffee/pages/about" },
+      { id: "liz_cafecuil", emoji: "🍳", title: "Café Cùil", city: "Carbost", desc: "Hebridean brunch and lunch using local produce. A strong Monday lunch option after Talisker Bay; check current opening hours before setting off.", img: "images/scene-dinner.jpg", link: "https://www.cafecuil.com/" },
+      { id: "liz_oystershed", emoji: "🦪", title: "The Oyster Shed", city: "Carbost", desc: "Casual local seafood and takeaway—an alternative to Café Cùil on the West Skye day. Confirm Monday service shortly before the trip.", img: "images/scene-dinner.jpg", link: "https://maps.google.com/?q=The+Oyster+Shed+Carbost+Skye" },
+      { id: "liz_edinbane", emoji: "🍺", title: "Edinbane Inn", city: "Edinbane", desc: "Local pub food with lunch and dinner service. Worth voting on, but it needs a reservation and either a dedicated evening or a shortened West Skye loop.", img: "images/scene-dinner.jpg", link: "https://edinbaneinn.co.uk/table-reservations/" }
     ];
 
     // Open Decisions — own a job, share options, group votes, lock the pick.
@@ -1171,20 +1177,21 @@
       { dayId: "d25", time: "17:00", title: "Check in — Solas Alainn, Staffin", emoji: "🏡" },
       { dayId: "d25", time: "19:30", title: "Dinner — Hungry Gull (Staffin) or Portree", emoji: "🍽️", kind: "dinner" },
       { dayId: "d26", time: "07:30", title: "Old Man of Storr hike (beat the car park)", emoji: "🥾" },
-      { dayId: "d26", time: "10:10", title: "Rigg Viewpoint · Lealt Falls · Kilt Rock", emoji: "📸" },
+      { dayId: "d26", time: "10:10", title: "Rigg Viewpoint · Lealt Falls · Kilt Rock & Mealt Falls", emoji: "📸" },
       { dayId: "d26", time: "11:30", title: "Staffin Bay + An Corran dinosaur beach (optional)", emoji: "🦕" },
       { dayId: "d26", time: "13:00", title: "The Quiraing — full circuit or main viewpoint", emoji: "🥾" },
       { dayId: "d26", time: "16:20", title: "Brother's Point (optional) → Fairy Glen", emoji: "🧚" },
       { dayId: "d26", time: "18:30", title: "Dinner in Portree — Scorrybreac or Sea Breezes", emoji: "🍽️", kind: "dinner" },
-      { dayId: "d27", time: "07:30", title: "Early start — fuel up first, long way west", emoji: "⛽" },
+      { dayId: "d27", time: "06:30", title: "Early start — fuel up first, long way west", emoji: "⛽" },
       { dayId: "d27", time: "08:00", title: "Fairy Pools (car park fills by 10:00)", emoji: "💦" },
-      { dayId: "d27", time: "10:00", title: "Talisker Bay coastal stop → Carbost lunch", emoji: "🌊" },
+      { dayId: "d27", time: "10:00", title: "Talisker Bay coastal stop", emoji: "🌊" },
+      { dayId: "d27", time: "11:45", title: "Carbost lunch — Café Cùil or The Oyster Shed", emoji: "🦪", kind: "dinner" },
       { dayId: "d27", time: "13:30", title: "Dunvegan Castle (+ seal boat if keen)", emoji: "🏰" },
       { dayId: "d27", time: "14:30", title: "Coral Beach (optional, ~1hr round trip)", emoji: "🏖️" },
       { dayId: "d27", time: "16:00", title: "Coastal drive — Glendale · Waterstein · Milovaig", emoji: "🚙" },
       { dayId: "d27", time: "20:00", title: "Neist Point for sunset (arrive early for parking)", emoji: "🌅" },
       { dayId: "d27", time: "22:00", title: "Drive home — ~1h45 back to Staffin", emoji: "🌙" },
-      { dayId: "d28", time: "08:00", title: "Slow Portree morning — The Lump viewpoint (optional)", emoji: "☕" },
+      { dayId: "d28", time: "08:00", title: "Birch coffee in Portree + The Lump viewpoint (optional)", emoji: "☕" },
       { dayId: "d28", time: "10:30", title: "Depart — Sligachan Old Bridge (Cuillin view)", emoji: "🏔️" },
       { dayId: "d28", time: "12:00", title: "Eilean Donan second look — or push on", emoji: "🏰" },
       { dayId: "d28", time: "13:45", title: "Plockton — lunch in the palm-tree village", emoji: "🍽️" },
@@ -1195,13 +1202,23 @@
       const p = (plan && typeof plan === "object") ? plan : { generatedAt: null, items: [] };
       if (!Array.isArray(p.items)) p.items = [];
       if (!p.dayMeta || typeof p.dayMeta !== "object") p.dayMeta = {};
-      // Retire the distillery stop from already-synced copies of the itinerary.
+      // Keep already-synced copies aligned with the current route and Liz's additions.
       p.items = p.items.map(it => {
         if (it && it.dayId === "d27" && /talisker\s+distillery|distillery\s+tour/i.test(it.title || "")) {
-          return { ...it, title: "Talisker Bay coastal stop → Carbost lunch", emoji: "🌊", kind: "activity" };
+          return { ...it, title: "Talisker Bay coastal stop", emoji: "🌊", kind: "activity", time: "10:00" };
         }
+        if (it && it.dayId === "d27" && /talisker bay coastal stop\s*→\s*carbost lunch/i.test(it.title || "")) return { ...it, title: "Talisker Bay coastal stop", emoji: "🌊", kind: "activity", time: "10:00" };
+        if (it && it.dayId === "d27" && /early start.*long way west/i.test(it.title || "")) return { ...it, time: "06:30" };
+        if (it && it.dayId === "d26" && /rigg viewpoint.*lealt falls.*kilt rock/i.test(it.title || "")) return { ...it, title: "Rigg Viewpoint · Lealt Falls · Kilt Rock & Mealt Falls" };
+        if (it && it.dayId === "d28" && /slow portree morning.*lump viewpoint/i.test(it.title || "")) return { ...it, title: "Birch coffee in Portree + The Lump viewpoint (optional)", emoji: "☕" };
         return it;
       });
+      if (!p.lizSuggestionsV1) {
+        if (!p.items.some(it => it && /café cùil|cafe cuil|oyster shed/i.test(it.title || ""))) {
+          p.items.push({ id: "liz_carbost_lunch", dayId: "d27", title: "Carbost lunch — Café Cùil or The Oyster Shed", emoji: "🦪", city: "Carbost", kind: "dinner", note: "Liz's shortlist", time: "11:45" });
+        }
+        p.lizSuggestionsV1 = true;
+      }
       // One-time seed: merge the starter itinerary in, skipping any stop the
       // group already added (matched by title). Runs once, then `seeded` locks it.
       if (!p.seeded) {
@@ -2120,7 +2137,7 @@
         accom: { name: "Solas Alainn, Staffin", meta: "Night 3 of 3 · late return", note: "This is the longest driving day; leave the cottage ready for a quiet late arrival.", checkin: "already in", checkout: "Tue by 10:00" },
         drive: [
           { leg: "Staffin → Fairy Pools", time: "~1 hr 30", note: "Fuel first and expect single-track sections; arrive before the car park peaks." },
-          { leg: "Fairy Pools → Talisker Bay / Carbost", time: "~25 min", note: "Use this as a scenic coastal stop and lunch break, then keep the day moving west." },
+          { leg: "Fairy Pools → Talisker Bay / Carbost", time: "~25 min", note: "After the bay, choose Café Cùil or The Oyster Shed for lunch; verify Monday opening before leaving Staffin." },
           { leg: "Carbost → Dunvegan", time: "~35 min", note: "Keep the castle and optional seal boat flexible to protect the sunset plan." },
           { leg: "Dunvegan → Coral Beach", time: "~25 min", note: "The final road is narrow and the small car park can fill." },
           { leg: "Coral Beach → Neist Point", time: "~1 hr", note: "Slow Glendale roads; allow parking and the walk to the viewpoint." },
@@ -2130,12 +2147,13 @@
           { icon: "🅿️", title: "West Skye parking", lines: ["Fairy Pools is best early; pay at the official car park and do not verge-park.", "Coral Beach and Neist Point have constrained parking—drop optional stops if the day starts running late."] },
           { icon: "🌅", title: "Neist Point sunset", lines: ["Aim to arrive around 20:00 for the ~21:45 sunset, leaving time for parking and the walk.", "Bring warm layers, a picnic and headtorches for the return to the car."] }
         ],
-        book: ["Start with a full tank", "Pack lunch backup, water and evening food", "Bring waterproofs, warm layers and headtorches", "Check sunset, wind and rain before committing to the full loop"]
+        book: ["Start with a full tank", "Check Café Cùil / Oyster Shed Monday hours", "Pack lunch backup, water and evening food", "Bring waterproofs, warm layers and headtorches", "Check sunset, wind and rain before committing to the full loop"]
       },
       d28: {
         accom: { name: "Home", meta: "Travel day · no overnight stay", note: "Leave Solas Alainn by 10:00 and sweep every room before locking up.", checkin: "—", checkout: "cottage by 10:00" },
         drive: [
-          { leg: "Staffin → Sligachan", time: "~45 min", note: "Keep the photo stop short so the airport buffer stays protected." },
+          { leg: "Staffin → Portree", time: "~35 min", note: "Leave the cottage early for Birch coffee and the optional Lump viewpoint." },
+          { leg: "Portree → Sligachan", time: "~20 min", note: "Keep the Old Bridge photo stop short so the airport buffer stays protected." },
           { leg: "Sligachan → Plockton", time: "~50 min", note: "Lunch stop; skip it if traffic or weather has delayed the run south." },
           { leg: "Plockton → Inverness Airport", time: "~1 hr 45", note: "Allow more in summer traffic; refuel before returning the car around 16:30." }
         ],
@@ -2163,7 +2181,8 @@
       const t = (it.title || "").toLowerCase();
       if (/(late supplies|tesco|takeaway)/.test(t)) return "scene-inverness-supplies.jpg";
       if (/(lunch.*fort augustus|fort augustus.*lunch)/.test(t)) return "scene-fort-augustus-lunch.jpg";
-      if (/(talisker bay|carbost lunch)/.test(t)) return "scene-talisker-bay.jpg";
+      if (/(talisker bay)/.test(t)) return "scene-talisker-bay.jpg";
+      if (/(café cùil|cafe cuil|oyster shed|birch coffee|lean to coffee|edinbane inn)/.test(t)) return "scene-dinner.jpg";
       if (/(coastal drive|glendale|waterstein|milovaig)/.test(t)) return "scene-glendale-drive.jpg";
       if (/(drive home|back to staffin)/.test(t)) return "scene-night-drive.jpg";
       if (/(old man of storr|\bstorr\b)/.test(t)) return "scene-storr.jpg";

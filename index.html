@@ -1146,6 +1146,13 @@
       const p = (plan && typeof plan === "object") ? plan : { generatedAt: null, items: [] };
       if (!Array.isArray(p.items)) p.items = [];
       if (!p.dayMeta || typeof p.dayMeta !== "object") p.dayMeta = {};
+      // Retire the distillery stop from already-synced copies of the itinerary.
+      p.items = p.items.map(it => {
+        if (it && it.dayId === "d27" && /talisker\s+distillery|distillery\s+tour/i.test(it.title || "")) {
+          return { ...it, title: "Talisker Bay coastal stop → Carbost lunch", emoji: "🌊", kind: "activity" };
+        }
+        return it;
+      });
       // One-time seed: merge the starter itinerary in, skipping any stop the
       // group already added (matched by title). Runs once, then `seeded` locks it.
       if (!p.seeded) {

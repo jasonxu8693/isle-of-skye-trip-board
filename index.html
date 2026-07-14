@@ -692,10 +692,25 @@
     .vp-dayeyebrow { font-size: 11.5px; letter-spacing: .16em; text-transform: uppercase; font-weight: 800; }
     .vp-daytitle { font-family: 'Fraunces', Georgia, serif; font-weight: 900; font-size: clamp(24px, 3.4vw, 32px); line-height: 1.04; margin: 4px 0 0; color: #eef4fb; }
     .vp-daynote { position: relative; z-index: 1; color: #b9c7d9; font-size: 12.5px; margin: 10px 0 0; max-width: 64ch; line-height: 1.5; }
-    .vp-daydetails { position: relative; z-index: 1; display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 10px; margin-top: 14px; }
-    .vp-detail { border: 1px solid rgba(238,244,251,0.12); border-radius: 16px; background: rgba(238,244,251,0.06); padding: 11px 12px; min-height: 76px; }
-    .vp-detail span { display: block; font-size: 10px; font-weight: 900; letter-spacing: .12em; text-transform: uppercase; color: #8fa2b8; margin-bottom: 5px; }
-    .vp-detail strong { display: block; color: #eef4fb; font-size: 13px; line-height: 1.35; }
+    .vp-detail { position: relative; z-index: 1; display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 10px; margin-top: 18px; }
+    .vpd-card { border: 1px solid rgba(238,244,251,0.14); border-radius: 14px; background: rgba(10,20,33,0.48); padding: 11px 13px; }
+    .vpd-h { display: flex; align-items: flex-start; gap: 9px; font-size: 11px; font-weight: 900; letter-spacing: .06em; text-transform: uppercase; color: #8fcbea; margin-bottom: 8px; }
+    .vpd-h > span { font-size: 18px; line-height: 1; }
+    .vpd-h strong { display: block; color: #eef4fb; }
+    .vpd-h small { display: block; margin-top: 3px; color: #8fa2b8; font-size: 9.5px; letter-spacing: .03em; text-transform: none; font-weight: 700; }
+    .vpd-b { font-size: 12.5px; color: #eef4fb; line-height: 1.5; display: flex; flex-direction: column; gap: 3px; }
+    .vpd-b > b { font-weight: 850; }
+    .vpd-b p { margin: 2px 0 7px; color: #b9c7d9; }
+    .vpd-meta { display: flex; flex-wrap: wrap; gap: 6px 14px; color: #8fa2b8; font-size: 11px; font-weight: 700; }
+    .vpd-meta b { color: #8fcbea; }
+    .vpd-leg { display: flex; flex-wrap: wrap; align-items: baseline; gap: 4px 10px; padding: 5px 0; border-bottom: 1px dashed rgba(238,244,251,0.1); }
+    .vpd-leg:last-child { border-bottom: 0; }
+    .vpd-legname { font-weight: 600; }
+    .vpd-leg em { font-style: normal; color: #8fcbea; font-size: 11px; font-weight: 700; }
+    .vpd-note { flex-basis: 100%; color: #b9c7d9; font-size: 11.5px; }
+    .vpd-list { margin: 0; padding-left: 18px; color: #b9c7d9; font-size: 12.5px; line-height: 1.65; }
+    .vpd-a { color: #8fcbea; font-weight: 700; text-decoration: underline; text-underline-offset: 2px; }
+    .vpd-b > span a.vpd-a { font-size: inherit; }
     .vp-empty { position: relative; z-index: 1; display: flex; align-items: center; gap: 16px; margin-top: 12px; padding: 18px; border: 1px dashed rgba(238,244,251,0.22); border-radius: 18px; background: rgba(10,20,33,0.4); }
     .vp-empty img { width: 116px; height: 116px; border-radius: 50%; object-fit: cover; border: 3px solid rgba(238,244,251,0.5); flex: none; }
     .vp-empty div { color: #b9c7d9; font-size: 13.5px; line-height: 1.55; }
@@ -721,7 +736,7 @@
       .vp-days { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 15px 10px; }
       .vp-days:before { display: none; }
       .vp-daybead { width: min(104px, 36vw); }
-      .vp-daydetails { grid-template-columns: 1fr; }
+      .vp-detail { grid-template-columns: 1fr; }
     }
     @media (prefers-reduced-motion: reduce) { .vp-track { transition: none; } }
 
@@ -898,7 +913,7 @@
               <div class="info-card" style="margin-top:14px">
                 <div class="emoji">🥃</div>
                 <h3>Book the popular ones</h3>
-                <p>Talisker tours and Scorrybreac / Three Chimneys fill weeks ahead in peak summer. Vote, then book early via Open Decisions.</p>
+                <p>Scorrybreac and Three Chimneys fill weeks ahead in peak summer. Vote, then book the standout dinner early via Open Decisions.</p>
               </div>
               <div class="info-card" style="margin-top:12px">
                 <div class="emoji">🅿️</div>
@@ -963,7 +978,7 @@
               <p class="panel-sub">The on-the-ground cheat sheet — save this to your phone before you lose signal in Trotternish.</p>
             </div>
             <div class="pill-row" style="margin:0">
-              <span class="pill done">🛏️ Stay booked &amp; paid</span>
+              <span class="pill done">🛏️ Stay booked</span>
               <span class="pill warn">🦟 Midge season</span>
               <span class="pill hot">💷 Carry parking coins</span>
             </div>
@@ -981,12 +996,12 @@
           <div class="grid-3">
             <div class="info-card"><div class="emoji">📅</div><h3>Dates</h3><p>Fri 24 to Tue 28 Jul 2026. 4 nights — 1 in Inverness, 3 at Staffin (Solas Alainn).</p></div>
             <div class="info-card"><div class="emoji">✈️</div><h3>Route</h3><p>easyJet London Luton → Inverness, then self-drive the A82/A87 via Loch Ness and the Skye Bridge.</p></div>
-            <div class="info-card"><div class="emoji">🏔️</div><h3>Why Skye</h3><p>The Cuillin, Old Man of Storr, the Quiraing, Fairy Pools, Neist Point sunsets and Talisker whisky.</p></div>
+            <div class="info-card"><div class="emoji">🏔️</div><h3>Why Skye</h3><p>The Cuillin, Old Man of Storr, the Quiraing, Fairy Pools, Neist Point sunsets and the wild Atlantic coast.</p></div>
           </div>
 
           <h3 style="margin:26px 0 14px; font-size:18px">The stay — Solas Alainn, Staffin</h3>
           <div class="grid-2">
-            <div class="info-card"><div class="emoji">🛏️</div><h3>Booked &amp; paid</h3><p>3-bed / 3-bath cottage, sleeps 6 (all king beds, one ground-floor + bathroom). £1,726 total = ~£288 pp. Booking #42401 via Islands &amp; Highlands Cottages. Check-in Sat 25 Jul after 17:00, out Tue 28 by 10:00. Linen, towels, electricity &amp; final clean included.</p></div>
+            <div class="info-card"><div class="emoji">🛏️</div><h3>Booked</h3><p>3-bed / 3-bath cottage, sleeps 6 (all king beds, one ground-floor + bathroom). Booking #42401 via Islands &amp; Highlands Cottages. Check-in Sat 25 Jul after 17:00, out Tue 28 by 10:00. Linen, towels, electricity &amp; final clean included.</p></div>
             <div class="info-card"><div class="emoji">🏞️</div><h3>Right under the Quiraing</h3><p>Detached cottage overlooking Staffin Bay in the far north of Trotternish. Walk to Mackenzie's store &amp; fuel; An Corran (dinosaur) beach and Mealt Falls 5 min; Old Man of Storr 15 min. Side parking, wildflower garden, fast WiFi. Directions land 14 days out.</p></div>
           </div>
 
@@ -1001,10 +1016,16 @@
 
           <h3 style="margin:26px 0 14px; font-size:18px">Good to know</h3>
           <div class="grid-2">
-            <div class="info-card"><div class="emoji">🚗</div><h3>Car hire &amp; driving</h3><p>Enterprise / Hertz at Inverness airport, mid-size with boot space, ~£200–300 for the 4 days plus ~£40 petrol. Drive on the left, 60 mph single carriageway, 30 in villages. No tolls — the Skye Bridge is free.</p></div>
+            <div class="info-card"><div class="emoji">🚗</div><h3>Car hire &amp; driving</h3><p>Car hire is booked by a friend, who holds the confirmation. Before departure, share the rental company, lead-driver name, reference, pickup instructions and roadside number. Drive on the left; no tolls — the Skye Bridge is free.</p></div>
             <div class="info-card"><div class="emoji">🦟</div><h3>Midges &amp; kit</h3><p>July–August is midge season — pack Smidge or Avon Skin So Soft and a head net for the Quiraing. Bring waterproof jacket + trousers, hiking boots and layers; weather turns fast.</p></div>
             <div class="info-card"><div class="emoji">💷</div><h3>Money &amp; data</h3><p>GBP, contactless everywhere. Carry ~£40 in coins as a parking backup (most use RingGo or card). A UK SIM works fine — no roaming needed; signal drops in parts of Trotternish and Glendale, so download offline Google Maps before you go.</p></div>
             <div class="info-card"><div class="emoji">🆘</div><h3>Emergency &amp; insurance</h3><p>Emergency 999 or 112. Jason on HSBC Premier travel insurance; emergency contact Alice Zhu. Nearest fuel + pharmacy + Co-op are in Portree — don't leave it to the rural ends.</p></div>
+          </div>
+
+          <h3 style="margin:26px 0 14px; font-size:18px">Offline launch pack — ready</h3>
+          <div class="grid-2">
+            <div class="info-card"><div class="emoji">📲</div><h3>Save before departure</h3><p>Download offline Google Maps for Inverness, Skye and the A82/A87; save boarding passes, cottage access instructions, the car-hire details held by the booking friend, and this board as a PDF.</p><button class="btn small" type="button" onclick="window.print()" style="margin-top:12px">Print / save board as PDF</button></div>
+            <div class="info-card"><div class="emoji">🧭</div><h3>Keep on every phone</h3><p>Emergency 999/112, rental roadside-assistance number, lead-driver and booking reference, accommodation contact, weather links, waterproof kit list and the parking guidance shown under each itinerary day.</p></div>
           </div>
         </div>
       </section>
@@ -1056,7 +1077,6 @@
     const TRIP_END = new Date(2026, 6, 28, 23, 59);
 
     const defaultIdeas = [
-      { id: "talisker", emoji: "🥃", title: "Talisker distillery tour", city: "Carbost", desc: "The 1hr immersive tour at Skye's oldest working distillery, ~£25pp. Book ahead — peak summer fills early.", img: "images/scene-talisker.jpg", link: "https://www.malts.com/en-row/distilleries/talisker" },
       { id: "scorrybreac", emoji: "🍽️", title: "Scorrybreac dinner", city: "Portree", desc: "Modern Scottish tasting menu on Portree harbour, ~£70pp. The standout-dinner pick — booking essential.", img: "images/scene-dinner.jpg", link: "https://www.scorrybreac.com/" },
       { id: "threeChimneys", emoji: "🕯️", title: "Three Chimneys dinner", city: "Loch Dunvegan", desc: "One of Scotland's most famous restaurants — candlelit stone cottage, ~£100–140pp. Pairs with the West Skye day.", img: "images/scene-dinner.jpg", link: "https://www.threechimneys.co.uk/" },
       { id: "urquhart", emoji: "🏰", title: "Urquhart Castle stop", city: "Loch Ness", desc: "Ruined castle on Loch Ness on the drive up (£14.50). Adds time on the Inverness → Skye day — worth it or skip?", img: "images/scene-urquhart.jpg", link: "https://www.historicenvironment.scot/visit-a-place/places/urquhart-castle/" },
@@ -1069,13 +1089,11 @@
     // Open Decisions — own a job, share options, group votes, lock the pick.
     const defaultDesk = {
       rooms: [
-        { id: "car_hire", emoji: "🚗", kind: "car", title: "Car hire — Inverness Airport", desc: "THE priority. Mid-size with boot space, Fri 24 Jul ~20:15 pickup at INV, back ~16:30 Tue. Confirm the desk is staffed past 20:00 — the flight lands ~20:00.", owners: [], drivers: [], options: [], status: "open", chosen: null },
-        { id: "flights_rest", emoji: "✈️", kind: "custom", title: "Remaining flights — 4 seats", desc: "Jason + Kat are booked on easyJet EZY623 LTN→INV Fri 24 Jul 18:30 (return EZY624 Tue 19:30). Get the other four on the same flights.", owners: [], options: [], status: "open", chosen: null },
-        { id: "talisker_tour", emoji: "🥃", kind: "custom", title: "Talisker distillery tour", desc: "Book the ~11:45 slot for the West Skye day. ~£25pp — peak-summer tours sell out weeks ahead.", owners: [], options: [], status: "open", chosen: null },
+        { id: "car_hire", emoji: "🚗", kind: "car", fixed: true, title: "Car hire — Inverness Airport", desc: "Booked by a friend for Fri 24 Jul airport pickup and Tue 28 Jul return. The confirmation is held by the booking friend rather than in Jason's inbox.", owners: [], drivers: [], options: [{ id: "opt_car_friend", by: 0, title: "Inverness Airport car hire — booked", link: "", price: "", notes: "Before departure, share the rental company, lead-driver name, booking reference, pickup desk details and roadside-assistance number with the group.", votes: {} }], status: "decided", chosen: "opt_car_friend" },
+        { id: "flights_rest", emoji: "✈️", kind: "custom", fixed: true, title: "easyJet flights — booked", desc: "Outbound and return flights are marked booked. Save every boarding pass to the offline pack before departure.", owners: [], options: [{ id: "opt_flights_booked", by: 0, title: "easyJet EZY623 outbound + EZY624 return", link: "", price: "", notes: "LTN→INV Fri 24 Jul 18:30, landing ~20:00. INV→LTN Tue 28 Jul 19:30, landing ~21:00.", votes: {} }], status: "decided", chosen: "opt_flights_booked" },
         { id: "dinner_big", emoji: "🍽️", kind: "dinner", title: "The standout dinner", desc: "Scorrybreac (Portree, ~£70pp) vs Three Chimneys (~£100–140pp, pairs with West Skye). Pick one and book — both fill weeks ahead.", owners: [], options: [], status: "open", chosen: null },
-        { id: "stay_shares", emoji: "💷", kind: "custom", title: "Stay shares — £288 each", desc: "Solas Alainn is paid in full (£1,726). Everyone sends their £288 share back to Jason.", owners: [], options: [], status: "open", chosen: null },
-        { id: "offline_pack", emoji: "📲", kind: "custom", title: "Offline pack", desc: "Offline Google Maps for Skye, bookings saved, parking notes, midge kit and emergency info — before you lose signal in Trotternish.", owners: [], options: [], status: "open", chosen: null },
-        { id: "stay_skye", emoji: "🛏️", kind: "accom", title: "The stay — Solas Alainn, Staffin", desc: "3-bed / 3-bath cottage under the Quiraing, sleeps 6.", owners: [0], options: [{ id: "opt_solas", by: 0, title: "Solas Alainn, Staffin — booking #42401", link: "", price: "£1,726 total · ~£288pp", notes: "Check-in Sat 25 Jul from 17:00 · out Tue 28 by 10:00. Linen, towels & final clean included.", votes: {} }], status: "decided", chosen: "opt_solas" }
+        { id: "offline_pack", emoji: "📲", kind: "custom", fixed: true, title: "Offline launch pack", desc: "Generated in Skye Essentials: offline-map scope, bookings, car-hire handover, parking guidance, kit and emergency information.", owners: [], options: [{ id: "opt_offline_ready", by: 0, title: "Skye offline launch pack — ready", link: "", price: "", notes: "Use the Print / save board as PDF button in Skye Essentials, then download the maps and documents listed there.", votes: {} }], status: "decided", chosen: "opt_offline_ready" },
+        { id: "stay_skye", emoji: "🛏️", kind: "accom", title: "The stay — Solas Alainn, Staffin", desc: "3-bed / 3-bath cottage under the Quiraing, sleeps 6.", owners: [0], options: [{ id: "opt_solas", by: 0, title: "Solas Alainn, Staffin — booking #42401", link: "", price: "", notes: "Check-in Sat 25 Jul from 17:00 · out Tue 28 by 10:00. Linen, towels & final clean included.", votes: {} }], status: "decided", chosen: "opt_solas" }
       ]
     };
 
@@ -1084,7 +1102,7 @@
       { id: "d24", iso: "2026-07-24", date: "Fri 24 Jul", city: "Inverness", logistics: true, stay: "Royal Apartment, Inverness", note: "Fly LTN → INV tonight — sleep south Inverness, drive to Skye tomorrow." },
       { id: "d25", iso: "2026-07-25", date: "Sat 25 Jul", city: "Inverness → Skye", stay: "Solas Alainn, Staffin", note: "The drive-up — Loch Ness, Eilean Donan, over the Skye Bridge. Check-in from 17:00." },
       { id: "d26", iso: "2026-07-26", date: "Sun 26 Jul", city: "Trotternish", stay: "Solas Alainn, Staffin", note: "Give this the clearest forecast — everything is 5–20 min from base. Swappable with Monday until 48h out." },
-      { id: "d27", iso: "2026-07-27", date: "Mon 27 Jul", city: "West Skye", stay: "Solas Alainn, Staffin", note: "The big drive day — early start, Talisker tour, Neist Point sunset ~21:45, home late." },
+      { id: "d27", iso: "2026-07-27", date: "Mon 27 Jul", city: "West Skye", stay: "Solas Alainn, Staffin", note: "The big drive day — early start, Talisker Bay and Carbost, Neist Point sunset ~21:45, home late." },
       { id: "d28", iso: "2026-07-28", date: "Tue 28 Jul", city: "Skye → Home", logistics: true, note: "Out of the cottage by 10:00 — Sligachan and Plockton on the way to INV. Fly 19:30." }
     ];
 
@@ -1111,7 +1129,7 @@
       { dayId: "d26", time: "18:30", title: "Dinner in Portree — Scorrybreac or Sea Breezes", emoji: "🍽️", kind: "dinner" },
       { dayId: "d27", time: "07:30", title: "Early start — fuel up first, long way west", emoji: "⛽" },
       { dayId: "d27", time: "08:00", title: "Fairy Pools (car park fills by 10:00)", emoji: "💦" },
-      { dayId: "d27", time: "10:00", title: "Talisker Bay → Talisker Distillery tour (~11:45)", emoji: "🥃" },
+      { dayId: "d27", time: "10:00", title: "Talisker Bay coastal stop → Carbost lunch", emoji: "🌊" },
       { dayId: "d27", time: "13:30", title: "Dunvegan Castle (+ seal boat if keen)", emoji: "🏰" },
       { dayId: "d27", time: "14:30", title: "Coral Beach (optional, ~1hr round trip)", emoji: "🏖️" },
       { dayId: "d27", time: "16:00", title: "Coastal drive — Glendale · Waterstein · Milovaig", emoji: "🚙" },
@@ -1159,6 +1177,7 @@
       feed: []
     };
     const DEFAULT_ROOM_IDS = defaultDesk.rooms.map(r => r.id);
+    const RETIRED_ROOM_IDS = new Set(["talisker_tour", "stay_shares"]);
 
     // Keep the current default activity set (plus any group-added "custom_" ideas),
     // refresh default desk rooms to the latest copy while preserving live data, and
@@ -1186,10 +1205,15 @@
       const merged = base.map(d => {
         const s = byId[d.id]; if (!s) return d;
         const out = { ...d, owners: Array.isArray(s.owners) ? s.owners : d.owners, options: Array.isArray(s.options) && s.options.length ? s.options : d.options, status: s.status || d.status, chosen: s.chosen != null ? s.chosen : d.chosen };
+        if (d.fixed) {
+          out.options = structuredClone(d.options);
+          out.status = d.status;
+          out.chosen = d.chosen;
+        }
         if (d.kind === "car") out.drivers = Array.isArray(s.drivers) ? s.drivers : [];
         return out;
       });
-      const custom = stored.filter(r => r && typeof r.id === "string" && !DEFAULT_ROOM_IDS.includes(r.id));
+      const custom = stored.filter(r => r && typeof r.id === "string" && !DEFAULT_ROOM_IDS.includes(r.id) && !RETIRED_ROOM_IDS.has(r.id));
       return [...merged, ...custom];
     }
 
@@ -1994,13 +2018,88 @@
     // ---- Visual itinerary: illustrated poster carousel (overview + per-day slides) ----
     const DAY_ACCENT = { d24: "#5a8fc2", d25: "#7d5fae", d26: "#2e9e6e", d27: "#cf9a2e", d28: "#5aa8c8" };
     const DAY_SCENE = { d24: "scene-inverness.jpg", d25: "scene-eilean.jpg", d26: "scene-storr.jpg", d27: "scene-neist.jpg", d28: "scene-cuillin.jpg" };
-    const DAY_DETAILS = {
-      d24: { sleep: "Royal Apartment, south Inverness", move: "Fly LTN→INV, then hire cars from the airport", prep: "Confirm the INV desk is staffed past 20:00; late Tesco for supplies" },
-      d25: { sleep: "Solas Alainn, Staffin", move: "Self-drive A82/A87 — Loch Ness, Eilean Donan, Skye Bridge", prep: "Fuel + Co-op in Portree before heading north; check-in from 17:00" },
-      d26: { sleep: "Solas Alainn, Staffin", move: "Short hops around Trotternish — all 5–20 min from base", prep: "Early Storr start beats the car park; midge net for the Quiraing" },
-      d27: { sleep: "Solas Alainn, Staffin", move: "Long drive west and back — single-track roads, fuel first", prep: "Book Talisker ~11:45; arrive Neist ~1.5hr before the 21:45 sunset" },
-      d28: { sleep: "Home", move: "Drive Skye → Inverness Airport, return the cars ~16:30", prep: "Out of the cottage by 10:00; fuel at Invermoriston/Broadford" }
+    const DAY_DETAIL = {
+      d24: {
+        accom: { name: "Royal Apartment, south Inverness", meta: "1 night · late arrival", note: "Keep the apartment access instructions saved offline.", checkin: "~20:45", checkout: "Sat morning" },
+        drive: [
+          { leg: "INV arrivals → car-hire desk", time: "after landing", note: "The car is booked by a friend; its confirmation is held by them, not in Jason's inbox." },
+          { leg: "Inverness Airport → Royal Apartment", time: "~20 min", note: "Late-evening run; collect supplies only if time and energy allow." }
+        ],
+        guide: [
+          { icon: "🚗", title: "Booked car handover", lines: ["Before travel, the booking friend should share the rental company, lead-driver name, booking reference and after-hours collection instructions.", "Every named driver needs their driving licence; save the rental roadside-assistance number offline."] }
+        ],
+        book: ["Download both easyJet boarding passes", "Save the apartment access instructions", "Booking friend: share car reference + pickup desk details", "Pack waterproofs, midge repellent and a head net"]
+      },
+      d25: {
+        accom: { name: "Solas Alainn, Staffin", meta: "Night 1 of 3 · booking #42401", note: "Directions arrive 14 days before check-in; save them offline before leaving Inverness.", checkin: "after 17:00", checkout: "Tue by 10:00" },
+        drive: [
+          { leg: "Inverness → Urquhart Castle", time: "~35 min", note: "A82 along Loch Ness; decide on the optional castle stop before departure." },
+          { leg: "Urquhart → Fort Augustus", time: "~45 min", note: "Allow extra time for summer traffic around Loch Ness." },
+          { leg: "Fort Augustus → Eilean Donan", time: "~1 hr 20", note: "Scenic A87; build in photo and comfort-stop buffer." },
+          { leg: "Eilean Donan → Portree", time: "~1 hr", note: "Cross the Skye Bridge, then fuel and buy groceries in Portree." },
+          { leg: "Portree → Staffin", time: "~35 min", note: "Final stretch becomes more rural; arrive with food and at least half a tank." }
+        ],
+        guide: [
+          { icon: "🏰", title: "Loch Ness stops", lines: ["Urquhart is optional and can add 60–90 minutes once parking and the visit are included.", "If the day slips, keep Eilean Donan and the 17:00 cottage check-in as the anchors."] },
+          { icon: "🛒", title: "Arrival supplies", lines: ["Use Portree for the main food shop and fuel before heading north.", "Staffin has a local store and fuel, but rural opening hours and stock are more limited."] }
+        ],
+        book: ["Book a timed Urquhart entry only if the group commits", "Save cottage directions and contact details", "Fuel and full grocery shop in Portree", "Keep snacks and water accessible for the drive"]
+      },
+      d26: {
+        accom: { name: "Solas Alainn, Staffin", meta: "Night 2 of 3 · Trotternish base", note: "Short hops today, but car parks fill quickly on a clear Sunday.", checkin: "already in", checkout: "Tue by 10:00" },
+        drive: [
+          { leg: "Staffin → Old Man of Storr", time: "~20 min", note: "Leave early enough to reach the car park before the main rush." },
+          { leg: "Storr → Kilt Rock / Mealt Falls", time: "~15 min", note: "Quick roadside viewpoints with limited dwell time needed." },
+          { leg: "Staffin → Quiraing upper car park", time: "~15 min", note: "Narrow, steep single-track access; use passing places correctly." },
+          { leg: "Quiraing → Fairy Glen", time: "~30 min", note: "Expect slow traffic and livestock on the road." },
+          { leg: "Fairy Glen → Portree", time: "~30 min", note: "Dinner run; confirm the booking before leaving the north." }
+        ],
+        guide: [
+          { icon: "🅿️", title: "Trailhead parking", lines: ["Storr and Quiraing can fill by mid-morning; target Storr before 08:30 and keep parking payment options ready.", "Never stop in passing places or block gates when official parking is full."] },
+          { icon: "🥾", title: "Trail conditions", lines: ["The Quiraing can be muddy, exposed and slippery even in summer; proper boots and waterproof layers matter.", "An Corran's rocks can be slick and footprints are tide-dependent—treat it as optional."] }
+        ],
+        book: ["Check mountain forecast and wind the night before", "Download the Storr and Quiraing walking maps", "Bring boots, waterproofs, 1–1.5L water and snacks", "Carry midge repellent and head nets"]
+      },
+      d27: {
+        accom: { name: "Solas Alainn, Staffin", meta: "Night 3 of 3 · late return", note: "This is the longest driving day; leave the cottage ready for a quiet late arrival.", checkin: "already in", checkout: "Tue by 10:00" },
+        drive: [
+          { leg: "Staffin → Fairy Pools", time: "~1 hr 30", note: "Fuel first and expect single-track sections; arrive before the car park peaks." },
+          { leg: "Fairy Pools → Talisker Bay / Carbost", time: "~25 min", note: "Use this as a scenic coastal stop and lunch break, then keep the day moving west." },
+          { leg: "Carbost → Dunvegan", time: "~35 min", note: "Keep the castle and optional seal boat flexible to protect the sunset plan." },
+          { leg: "Dunvegan → Coral Beach", time: "~25 min", note: "The final road is narrow and the small car park can fill." },
+          { leg: "Coral Beach → Neist Point", time: "~1 hr", note: "Slow Glendale roads; allow parking and the walk to the viewpoint." },
+          { leg: "Neist Point → Staffin", time: "~1 hr 45", note: "Long drive after sunset—share driving if possible and keep fuel margin." }
+        ],
+        guide: [
+          { icon: "🅿️", title: "West Skye parking", lines: ["Fairy Pools is best early; pay at the official car park and do not verge-park.", "Coral Beach and Neist Point have constrained parking—drop optional stops if the day starts running late."] },
+          { icon: "🌅", title: "Neist Point sunset", lines: ["Aim to arrive around 20:00 for the ~21:45 sunset, leaving time for parking and the walk.", "Bring warm layers, a picnic and headtorches for the return to the car."] }
+        ],
+        book: ["Start with a full tank", "Pack lunch backup, water and evening food", "Bring waterproofs, warm layers and headtorches", "Check sunset, wind and rain before committing to the full loop"]
+      },
+      d28: {
+        accom: { name: "Home", meta: "Travel day · no overnight stay", note: "Leave Solas Alainn by 10:00 and sweep every room before locking up.", checkin: "—", checkout: "cottage by 10:00" },
+        drive: [
+          { leg: "Staffin → Sligachan", time: "~45 min", note: "Keep the photo stop short so the airport buffer stays protected." },
+          { leg: "Sligachan → Plockton", time: "~50 min", note: "Lunch stop; skip it if traffic or weather has delayed the run south." },
+          { leg: "Plockton → Inverness Airport", time: "~1 hr 45", note: "Allow more in summer traffic; refuel before returning the car around 16:30." }
+        ],
+        guide: [
+          { icon: "✈️", title: "Airport buffer", lines: ["EZY624 departs Inverness at 19:30 and is marked booked; target the terminal by about 17:00 after the car return.", "Save the boarding pass offline and keep fuel receipts until the rental is closed out."] },
+          { icon: "🚗", title: "Car return", lines: ["Photograph the fuel gauge, mileage and all sides of the vehicle at return.", "Remove every bag, charging cable and item from the boot before handing over the keys."] }
+        ],
+        book: ["Check out by 10:00", "Refuel and retain the receipt", "Download EZY624 boarding passes", "Protect the 16:30 car-return target"]
+      }
     };
+
+    function dayDetail(d) {
+      const x = DAY_DETAIL[d.id];
+      if (!x || dayIsOff(d.id)) return "";
+      const accom = x.accom ? `<div class="vpd-card"><div class="vpd-h"><span>🛏️</span><div><strong>Accommodation</strong><small>${escapeHtml(x.accom.meta || "")}</small></div></div><div class="vpd-b"><b>${escapeHtml(x.accom.name)}</b><p>${escapeHtml(x.accom.note || "")}</p><div class="vpd-meta"><span>Check-in <b>${escapeHtml(x.accom.checkin || "—")}</b></span><span>Check-out <b>${escapeHtml(x.accom.checkout || "—")}</b></span></div></div></div>` : "";
+      const drive = x.drive && x.drive.length ? `<div class="vpd-card"><div class="vpd-h"><span>🚗</span><div><strong>Drive plan</strong><small>Indicative times without long stops</small></div></div><div class="vpd-b">${x.drive.map(v => `<div class="vpd-leg"><div class="vpd-legname">${escapeHtml(v.leg)}<em>${escapeHtml(v.time)}</em></div><div class="vpd-note">${escapeHtml(v.note)}</div></div>`).join("")}</div></div>` : "";
+      const guides = (x.guide || []).map(g => `<div class="vpd-card"><div class="vpd-h"><span>${g.icon || "🧭"}</span><div><strong>${escapeHtml(g.title)}</strong><small>On-the-ground guidance</small></div></div><div class="vpd-b"><ul class="vpd-list">${(g.lines || []).map(line => `<li>${escapeHtml(line)}</li>`).join("")}</ul></div></div>`).join("");
+      const book = x.book && x.book.length ? `<div class="vpd-card"><div class="vpd-h"><span>✅</span><div><strong>Book / bring</strong><small>Before this day</small></div></div><div class="vpd-b"><ul class="vpd-list">${x.book.map(line => `<li>${escapeHtml(line)}</li>`).join("")}</ul></div></div>` : "";
+      return `<div class="vp-detail">${accom}${drive}${guides}${book}</div>`;
+    }
     const VP_MTN = `<svg class="vp-mtn" viewBox="0 0 800 90" preserveAspectRatio="none" aria-hidden="true"><path d="M0 90 L90 34 L170 64 L270 24 L360 60 L470 30 L560 60 L650 26 L740 56 L800 40 L800 90Z" fill="rgba(120,150,185,0.42)"/><path d="M0 90 L140 58 L280 76 L420 50 L560 76 L680 54 L800 68 L800 90Z" fill="rgba(70,100,135,0.5)"/></svg>`;
     let vitinIdx = 0, vitinPosterMode = true, vitinSig = "";
 
@@ -2017,7 +2116,7 @@
       if (/(eilean donan)/.test(t)) return "scene-eilean.jpg";
       if (/(dunvegan)/.test(t)) return "scene-dunvegan.jpg";
       if (/(urquhart)/.test(t)) return "scene-urquhart.jpg";
-      if (/(talisker|distillery|whisky)/.test(t)) return "scene-talisker.jpg";
+      if (/(distillery|whisky)/.test(t)) return "scene-talisker.jpg";
       if (/(sligachan|cuillin)/.test(t)) return "scene-cuillin.jpg";
       if (/(skye bridge)/.test(t)) return "scene-skyebridge.jpg";
       if (/(loch ness|fort augustus|invermoriston)/.test(t)) return "scene-lochness.jpg";
@@ -2115,13 +2214,8 @@
         }
         const note = dayNote(d);
         const noteHtml = (note && !dayIsOff(d.id)) ? `<p class="vp-daynote">${escapeHtml(note)}</p>` : "";
-        const dd = DAY_DETAILS[d.id];
-        const detailsHtml = (dd && !dayIsOff(d.id)) ? `<div class="vp-daydetails">
-          <div class="vp-detail"><span>Sleep</span><strong>${escapeHtml(dd.sleep)}</strong></div>
-          <div class="vp-detail"><span>Getting around</span><strong>${escapeHtml(dd.move)}</strong></div>
-          <div class="vp-detail"><span>Book / bring</span><strong>${escapeHtml(dd.prep)}</strong></div>
-        </div>` : "";
-        return `<section class="vp-slide">${VP_MTN}${head}${noteHtml}${detailsHtml}${body}</section>`;
+        const detailsHtml = dayDetail(d);
+        return `<section class="vp-slide">${VP_MTN}${head}${noteHtml}${body}${detailsHtml}</section>`;
       }).join("");
 
       const dotsHtml = Array.from({ length: total }, (_, k) => `<button class="vp-dot${k === 0 ? " on" : ""}" data-goslide="${k}" aria-label="Slide ${k + 1}"></button>`).join("");

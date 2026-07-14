@@ -2161,6 +2161,11 @@
 
     function sceneForItem(it) {
       const t = (it.title || "").toLowerCase();
+      if (/(late supplies|tesco|takeaway)/.test(t)) return "scene-inverness-supplies.jpg";
+      if (/(lunch.*fort augustus|fort augustus.*lunch)/.test(t)) return "scene-fort-augustus-lunch.jpg";
+      if (/(talisker bay|carbost lunch)/.test(t)) return "scene-talisker-bay.jpg";
+      if (/(coastal drive|glendale|waterstein|milovaig)/.test(t)) return "scene-glendale-drive.jpg";
+      if (/(drive home|back to staffin)/.test(t)) return "scene-night-drive.jpg";
       if (/(old man of storr|\bstorr\b)/.test(t)) return "scene-storr.jpg";
       if (/(quiraing)/.test(t)) return "scene-quiraing.jpg";
       if (/(fairy pool)/.test(t)) return "scene-fairypools.jpg";

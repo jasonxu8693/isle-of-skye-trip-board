@@ -245,6 +245,16 @@
     .info-card h3 { font-size: 17px; margin: 0 0 8px; }
     .info-card p { margin: 0; color: var(--muted); font-size: 13px; line-height: 1.48; }
     .info-card ul { margin: 10px 0 0 18px; padding: 0; color: var(--muted); line-height: 1.5; font-size: 13px; }
+    .pack-head { display: flex; align-items: flex-end; justify-content: space-between; gap: 12px; margin: 26px 0 14px; }
+    .pack-head h3 { margin: 0; font-size: 18px; }
+    .pack-head p { margin: 4px 0 0; color: var(--subtle); font-size: 12px; }
+    .pack-progress { flex: none; border: 1px solid var(--line); border-radius: 999px; background: #fff; color: var(--muted); padding: 7px 11px; font-size: 11px; font-weight: 850; }
+    .pack-card { min-height: 0; }
+    .pack-list { display: grid; gap: 7px; margin-top: 10px; }
+    .pack-item { position: relative; z-index: 1; display: grid; grid-template-columns: auto 1fr; align-items: start; gap: 9px; color: var(--muted); font-size: 12.5px; line-height: 1.4; cursor: pointer; }
+    .pack-item input { width: 17px; height: 17px; margin: 1px 0 0; accent-color: var(--green); }
+    .pack-item input:checked + span { color: var(--subtle); text-decoration: line-through; text-decoration-thickness: 1px; }
+    .pack-foot { display: flex; align-items: center; justify-content: space-between; gap: 10px; margin-top: 12px; color: var(--subtle); font-size: 11px; }
 
     .timeline { display: grid; gap: 10px; }
     .timeline-item { display: grid; grid-template-columns: 92px 1fr; gap: 12px; padding: 14px; border-radius: 18px; background: rgba(255,255,255,0.06); border: 1px solid rgba(255,255,255,0.1); }
@@ -341,6 +351,8 @@
       .hero-content { grid-template-columns: 1fr; align-items: end; }
       .layout { grid-template-columns: 1fr; }
       .grid-3, .grid-2, .sync-diagram, .idea-grid, .idea-summary-grid, .add-idea-form, .planning-hub, .flow-steps { grid-template-columns: 1fr; }
+      .pack-head { align-items: flex-start; flex-direction: column; }
+      .pack-foot { align-items: flex-start; flex-direction: column; }
       .board { min-height: 720px; }
       .personality-grid { grid-template-columns: repeat(2, 1fr); }
       .node { width: 94px; }
@@ -1017,10 +1029,48 @@
           <h3 style="margin:26px 0 14px; font-size:18px">Good to know</h3>
           <div class="grid-2">
             <div class="info-card"><div class="emoji">🚗</div><h3>Car hire &amp; driving</h3><p>Car hire is booked by a friend, who holds the confirmation. Before departure, share the rental company, lead-driver name, reference, pickup instructions and roadside number. Drive on the left; no tolls — the Skye Bridge is free.</p></div>
-            <div class="info-card"><div class="emoji">🦟</div><h3>Midges &amp; kit</h3><p>July–August is midge season — pack Smidge or Avon Skin So Soft and a head net for the Quiraing. Bring waterproof jacket + trousers, hiking boots and layers; weather turns fast.</p></div>
+            <div class="info-card"><div class="emoji">🦟</div><h3>Midges &amp; ticks</h3><p>Full-body mesh suits are not needed. Pack a head net, effective midge repellent and lightweight long sleeves/trousers for calm, damp periods. Add a tick-removal tool and check skin after grass, woodland or moorland walks.</p></div>
             <div class="info-card"><div class="emoji">💷</div><h3>Money &amp; data</h3><p>GBP, contactless everywhere. Carry ~£40 in coins as a parking backup (most use RingGo or card). A UK SIM works fine — no roaming needed; signal drops in parts of Trotternish and Glendale, so download offline Google Maps before you go.</p></div>
-            <div class="info-card"><div class="emoji">🆘</div><h3>Emergency &amp; insurance</h3><p>Emergency 999 or 112. Jason on HSBC Premier travel insurance; emergency contact Alice Zhu. Nearest fuel + pharmacy + Co-op are in Portree — don't leave it to the rural ends.</p></div>
+            <div class="info-card"><div class="emoji">🆘</div><h3>Emergency &amp; medical</h3><p>Call 999 or 112 in an emergency. Keep personal medication and insurance details on your own phone. Carry a small first-aid and blister kit; Portree is the main stop for pharmacy and supplies.</p></div>
           </div>
+
+          <div class="pack-head">
+            <div><h3>Skye packing checklist</h3><p>A practical personal list for this itinerary. Your ticks stay on this device and are not shared with the group.</p></div>
+            <span class="pack-progress" id="packingProgress">0 / 0 packed</span>
+          </div>
+          <div class="grid-2" id="packingList">
+            <div class="info-card pack-card"><div class="emoji">🦟</div><h3>Midges &amp; ticks</h3><div class="pack-list">
+              <label class="pack-item"><input type="checkbox" data-pack="midge-repellent"><span>Midge-specific repellent for exposed skin</span></label>
+              <label class="pack-item"><input type="checkbox" data-pack="head-net"><span>Head net — one per person; no full-body net needed</span></label>
+              <label class="pack-item"><input type="checkbox" data-pack="long-layers"><span>Light long-sleeve top, trousers and long socks</span></label>
+              <label class="pack-item"><input type="checkbox" data-pack="tick-tool"><span>Tick-removal tool</span></label>
+              <label class="pack-item"><input type="checkbox" data-pack="bite-relief"><span>Antihistamine / bite-relief cream</span></label>
+            </div></div>
+            <div class="info-card pack-card"><div class="emoji">🌦️</div><h3>Weather &amp; walking</h3><div class="pack-list">
+              <label class="pack-item"><input type="checkbox" data-pack="waterproof-jacket"><span>Waterproof jacket with hood</span></label>
+              <label class="pack-item"><input type="checkbox" data-pack="waterproof-trousers"><span>Waterproof overtrousers</span></label>
+              <label class="pack-item"><input type="checkbox" data-pack="boots"><span>Grippy waterproof walking boots / shoes</span></label>
+              <label class="pack-item"><input type="checkbox" data-pack="warm-layer"><span>Warm layer, hat and light gloves—even in July</span></label>
+              <label class="pack-item"><input type="checkbox" data-pack="dry-bags"><span>Dry bags or waterproof liners for phone and spare layers</span></label>
+              <label class="pack-item"><input type="checkbox" data-pack="sun-kit"><span>Sun cream, sunglasses and cap</span></label>
+            </div></div>
+            <div class="info-card pack-card"><div class="emoji">🔦</div><h3>Safety &amp; navigation</h3><div class="pack-list">
+              <label class="pack-item"><input type="checkbox" data-pack="headtorch"><span>Headtorch per person + spare battery / backup light</span></label>
+              <label class="pack-item"><input type="checkbox" data-pack="offline-maps"><span>Offline maps and saved walking routes</span></label>
+              <label class="pack-item"><input type="checkbox" data-pack="power-bank"><span>Charged power bank, car charger and cables</span></label>
+              <label class="pack-item"><input type="checkbox" data-pack="first-aid"><span>Small first-aid and blister kit</span></label>
+              <label class="pack-item"><input type="checkbox" data-pack="whistle"><span>Whistle</span></label>
+              <label class="pack-item"><input type="checkbox" data-pack="shelter"><span>Group emergency shelter or survival bag for the longer hikes</span></label>
+            </div></div>
+            <div class="info-card pack-card"><div class="emoji">🚗</div><h3>Road-trip extras</h3><div class="pack-list">
+              <label class="pack-item"><input type="checkbox" data-pack="licence"><span>Driving licence for every named driver</span></label>
+              <label class="pack-item"><input type="checkbox" data-pack="car-details"><span>Rental reference, roadside number and return instructions</span></label>
+              <label class="pack-item"><input type="checkbox" data-pack="parking"><span>RingGo set up plus parking coins as backup</span></label>
+              <label class="pack-item"><input type="checkbox" data-pack="water-food"><span>Refillable water bottles, snacks and Neist sunset food</span></label>
+              <label class="pack-item"><input type="checkbox" data-pack="rubbish-bags"><span>Small rubbish / wet-kit bags for the car</span></label>
+            </div></div>
+          </div>
+          <div class="pack-foot"><span>Check the mountain forecast each morning; wind can change the safe plan. Guidance: <a href="https://www.mountaineering.scot/activities/hillwalking/getting-started/essential-kit" target="_blank" rel="noopener">Mountaineering Scotland</a> · <a href="https://www.visitscotland.com/travel-planning/midges-ticks-scotland" target="_blank" rel="noopener">VisitScotland</a>.</span><button class="btn small secondary" id="resetPackingBtn" type="button">Reset my checklist</button></div>
 
           <h3 style="margin:26px 0 14px; font-size:18px">Offline launch pack — ready</h3>
           <div class="grid-2">
@@ -1089,7 +1139,7 @@
     // Open Decisions — own a job, share options, group votes, lock the pick.
     const defaultDesk = {
       rooms: [
-        { id: "car_hire", emoji: "🚗", kind: "car", fixed: true, title: "Car hire — Inverness Airport", desc: "Booked by a friend for Fri 24 Jul airport pickup and Tue 28 Jul return. The confirmation is held by the booking friend rather than in Jason's inbox.", owners: [], drivers: [], options: [{ id: "opt_car_friend", by: 0, title: "Inverness Airport car hire — booked", link: "", price: "", notes: "Before departure, share the rental company, lead-driver name, booking reference, pickup desk details and roadside-assistance number with the group.", votes: {} }], status: "decided", chosen: "opt_car_friend" },
+        { id: "car_hire", emoji: "🚗", kind: "car", fixed: true, title: "Car hire — Inverness Airport", desc: "Booked by a friend for Fri 24 Jul airport pickup and Tue 28 Jul return. The booking friend holds the confirmation.", owners: [], drivers: [], options: [{ id: "opt_car_friend", by: 0, title: "Inverness Airport car hire — booked", link: "", price: "", notes: "Before departure, share the rental company, lead-driver name, booking reference, pickup desk details and roadside-assistance number with the group.", votes: {} }], status: "decided", chosen: "opt_car_friend" },
         { id: "flights_rest", emoji: "✈️", kind: "custom", fixed: true, title: "easyJet flights — booked", desc: "Outbound and return flights are confirmed. Save every boarding pass to the offline pack before departure.", owners: [], options: [{ id: "opt_flights_booked", by: 0, title: "easyJet EZY623 outbound + EZY624 return", link: "", price: "", notes: "Return confirmed: EZY624 INV→LTN Tue 28 Jul, departs 19:30 and arrives 21:00. Bag drop opens 17:30 and closes 18:50; check-in closes 40 minutes before departure.", votes: {} }], status: "decided", chosen: "opt_flights_booked" },
         { id: "offline_pack", emoji: "📲", kind: "custom", fixed: true, title: "Offline launch pack", desc: "Generated in Skye Essentials: offline-map scope, bookings, car-hire handover, parking guidance, kit and emergency information.", owners: [], options: [{ id: "opt_offline_ready", by: 0, title: "Skye offline launch pack — ready", link: "", price: "", notes: "Use the Print / save board as PDF button in Skye Essentials, then download the maps and documents listed there.", votes: {} }], status: "decided", chosen: "opt_offline_ready" },
         { id: "stay_skye", emoji: "🛏️", kind: "accom", title: "The stay — Solas Alainn, Staffin", desc: "3-bed / 3-bath cottage under the Quiraing, sleeps 6.", owners: [0], options: [{ id: "opt_solas", by: 0, title: "Solas Alainn, Staffin — booking #42401", link: "", price: "", notes: "Check-in Sat 25 Jul from 17:00 · out Tue 28 by 10:00. Linen, towels & final clean included.", votes: {} }], status: "decided", chosen: "opt_solas" }
@@ -2028,7 +2078,7 @@
       d24: {
         accom: { name: "Royal Apartment, south Inverness", meta: "1 night · late arrival", note: "Keep the apartment access instructions saved offline.", checkin: "~20:45", checkout: "Sat morning" },
         drive: [
-          { leg: "INV arrivals → car-hire desk", time: "after landing", note: "The car is booked by a friend; its confirmation is held by them, not in Jason's inbox." },
+          { leg: "INV arrivals → car-hire desk", time: "after landing", note: "The car is booked; the booking friend holds the confirmation and should share the handover details." },
           { leg: "Inverness Airport → Royal Apartment", time: "~20 min", note: "Late-evening run; collect supplies only if time and energy allow." }
         ],
         guide: [
@@ -2368,8 +2418,38 @@
 
     document.getElementById("syncChip").addEventListener("click", () => remotePull({ manual: true }));
 
+    // Personal packing checklist: stays on this device and never enters group sync.
+    const PACK_STORE_KEY = "skyeBoardPackingV1";
+    function initPackingList() {
+      const inputs = Array.from(document.querySelectorAll("[data-pack]"));
+      const progress = document.getElementById("packingProgress");
+      let packed = {};
+      try { packed = JSON.parse(localStorage.getItem(PACK_STORE_KEY) || "{}"); } catch (e) { packed = {}; }
+      const update = () => {
+        const done = inputs.filter(input => input.checked).length;
+        if (progress) progress.textContent = `${done} / ${inputs.length} packed`;
+      };
+      inputs.forEach(input => {
+        input.checked = !!packed[input.dataset.pack];
+        input.addEventListener("change", () => {
+          packed[input.dataset.pack] = input.checked;
+          localStorage.setItem(PACK_STORE_KEY, JSON.stringify(packed));
+          update();
+        });
+      });
+      document.getElementById("resetPackingBtn")?.addEventListener("click", () => {
+        packed = {};
+        inputs.forEach(input => { input.checked = false; });
+        localStorage.removeItem(PACK_STORE_KEY);
+        update();
+        toast("Packing checklist reset");
+      });
+      update();
+    }
+
     // ---- Boot ----
     renderAll();
+    initPackingList();
     setSyncChip(hasRemoteSync() ? "syncing" : "disabled");
     remotePull({ initial: true });
     startSyncLoops();

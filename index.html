@@ -1202,9 +1202,9 @@
       // Keep already-synced copies aligned with the current route and Liz's additions.
       p.items = p.items.map(it => {
         if (it && it.dayId === "d27" && /talisker\s+distillery|distillery\s+tour/i.test(it.title || "")) {
-          return { ...it, title: "Talisker Bay coastal stop", emoji: "🌊", kind: "activity", time: "10:00" };
+          return { ...it, title: "Talisker Bay coastal stop", emoji: "🌊", kind: "activity", time: "11:15" };
         }
-        if (it && it.dayId === "d27" && /talisker bay coastal stop\s*→\s*carbost lunch/i.test(it.title || "")) return { ...it, title: "Talisker Bay coastal stop", emoji: "🌊", kind: "activity", time: "10:00" };
+        if (it && it.dayId === "d27" && /talisker bay coastal stop\s*→\s*carbost lunch/i.test(it.title || "")) return { ...it, title: "Talisker Bay coastal stop", emoji: "🌊", kind: "activity", time: "11:15" };
         if (it && it.dayId === "d27" && /(?:early )?start.*long way west/i.test(it.title || "")) return { ...it, title: "Start — fuel up first, long way west", time: "07:30" };
         if (it && it.dayId === "d27" && /fairy pools/i.test(it.title || "")) return { ...it, time: "09:00" };
         if (it && it.dayId === "d27" && /talisker bay coastal stop/i.test(it.title || "")) return { ...it, time: "11:15" };
@@ -1219,7 +1219,7 @@
       });
       if (!p.lizSuggestionsV1) {
         if (!p.items.some(it => it && /café cùil|cafe cuil|oyster shed/i.test(it.title || ""))) {
-          p.items.push({ id: "liz_carbost_lunch", dayId: "d27", title: "Carbost lunch — Café Cùil or The Oyster Shed", emoji: "🦪", city: "Carbost", kind: "dinner", note: "Liz's shortlist", time: "11:45" });
+          p.items.push({ id: "liz_carbost_lunch", dayId: "d27", title: "Optional Carbost lunch — Café Cùil or The Oyster Shed", emoji: "🦪", city: "Carbost", kind: "dinner", note: "Liz's shortlist", time: "12:30" });
         }
         p.lizSuggestionsV1 = true;
       }

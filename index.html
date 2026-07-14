@@ -971,11 +971,11 @@
 
           <div class="rail-label">Skye in five frames</div>
           <div class="photo-rail" style="margin-bottom:24px">
-            <div class="poster tall"><img loading="lazy" src="images/storr.jpg" alt="The Old Man of Storr" /><div class="cap"><b>Old Man of Storr</b><span>Trotternish · the early hike</span></div></div>
-            <div class="poster"><img loading="lazy" src="images/quiraing.jpg" alt="The Quiraing" /><div class="cap"><b>The Quiraing</b><span>Landslip ridge · 10 min from base</span></div></div>
-            <div class="poster"><img loading="lazy" src="images/fairy.jpg" alt="The Fairy Pools" /><div class="cap"><b>Fairy Pools</b><span>Under the Cuillin · West Skye day</span></div></div>
-            <div class="poster"><img loading="lazy" src="images/neist.jpg" alt="Neist Point lighthouse" /><div class="cap"><b>Neist Point</b><span>Sunset lighthouse · West Skye day</span></div></div>
-            <div class="poster"><img loading="lazy" src="images/coo.jpg" alt="A Highland cow on Skye" /><div class="cap"><b>A proper coo</b><span>Compulsory photo stop</span></div></div>
+            <div class="poster tall"><img loading="lazy" src="images/scene-storr.jpg" onerror="this.onerror=null;this.src='images/storr.jpg'" alt="The Old Man of Storr" /><div class="cap"><b>Old Man of Storr</b><span>Trotternish · the early hike</span></div></div>
+            <div class="poster"><img loading="lazy" src="images/scene-quiraing.jpg" onerror="this.onerror=null;this.src='images/quiraing.jpg'" alt="The Quiraing" /><div class="cap"><b>The Quiraing</b><span>Landslip ridge · 10 min from base</span></div></div>
+            <div class="poster"><img loading="lazy" src="images/scene-fairypools.jpg" onerror="this.onerror=null;this.src='images/fairy.jpg'" alt="The Fairy Pools" /><div class="cap"><b>Fairy Pools</b><span>Under the Cuillin · West Skye day</span></div></div>
+            <div class="poster"><img loading="lazy" src="images/scene-neist.jpg" onerror="this.onerror=null;this.src='images/neist.jpg'" alt="Neist Point lighthouse" /><div class="cap"><b>Neist Point</b><span>Sunset lighthouse · West Skye day</span></div></div>
+            <div class="poster"><img loading="lazy" src="images/scene-coo.jpg" onerror="this.onerror=null;this.src='images/coo.jpg'" alt="A Highland cow on Skye" /><div class="cap"><b>A proper coo</b><span>Compulsory photo stop</span></div></div>
           </div>
 
           <div class="grid-3">
@@ -1993,7 +1993,7 @@
 
     // ---- Visual itinerary: illustrated poster carousel (overview + per-day slides) ----
     const DAY_ACCENT = { d24: "#5a8fc2", d25: "#7d5fae", d26: "#2e9e6e", d27: "#cf9a2e", d28: "#5aa8c8" };
-    const DAY_SCENE = { d24: "portree.jpg", d25: "eilean.jpg", d26: "quiraing.jpg", d27: "neist.jpg", d28: "cuillin.jpg" };
+    const DAY_SCENE = { d24: "scene-inverness.jpg", d25: "scene-eilean.jpg", d26: "scene-storr.jpg", d27: "scene-neist.jpg", d28: "scene-cuillin.jpg" };
     const DAY_DETAILS = {
       d24: { sleep: "Royal Apartment, south Inverness", move: "Fly LTN→INV, then hire cars from the airport", prep: "Confirm the INV desk is staffed past 20:00; late Tesco for supplies" },
       d25: { sleep: "Solas Alainn, Staffin", move: "Self-drive A82/A87 — Loch Ness, Eilean Donan, Skye Bridge", prep: "Fuel + Co-op in Portree before heading north; check-in from 17:00" },
@@ -2006,19 +2006,28 @@
 
     function sceneForItem(it) {
       const t = (it.title || "").toLowerCase();
-      if (/(old man of storr|\bstorr\b)/.test(t)) return "storr.jpg";
-      if (/(quiraing)/.test(t)) return "quiraing.jpg";
-      if (/(fairy pool)/.test(t)) return "fairy.jpg";
-      if (/(neist)/.test(t)) return "neist.jpg";
-      if (/(eilean donan)/.test(t)) return "eilean.jpg";
-      if (/(dunvegan)/.test(t)) return "act-dunvegan.jpg";
-      if (/(urquhart)/.test(t)) return "act-urquhart.jpg";
-      if (/(talisker|distillery|whisky)/.test(t)) return "act-talisker.jpg";
-      if (/(sligachan|cuillin)/.test(t)) return "cuillin.jpg";
-      if (/(portree|co-op|the lump)/.test(t)) return "portree.jpg";
-      if (/(fairy glen|brother)/.test(t)) return "quiraing.jpg";
-      if (/(coral beach|beach|talisker bay)/.test(t)) return "neist.jpg";
-      if (/(castle|plockton)/.test(t)) return "eilean.jpg";
+      if (/(old man of storr|\bstorr\b)/.test(t)) return "scene-storr.jpg";
+      if (/(quiraing)/.test(t)) return "scene-quiraing.jpg";
+      if (/(fairy pool)/.test(t)) return "scene-fairypools.jpg";
+      if (/(fairy glen|brother)/.test(t)) return "scene-fairyglen.jpg";
+      if (/(kilt rock|lealt|rigg)/.test(t)) return "scene-kiltrock.jpg";
+      if (/(an corran|dinosaur)/.test(t)) return "scene-ancorran.jpg";
+      if (/(neist)/.test(t)) return "scene-neist.jpg";
+      if (/(coral beach)/.test(t)) return "scene-coralbeach.jpg";
+      if (/(eilean donan)/.test(t)) return "scene-eilean.jpg";
+      if (/(dunvegan)/.test(t)) return "scene-dunvegan.jpg";
+      if (/(urquhart)/.test(t)) return "scene-urquhart.jpg";
+      if (/(talisker|distillery|whisky)/.test(t)) return "scene-talisker.jpg";
+      if (/(sligachan|cuillin)/.test(t)) return "scene-cuillin.jpg";
+      if (/(skye bridge)/.test(t)) return "scene-skyebridge.jpg";
+      if (/(loch ness|fort augustus|invermoriston)/.test(t)) return "scene-lochness.jpg";
+      if (/(plockton)/.test(t)) return "scene-plockton.jpg";
+      if (/(dinner|scorrybreac|sea breezes|hungry gull)/.test(t)) return "scene-dinner.jpg";
+      if (/(portree|co-op|the lump)/.test(t)) return "scene-portree.jpg";
+      if (/(solas alainn)/.test(t)) return "scene-stay.jpg";
+      if (/(fly|flight|\bezy)/.test(t)) return "scene-flight.jpg";
+      if (/(royal apartment|tesco|supplies)/.test(t)) return "scene-inverness.jpg";
+      if (/(drive|hire car|collect|airport|coastal|glendale|fuel)/.test(t)) return "scene-drive.jpg";
       return null;
     }
 

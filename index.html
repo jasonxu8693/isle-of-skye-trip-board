@@ -1090,8 +1090,7 @@
     const defaultDesk = {
       rooms: [
         { id: "car_hire", emoji: "🚗", kind: "car", fixed: true, title: "Car hire — Inverness Airport", desc: "Booked by a friend for Fri 24 Jul airport pickup and Tue 28 Jul return. The confirmation is held by the booking friend rather than in Jason's inbox.", owners: [], drivers: [], options: [{ id: "opt_car_friend", by: 0, title: "Inverness Airport car hire — booked", link: "", price: "", notes: "Before departure, share the rental company, lead-driver name, booking reference, pickup desk details and roadside-assistance number with the group.", votes: {} }], status: "decided", chosen: "opt_car_friend" },
-        { id: "flights_rest", emoji: "✈️", kind: "custom", fixed: true, title: "easyJet flights — booked", desc: "Outbound and return flights are marked booked. Save every boarding pass to the offline pack before departure.", owners: [], options: [{ id: "opt_flights_booked", by: 0, title: "easyJet EZY623 outbound + EZY624 return", link: "", price: "", notes: "LTN→INV Fri 24 Jul 18:30, landing ~20:00. INV→LTN Tue 28 Jul 19:30, landing ~21:00.", votes: {} }], status: "decided", chosen: "opt_flights_booked" },
-        { id: "dinner_big", emoji: "🍽️", kind: "dinner", title: "The standout dinner", desc: "Scorrybreac (Portree, ~£70pp) vs Three Chimneys (~£100–140pp, pairs with West Skye). Pick one and book — both fill weeks ahead.", owners: [], options: [], status: "open", chosen: null },
+        { id: "flights_rest", emoji: "✈️", kind: "custom", fixed: true, title: "easyJet flights — booked", desc: "Outbound and return flights are confirmed. Save every boarding pass to the offline pack before departure.", owners: [], options: [{ id: "opt_flights_booked", by: 0, title: "easyJet EZY623 outbound + EZY624 return", link: "", price: "", notes: "Return confirmed: EZY624 INV→LTN Tue 28 Jul, departs 19:30 and arrives 21:00. Bag drop opens 17:30 and closes 18:50; check-in closes 40 minutes before departure.", votes: {} }], status: "decided", chosen: "opt_flights_booked" },
         { id: "offline_pack", emoji: "📲", kind: "custom", fixed: true, title: "Offline launch pack", desc: "Generated in Skye Essentials: offline-map scope, bookings, car-hire handover, parking guidance, kit and emergency information.", owners: [], options: [{ id: "opt_offline_ready", by: 0, title: "Skye offline launch pack — ready", link: "", price: "", notes: "Use the Print / save board as PDF button in Skye Essentials, then download the maps and documents listed there.", votes: {} }], status: "decided", chosen: "opt_offline_ready" },
         { id: "stay_skye", emoji: "🛏️", kind: "accom", title: "The stay — Solas Alainn, Staffin", desc: "3-bed / 3-bath cottage under the Quiraing, sleeps 6.", owners: [0], options: [{ id: "opt_solas", by: 0, title: "Solas Alainn, Staffin — booking #42401", link: "", price: "", notes: "Check-in Sat 25 Jul from 17:00 · out Tue 28 by 10:00. Linen, towels & final clean included.", votes: {} }], status: "decided", chosen: "opt_solas" }
       ]
@@ -1184,7 +1183,7 @@
       feed: []
     };
     const DEFAULT_ROOM_IDS = defaultDesk.rooms.map(r => r.id);
-    const RETIRED_ROOM_IDS = new Set(["talisker_tour", "stay_shares"]);
+    const RETIRED_ROOM_IDS = new Set(["talisker_tour", "stay_shares", "dinner_big"]);
 
     // Keep the current default activity set (plus any group-added "custom_" ideas),
     // refresh default desk rooms to the latest copy while preserving live data, and
@@ -2091,10 +2090,10 @@
           { leg: "Plockton → Inverness Airport", time: "~1 hr 45", note: "Allow more in summer traffic; refuel before returning the car around 16:30." }
         ],
         guide: [
-          { icon: "✈️", title: "Airport buffer", lines: ["EZY624 departs Inverness at 19:30 and is marked booked; target the terminal by about 17:00 after the car return.", "Save the boarding pass offline and keep fuel receipts until the rental is closed out."] },
+          { icon: "✈️", title: "Confirmed return flight", lines: ["EZY624 departs Inverness at 19:30 and arrives London Luton at 21:00; target the terminal by about 17:00 after the car return.", "Bag drop opens at 17:30 and closes at 18:50. Check-in also closes 40 minutes before departure, so save the boarding pass offline."] },
           { icon: "🚗", title: "Car return", lines: ["Photograph the fuel gauge, mileage and all sides of the vehicle at return.", "Remove every bag, charging cable and item from the boot before handing over the keys."] }
         ],
-        book: ["Check out by 10:00", "Refuel and retain the receipt", "Download EZY624 boarding passes", "Protect the 16:30 car-return target"]
+        book: ["Check out by 10:00", "Refuel and retain the receipt", "Download EZY624 boarding passes", "Protect the 16:30 car-return target and 18:50 bag-drop cutoff"]
       }
     };
 

@@ -1181,7 +1181,7 @@
       { dayId: "d27", time: "07:30", title: "Start — fuel up first, long way west", emoji: "⛽" },
       { dayId: "d27", time: "09:00", title: "Fairy Pools (car park fills by 10:00)", emoji: "💦" },
       { dayId: "d27", time: "11:15", title: "Talisker Bay coastal stop", emoji: "🌊" },
-      { dayId: "d27", time: "12:30", title: "Optional Carbost lunch — Café Cùil or The Oyster Shed", emoji: "🦪", kind: "dinner" },
+      { dayId: "d27", time: "12:30", title: "Optional Carbost lunch — Café Cùil or The Oyster Shed", emoji: "🦪", kind: "activity" },
       { dayId: "d27", time: "14:00", title: "Dunvegan Castle (+ seal boat if keen)", emoji: "🏰" },
       { dayId: "d27", time: "15:00", title: "Coral Beach (optional, ~1hr round trip)", emoji: "🏖️" },
       { dayId: "d27", time: "16:30", title: "Coastal drive — Glendale · Waterstein · Milovaig", emoji: "🚙" },
@@ -1208,24 +1208,25 @@
         if (it && it.dayId === "d27" && /(?:early )?start.*long way west/i.test(it.title || "")) return { ...it, title: "Start — fuel up first, long way west", time: "07:30" };
         if (it && it.dayId === "d27" && /fairy pools/i.test(it.title || "")) return { ...it, time: "09:00" };
         if (it && it.dayId === "d27" && /talisker bay coastal stop/i.test(it.title || "")) return { ...it, time: "11:15" };
-        if (it && it.dayId === "d27" && /carbost lunch.*café cùil|carbost lunch.*cafe cuil|carbost lunch.*oyster shed/i.test(it.title || "")) return { ...it, title: "Optional Carbost lunch — Café Cùil or The Oyster Shed", time: "12:30" };
+        if (it && it.dayId === "d27" && /carbost lunch.*café cùil|carbost lunch.*cafe cuil|carbost lunch.*oyster shed/i.test(it.title || "")) return { ...it, title: "Optional Carbost lunch — Café Cùil or The Oyster Shed", kind: "activity", time: "12:30" };
         if (it && it.dayId === "d27" && /dunvegan castle/i.test(it.title || "")) return { ...it, time: "14:00" };
         if (it && it.dayId === "d27" && /coral beach/i.test(it.title || "")) return { ...it, time: "15:00" };
         if (it && it.dayId === "d27" && /coastal drive.*glendale/i.test(it.title || "")) return { ...it, time: "16:30" };
         if (it && it.dayId === "d26" && /rigg viewpoint.*lealt falls.*kilt rock/i.test(it.title || "")) return { ...it, title: "Rigg Viewpoint · Lealt Falls · Kilt Rock & Mealt Falls" };
         if (it && it.dayId === "d28" && /(?:slow portree morning|birch coffee in portree).*lump viewpoint/i.test(it.title || "")) return { ...it, title: "Optional Birch coffee in Portree + The Lump viewpoint", emoji: "☕", time: "08:00" };
+        if (it && it.dayId === "d28" && /lean to coffee/i.test(it.title || "")) return { ...it, title: "Optional Lean To Coffee stop near the Skye Bridge", kind: "activity", time: "11:20" };
         if (it && it.dayId === "d28" && /eilean donan second look/i.test(it.title || "")) return { ...it, time: "12:30" };
         return it;
       });
       if (!p.lizSuggestionsV1) {
         if (!p.items.some(it => it && /café cùil|cafe cuil|oyster shed/i.test(it.title || ""))) {
-          p.items.push({ id: "liz_carbost_lunch", dayId: "d27", title: "Optional Carbost lunch — Café Cùil or The Oyster Shed", emoji: "🦪", city: "Carbost", kind: "dinner", note: "Liz's shortlist", time: "12:30" });
+          p.items.push({ id: "liz_carbost_lunch", dayId: "d27", title: "Optional Carbost lunch — Café Cùil or The Oyster Shed", emoji: "🦪", city: "Carbost", kind: "activity", note: "Liz's shortlist", time: "12:30" });
         }
         p.lizSuggestionsV1 = true;
       }
       if (!p.foodFlowV2) {
         if (!p.items.some(it => it && /lean to coffee/i.test(it.title || ""))) {
-          p.items.push({ id: "liz_lean_to_route", dayId: "d28", title: "Optional Lean To Coffee stop near the Skye Bridge", emoji: "☕", city: "Ashaig", kind: "dinner", note: "Liz's shortlist · check seasonal hours", time: "11:20" });
+          p.items.push({ id: "liz_lean_to_route", dayId: "d28", title: "Optional Lean To Coffee stop near the Skye Bridge", emoji: "☕", city: "Ashaig", kind: "activity", note: "Liz's shortlist · check seasonal hours", time: "11:20" });
         }
         p.foodFlowV2 = true;
       }

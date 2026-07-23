@@ -1221,6 +1221,7 @@
       { dayId: "d28", time: "10:45", title: "Sligachan Old Bridge — Cuillin photo + optional riverside wander", emoji: "🏔️" },
       { dayId: "d28", time: "12:10", title: "Plockton — lunch in the palm-tree village", emoji: "🍽️" },
       { dayId: "d28", time: "12:45", title: "Optional Calum's seal trip from Plockton pier (1 hr — only if on schedule)", emoji: "🦭" },
+      { dayId: "d28", time: "14:05", title: "Duirinish coo stop — Highland cows on the village green (5-min detour)", emoji: "🐄" },
       { dayId: "d28", time: "14:25", title: "Lochcarron — optional 10-min coffee on the loch strip", emoji: "☕" },
       { dayId: "d28", time: "15:00", title: "Rogie Falls — salmon-leap walk (20–30 min)", emoji: "🐟" },
       { dayId: "d28", time: "15:40", title: "Drive to Inverness Airport — fuel + return car ~16:30", emoji: "🚗" },
@@ -1319,6 +1320,13 @@
           p.items.push({ id: "tue_rogie", dayId: "d28", title: "Rogie Falls — salmon-leap walk (20–30 min)", emoji: "🐟", city: "Contin", kind: "activity", note: "Late July is salmon season — suspension bridge over the falls, 40 min from the airport", time: "15:00" });
         }
         p.tuesdayV2 = true;
+      }
+      // Coo stop (23 Jul): Highland cows at Duirinish village green, 5 min from Plockton.
+      if (!p.cooV1) {
+        if (!p.items.some(it => it && /duirinish|highland cow|coo stop/i.test(it.title || ""))) {
+          p.items.push({ id: "tue_coos", dayId: "d28", title: "Duirinish coo stop — Highland cows on the village green (5-min detour)", emoji: "🐄", city: "Duirinish", kind: "activity", note: "The famous free-roaming coos, 5 min from Plockton on the road out — the trip's best cow odds", time: "14:05" });
+        }
+        p.cooV1 = true;
       }
       // One-time seed: merge the starter itinerary in, skipping any stop the
       // group already added (matched by title). Runs once, then `seeded` locks it.
@@ -2312,6 +2320,7 @@
       if (/(dornie)/.test(t)) return "scene-dornie.jpg";
       if (/(lunch.*(cottage|columba)|columba 1400)/.test(t)) return "scene-stay.jpg";
       if (/(loch ness|fort augustus|invermoriston)/.test(t)) return "scene-lochness.jpg";
+      if (/(duirinish|highland cow|coo stop|\bcoo\b)/.test(t)) return "scene-coo.jpg";
       if (/(rogie)/.test(t)) return "scene-rogie.jpg";
       if (/(seal trip|calum)/.test(t)) return "scene-sealtrip.jpg";
       if (/(lochcarron)/.test(t)) return "scene-lochcarron.jpg";

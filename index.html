@@ -1180,7 +1180,7 @@
       { id: "d25", iso: "2026-07-25", date: "Sat 25 Jul", city: "Inverness → Skye", stay: "Solas Alainn, Staffin", note: "The drive-up — 10:00 roll, free Urquhart viewpoint, Dornie lunch, bridge by ~14:30. Optional evening Storr, dinner Portree 19:00, lockbox check-in after." },
       { id: "d26", iso: "2026-07-26", date: "Sun 26 Jul", city: "Trotternish", stay: "Solas Alainn, Staffin", note: "Give this the clearest forecast — everything is 5–20 min from base. Hard rule: into Portree by 17:30 for Jason's 17:45 coach (the last one). Storr done Saturday? Open with the full Quiraing circuit instead." },
       { id: "d27", iso: "2026-07-27", date: "Mon 27 Jul", city: "West Skye", stay: "Solas Alainn, Staffin", note: "The big drive day — 07:30 start, Talisker Bay and optional Carbost lunch, Neist Point sunset ~21:45, home late. Five on the loop — Jason flies home this morning." },
-      { id: "d28", iso: "2026-07-28", date: "Tue 28 Jul", city: "Skye → Home", logistics: true, note: "Out of the cottage by 10:00 — Sligachan and Plockton on the way to INV. Fly 19:30." }
+      { id: "d28", iso: "2026-07-28", date: "Tue 28 Jul", city: "Skye → Home", logistics: true, note: "Pack early, out by ~08:30 — Portree morning walk, Sligachan, Plockton lunch, Rogie Falls salmon-leap on the way to INV. Fly 19:30." }
     ];
 
     // Seeded starter itinerary (from the locked day-by-day). Dropped in once on
@@ -1216,12 +1216,14 @@
       { dayId: "d27", time: "16:30", title: "Coastal drive — Glendale · Waterstein · Milovaig", emoji: "🚙" },
       { dayId: "d27", time: "20:00", title: "Neist Point for sunset (arrive early for parking)", emoji: "🌅" },
       { dayId: "d27", time: "22:00", title: "Drive home — ~1h45 back to Staffin", emoji: "🌙" },
-      { dayId: "d28", time: "08:00", title: "Optional Birch coffee in Portree + The Lump viewpoint", emoji: "☕" },
-      { dayId: "d28", time: "10:30", title: "Depart — Sligachan Old Bridge (Cuillin view)", emoji: "🏔️" },
-      { dayId: "d28", time: "11:20", title: "Optional Lean To Coffee stop near the Skye Bridge", emoji: "☕" },
-      { dayId: "d28", time: "12:30", title: "Eilean Donan second look — or push on", emoji: "🏰" },
-      { dayId: "d28", time: "13:45", title: "Plockton — lunch in the palm-tree village", emoji: "🍽️" },
-      { dayId: "d28", time: "15:00", title: "Drive to Inverness Airport — fuel + return car ~16:30", emoji: "🚗" },
+      { dayId: "d28", time: "08:00", title: "Pack, sweep the cottage + check out early", emoji: "🏡" },
+      { dayId: "d28", time: "09:00", title: "Portree morning — The Lump viewpoint or Scorrybreac shore loop (+ Birch coffee)", emoji: "☕" },
+      { dayId: "d28", time: "10:45", title: "Sligachan Old Bridge — Cuillin photo + optional riverside wander", emoji: "🏔️" },
+      { dayId: "d28", time: "12:10", title: "Plockton — lunch in the palm-tree village", emoji: "🍽️" },
+      { dayId: "d28", time: "12:45", title: "Optional Calum's seal trip from Plockton pier (1 hr — only if on schedule)", emoji: "🦭" },
+      { dayId: "d28", time: "14:25", title: "Lochcarron — optional 10-min coffee on the loch strip", emoji: "☕" },
+      { dayId: "d28", time: "15:00", title: "Rogie Falls — salmon-leap walk (20–30 min)", emoji: "🐟" },
+      { dayId: "d28", time: "15:40", title: "Drive to Inverness Airport — fuel + return car ~16:30", emoji: "🚗" },
       { dayId: "d28", time: "19:30", title: "Fly Inverness → London Luton · EZY624 (lands ~21:00)", emoji: "✈️", kind: "flight" }
     ];
     function normalizePlan(plan) {
@@ -1254,7 +1256,11 @@
         if (it && it.dayId === "d25" && /portree.*co-op/i.test(it.title || "") && it.time !== "15:10") return { ...it, time: "15:10" };
         if (it && it.dayId === "d25" && /check in (—|-) solas/i.test(it.title || "") && !/lockbox/i.test(it.title || "")) return { ...it, title: "Check in — Solas Alainn (lockbox · ~17:30 if skipping the hike)", time: "21:15" };
         if (it && it.dayId === "d26" && /old man of storr/i.test(it.title || "") && !/optional/i.test(it.title || "")) return { ...it, title: "Old Man of Storr hike (optional — skip if done Sat evening)" };
-        if (it && it.dayId === "d28" && /(?:slow portree morning|birch coffee in portree).*lump viewpoint/i.test(it.title || "")) return { ...it, title: "Optional Birch coffee in Portree + The Lump viewpoint", emoji: "☕", time: "08:00" };
+        if (it && it.dayId === "d28" && /(?:slow portree morning|birch coffee in portree).*lump viewpoint/i.test(it.title || "")) return { ...it, title: "Portree morning — The Lump viewpoint or Scorrybreac shore loop (+ Birch coffee)", emoji: "☕", time: "09:00" };
+        if (it && it.dayId === "d28" && /^optional birch coffee/i.test(it.title || "")) return { ...it, title: "Portree morning — The Lump viewpoint or Scorrybreac shore loop (+ Birch coffee)", emoji: "☕", time: "09:00" };
+        if (it && it.dayId === "d28" && /sligachan old bridge/i.test(it.title || "") && !/riverside/i.test(it.title || "")) return { ...it, title: "Sligachan Old Bridge — Cuillin photo + optional riverside wander", time: "10:45" };
+        if (it && it.dayId === "d28" && /plockton.*lunch|plockton.*palm/i.test(it.title || "") && it.time !== "12:10") return { ...it, time: "12:10" };
+        if (it && it.dayId === "d28" && /drive to inverness airport/i.test(it.title || "") && it.time !== "15:40") return { ...it, time: "15:40" };
         if (it && it.dayId === "d28" && /lean to coffee/i.test(it.title || "")) return { ...it, title: "Optional Lean To Coffee stop near the Skye Bridge", kind: "activity", time: "11:20" };
         if (it && it.dayId === "d28" && /eilean donan second look/i.test(it.title || "")) return { ...it, time: "12:30" };
         return it;
@@ -1295,6 +1301,24 @@
           p.items.push({ id: "sun_lunch", dayId: "d26", title: "Lunch — cottage or Columba 1400, Staffin", emoji: "🍽️", city: "Staffin", kind: "activity", note: "Refuel before the Quiraing block", time: "12:00" });
         }
         p.saturdayV2 = true;
+      }
+      // Tuesday v2 (agreed 23 Jul): pack-early Portree morning walk, Rogie Falls
+      // salmon stop; Eilean Donan second look + Lean To cut to fund it.
+      if (!p.tuesdayV2) {
+        p.items = p.items.filter(it => !(it && it.dayId === "d28" && /(eilean donan second look|lean to coffee)/i.test(it.title || "")));
+        if (!p.items.some(it => it && it.dayId === "d28" && /(pack|sweep).*(cottage|check out)/i.test(it.title || ""))) {
+          p.items.push({ id: "tue_packout", dayId: "d28", title: "Pack, sweep the cottage + check out early", emoji: "🏡", city: "Staffin", kind: "activity", note: "Bags in the car by ~08:30 — formal deadline 10:00", time: "08:00" });
+        }
+        if (!p.items.some(it => it && /calum.*seal|seal trip/i.test(it.title || ""))) {
+          p.items.push({ id: "tue_sealtrip", dayId: "d28", title: "Optional Calum's seal trip from Plockton pier (1 hr — only if on schedule)", emoji: "🦭", city: "Plockton", kind: "activity", note: "Famous 'free if you don't see seals' cruise — check Monday night that a sailing fits", time: "12:45" });
+        }
+        if (!p.items.some(it => it && /lochcarron/i.test(it.title || ""))) {
+          p.items.push({ id: "tue_lochcarron", dayId: "d28", title: "Lochcarron — optional 10-min coffee on the loch strip", emoji: "☕", city: "Lochcarron", kind: "activity", note: "Pretty village strip on the A890 route home — skip if behind", time: "14:25" });
+        }
+        if (!p.items.some(it => it && /rogie/i.test(it.title || ""))) {
+          p.items.push({ id: "tue_rogie", dayId: "d28", title: "Rogie Falls — salmon-leap walk (20–30 min)", emoji: "🐟", city: "Contin", kind: "activity", note: "Late July is salmon season — suspension bridge over the falls, 40 min from the airport", time: "15:00" });
+        }
+        p.tuesdayV2 = true;
       }
       // One-time seed: merge the starter itinerary in, skipping any stop the
       // group already added (matched by title). Runs once, then `seeded` locks it.
@@ -2232,19 +2256,20 @@
         book: ["Start with a full tank", "Check Café Cùil / Oyster Shed Monday hours", "Pack lunch backup, water and evening food", "Bring waterproofs, warm layers and headtorches", "Check sunset, wind and rain before committing to the full loop"]
       },
       d28: {
-        accom: { name: "Home", meta: "Travel day · no overnight stay", note: "Leave Solas Alainn by 10:00 and sweep every room before locking up.", checkin: "—", checkout: "cottage by 10:00" },
+        accom: { name: "Home", meta: "Travel day · no overnight stay", note: "Pack the night before — bags in the car and away by ~08:30 (formal deadline 10:00); sweep every room before locking up.", checkin: "—", checkout: "out ~08:30" },
         drive: [
-          { leg: "Staffin → Portree", time: "~35 min", note: "Leave the cottage early for Birch coffee and the optional Lump viewpoint." },
-          { leg: "Portree → Sligachan", time: "~20 min", note: "Keep the Old Bridge photo stop short so the airport buffer stays protected." },
-          { leg: "Sligachan → Lean To Coffee, Ashaig", time: "~30 min", note: "Optional and on the route toward the Skye Bridge; skip it if closed or the airport buffer is tightening." },
-          { leg: "Ashaig → Plockton", time: "~45 min", note: "Continue via the Skye Bridge and optional Eilean Donan second look; skip Plockton if the run south is delayed." },
-          { leg: "Plockton → Inverness Airport", time: "~1 hr 45", note: "Allow more in summer traffic; refuel before returning the car around 16:30." }
+          { leg: "Staffin → Portree", time: "~35 min", note: "Away by ~08:30 with the cottage done — the day starts in Portree, not Staffin." },
+          { leg: "Portree → Sligachan", time: "~20 min", note: "Leave Portree by ~10:25 after the morning walk + coffee to keep the Plockton lunch window." },
+          { leg: "Sligachan → Plockton", time: "~55 min", note: "Over the Skye Bridge, then the Plockton turn at Balmacara — no Lean To / Eilean Donan stops this time." },
+          { leg: "Plockton → Rogie Falls", time: "~1 hr 15", note: "A890 up Glen Carron via Achnasheen — Lochcarron's loch-front strip is the optional 10-min coffee stop en route." },
+          { leg: "Rogie Falls → Inverness Airport", time: "~40 min", note: "Fuel at Tore or Tesco Inshes; car back ~16:30." }
         ],
         guide: [
+          { icon: "🐟", title: "Last-day walks", lines: ["Portree morning: pick ONE — The Lump viewpoint (20 min, zero risk) or the Scorrybreac shore loop (45–60 min); leave Portree by ~10:25 either way.", "Rogie Falls is the salmon-leap finale — late July is the season, best after rain; cap it at 30 minutes to protect the car return."] },
           { icon: "✈️", title: "Confirmed return flight", lines: ["EZY624 — the remaining five — departs Inverness at 19:30 and arrives London Luton at 21:00; target the terminal by about 17:00 after the car return.", "Bag drop opens at 17:30 and closes at 18:50. Check-in also closes 40 minutes before departure, so save the boarding pass offline."] },
           { icon: "🚗", title: "Car return", lines: ["Photograph the fuel gauge, mileage and all sides of the vehicle at return.", "Remove every bag, charging cable and item from the boot before handing over the keys."] }
         ],
-        book: ["Check out by 10:00", "Check Birch and Lean To seasonal opening hours", "Refuel and retain the receipt", "Download EZY624 boarding passes", "Protect the 16:30 car-return target and 18:50 bag-drop cutoff"]
+        book: ["Pack Monday night — bags in the car by 08:30, keys back, every room swept", "Monday night: check Calum's seal-trip sailings, Birch's opening time and the tide", "Pick the Portree walk on the day: Lump viewpoint (20 min) or Scorrybreac loop (45–60 min) — not both", "Refuel and retain the receipt", "Download EZY624 boarding passes (×5)", "Protect the 16:30 car-return target and 18:50 bag-drop cutoff"]
       }
     };
 
@@ -2287,6 +2312,10 @@
       if (/(dornie)/.test(t)) return "scene-dornie.jpg";
       if (/(lunch.*(cottage|columba)|columba 1400)/.test(t)) return "scene-stay.jpg";
       if (/(loch ness|fort augustus|invermoriston)/.test(t)) return "scene-lochness.jpg";
+      if (/(rogie)/.test(t)) return "scene-rogie.jpg";
+      if (/(seal trip|calum)/.test(t)) return "scene-sealtrip.jpg";
+      if (/(lochcarron)/.test(t)) return "scene-lochcarron.jpg";
+      if (/(pack.*cottage|sweep the cottage)/.test(t)) return "scene-stay.jpg";
       if (/(plockton)/.test(t)) return "scene-plockton.jpg";
       if (/(dinner|scorrybreac|sea breezes|hungry gull)/.test(t)) return "scene-dinner.jpg";
       if (/(portree|co-op|the lump)/.test(t)) return "scene-portree.jpg";
@@ -2363,6 +2392,30 @@
         prep: ["Gusts near the edges can be violent — stay well back from cliff lines and hold onto hats.", "The steps feel long on the way back up — pace it.", "For the sunset plan: warm layers, picnic, and headtorches for the return in the dark.", "Arrive by ~20:00 for parking and light."],
         parking: "Free road-end parking — tight and chaotic around sunset. No facilities.",
         link: "https://www.walkhighlands.co.uk/skye/neistpoint.shtml", linkLabel: "Walkhighlands route guide ↗"
+      },
+      {
+        match: /scorrybreac shore|shore loop/i, name: "Scorrybreac shore loop", tag: "Easy loop · Portree's hidden walk",
+        stats: [{ k: "Distance", v: "2.5 km" }, { k: "Ascent", v: "~60 m" }, { k: "Duration", v: "45–60 min" }, { k: "Format", v: "Loop" }],
+        route: "From Portree harbour follow the shore lane past the lifeboat station onto the Scorrybreac path — it rounds the headland under Ben Chracaig with open views over the Sound of Raasay and the harbour's painted houses, then climbs gently through trees and returns over the fields above town.",
+        prep: ["Mostly good path; one gentle climb on the return half.", "Muddy patches after rain — trainers fine in the dry.", "Sheltered compared to the big hills — a good grey-morning pick.", "Keep a ~10:25 leave-Portree deadline so the Plockton lunch window survives."],
+        parking: "Park at the harbour (or the small Scorrybreac car park past the Cuillin Hills Hotel turn) — easy on a Tuesday morning.",
+        link: "https://www.walkhighlands.co.uk/skye/scorrybreac.shtml", linkLabel: "Walkhighlands route guide ↗"
+      },
+      {
+        match: /sligachan.*riverside|riverside wander/i, name: "Sligachan riverside wander", tag: "Optional stroll · 20–40 min",
+        stats: [{ k: "Distance", v: "1–3 km" }, { k: "Ascent", v: "Minimal" }, { k: "Duration", v: "20–40 min" }, { k: "Format", v: "Out-and-back" }],
+        route: "From the old triple-arched bridge, the path heads south into Glen Sligachan pointing straight at the Black Cuillin — walk 10–20 minutes upstream for the classic river-and-mountains frames, then retrace. The bridge photo alone takes 2 minutes if the schedule is tight.",
+        prep: ["Boggy patches even in summer — pick your line.", "Midges gather at the bridge on still mornings — repellent on.", "Wind funnels down the glen; a shell layer helps.", "This is the flex stop — cut it first if the morning ran long."],
+        parking: "Free parking at the Sligachan Hotel; toilets and coffee at Seumas' Bar.",
+        link: "https://maps.google.com/?q=Sligachan+Old+Bridge", linkLabel: "Open in Google Maps ↗"
+      },
+      {
+        match: /rogie/i, name: "Rogie Falls", tag: "Easy waymarked walk · Salmon season",
+        stats: [{ k: "Distance", v: "~1.6 km" }, { k: "Ascent", v: "~40 m" }, { k: "Duration", v: "20–30 min" }, { k: "Format", v: "Waymarked loop" }],
+        route: "From the A835 forestry car park at Contin, the signed trail drops through pine woods to a suspension bridge slung right over the Black Water falls — stand mid-bridge and watch wild salmon launch themselves up the cascade. Short waymarked loops bring you back to the car park.",
+        prep: ["Late July–September is leaping season — best in the days after rain.", "Gravel paths and some steps — trainers fine.", "Cap it at 30 minutes: this is the last stop before the 16:30 car return.", "Phones secure on the bridge — it bounces."],
+        parking: "Free Forestry and Land Scotland car park with picnic tables, 40 min from Inverness Airport.",
+        link: "https://maps.google.com/?q=Rogie+Falls+car+park", linkLabel: "Open in Google Maps ↗"
       }
     ];
     function openTrailModal(i, imgSrc) {

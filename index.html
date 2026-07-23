@@ -273,6 +273,27 @@
     .modal-card { width: min(780px, 100%); border: 1px solid rgba(255,255,255,0.18); border-radius: 34px; background: linear-gradient(180deg, rgba(24, 30, 44, 0.98), rgba(12, 17, 27, 0.98)); box-shadow: var(--shadow); padding: 24px; }
     .modal-card h2 { margin: 0 0 8px; font-size: clamp(28px, 6vw, 50px); letter-spacing: -0.06em; }
     .modal-card p { color: var(--muted); line-height: 1.55; }
+    /* Trail info pop-out (tap a hike image in the visual itinerary) */
+    .vpa-card.has-trail { position: relative; cursor: pointer; }
+    .vpa-card.has-trail:active { transform: scale(0.99); }
+    .vpa-trailbadge { position: absolute; top: 8px; left: 8px; z-index: 2; font-size: 10.5px; font-weight: 800; letter-spacing: 0.05em; text-transform: uppercase; padding: 4px 9px; border-radius: 999px; background: rgba(8, 14, 24, 0.62); color: #fff; backdrop-filter: blur(6px); pointer-events: none; }
+    .trail-card { max-width: 680px; max-height: min(86vh, 920px); overflow-y: auto; padding: 0 0 20px; }
+    .tm-hero { position: relative; height: 200px; border-radius: 34px 34px 0 0; overflow: hidden; background: linear-gradient(180deg, #274b66, #16283a); }
+    .tm-hero img { width: 100%; height: 100%; object-fit: cover; display: block; }
+    .tm-heroshade { position: absolute; inset: 0; background: linear-gradient(180deg, transparent 28%, rgba(4, 9, 17, 0.78)); }
+    .tm-hero h2 { position: absolute; left: 22px; right: 66px; bottom: 12px; margin: 0; font-size: clamp(24px, 5.4vw, 38px); letter-spacing: -0.04em; color: #fff; text-shadow: 0 2px 16px rgba(0,0,0,0.55); }
+    .tm-close { position: absolute; top: 14px; right: 14px; width: 38px; height: 38px; border-radius: 50%; border: none; background: rgba(10, 14, 22, 0.55); color: #fff; font-size: 16px; cursor: pointer; backdrop-filter: blur(6px); }
+    .tm-body { padding: 16px 22px 0; }
+    .tm-tag { display: inline-block; font-size: 12px; font-weight: 800; letter-spacing: 0.07em; text-transform: uppercase; color: var(--muted); margin-bottom: 10px; }
+    .tm-stats { display: flex; flex-wrap: wrap; gap: 8px; margin: 0 0 14px; }
+    .tm-stat { border: 1px solid var(--line); border-radius: 14px; padding: 7px 12px; min-width: 86px; }
+    .tm-stat b { display: block; font-size: 14.5px; }
+    .tm-stat span { color: var(--muted); font-size: 11px; text-transform: uppercase; letter-spacing: 0.05em; }
+    .tm-sec { margin: 0 0 13px; }
+    .tm-sec h4 { margin: 0 0 5px; font-size: 14px; }
+    .tm-sec p, .tm-sec li { color: var(--muted); font-size: 14px; line-height: 1.55; margin: 0; }
+    .tm-sec ul { margin: 0; padding-left: 18px; display: grid; gap: 4px; }
+    .tm-actions { display: flex; flex-wrap: wrap; gap: 10px; padding: 4px 22px 0; }
     .personality-grid { display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); gap: 10px; margin: 18px 0; }
     .personality { border: 1px solid rgba(255,255,255,0.12); border-radius: 20px; background: rgba(255,255,255,0.06); color: var(--ink); padding: 14px 10px; text-align: center; transition: transform 0.18s ease, background 0.18s ease; }
     .personality:hover, .personality.selected { transform: translateY(-3px); background: rgba(255,209,92,0.18); border-color: rgba(255,209,92,0.36); }
@@ -1098,6 +1119,10 @@
     </div>
   </div>
 
+  <div class="modal" id="trailModal">
+    <div class="modal-card trail-card" id="trailCard"></div>
+  </div>
+
   <div class="toast" id="toast"></div>
   <script>
     const STORE_KEY = "skyeTripBoardV2";
@@ -1152,8 +1177,8 @@
     // Itinerary skeleton — the five fixed days.
     const TRIP_DAYS = [
       { id: "d24", iso: "2026-07-24", date: "Fri 24 Jul", city: "Inverness", logistics: true, stay: "Royal Apartment, Inverness", note: "Fly LTN → INV tonight — sleep south Inverness, drive to Skye tomorrow." },
-      { id: "d25", iso: "2026-07-25", date: "Sat 25 Jul", city: "Inverness → Skye", stay: "Solas Alainn, Staffin", note: "The drive-up — Loch Ness, Eilean Donan, over the Skye Bridge. Check-in from 17:00." },
-      { id: "d26", iso: "2026-07-26", date: "Sun 26 Jul", city: "Trotternish", stay: "Solas Alainn, Staffin", note: "Give this the clearest forecast — everything is 5–20 min from base. Hard rule: into Portree by 17:30 for Jason's 17:45 coach (the last one)." },
+      { id: "d25", iso: "2026-07-25", date: "Sat 25 Jul", city: "Inverness → Skye", stay: "Solas Alainn, Staffin", note: "The drive-up — 10:00 roll, free Urquhart viewpoint, Dornie lunch, bridge by ~14:30. Optional evening Storr, dinner Portree 19:00, lockbox check-in after." },
+      { id: "d26", iso: "2026-07-26", date: "Sun 26 Jul", city: "Trotternish", stay: "Solas Alainn, Staffin", note: "Give this the clearest forecast — everything is 5–20 min from base. Hard rule: into Portree by 17:30 for Jason's 17:45 coach (the last one). Storr done Saturday? Open with the full Quiraing circuit instead." },
       { id: "d27", iso: "2026-07-27", date: "Mon 27 Jul", city: "West Skye", stay: "Solas Alainn, Staffin", note: "The big drive day — 07:30 start, Talisker Bay and optional Carbost lunch, Neist Point sunset ~21:45, home late. Five on the loop — Jason flies home this morning." },
       { id: "d28", iso: "2026-07-28", date: "Tue 28 Jul", city: "Skye → Home", logistics: true, note: "Out of the cottage by 10:00 — Sligachan and Plockton on the way to INV. Fly 19:30." }
     ];
@@ -1164,18 +1189,21 @@
       { dayId: "d24", time: "18:30", title: "Fly London Luton → Inverness · easyJet EZY623 (lands ~20:00)", emoji: "✈️", kind: "flight" },
       { dayId: "d24", time: "20:00", title: "Collect the hire car(s) at INV airport", emoji: "🚗" },
       { dayId: "d24", time: "20:45", title: "Check in — Royal Apartment, Broom Dr (south Inverness)", emoji: "🏨" },
-      { dayId: "d24", time: "21:15", title: "Late supplies — Tesco Extra Inshes or a takeaway", emoji: "🛒" },
-      { dayId: "d25", time: "09:00", title: "Check out — A82 south along Loch Ness", emoji: "🚙" },
-      { dayId: "d25", time: "09:30", title: "Urquhart Castle (optional, £14.50)", emoji: "🏰" },
-      { dayId: "d25", time: "12:00", title: "Lunch — Fort Augustus / Invermoriston", emoji: "🍽️" },
-      { dayId: "d25", time: "13:45", title: "Eilean Donan Castle", emoji: "🏰" },
-      { dayId: "d25", time: "15:15", title: "Cross the Skye Bridge", emoji: "🌉" },
-      { dayId: "d25", time: "15:30", title: "Portree — fuel + Co-op supplies", emoji: "⛽" },
-      { dayId: "d25", time: "17:00", title: "Check in — Solas Alainn, Staffin", emoji: "🏡" },
-      { dayId: "d25", time: "19:30", title: "Dinner — Hungry Gull (Staffin) or Portree", emoji: "🍽️", kind: "dinner" },
-      { dayId: "d26", time: "07:30", title: "Old Man of Storr hike (beat the car park)", emoji: "🥾" },
+      { dayId: "d24", time: "21:15", title: "Big shop — Tesco Extra Inshes (dry goods, breakfasts, booze)", emoji: "🛒" },
+      { dayId: "d25", time: "10:00", title: "Check out — A82 south along Loch Ness", emoji: "🚙" },
+      { dayId: "d25", time: "10:35", title: "Urquhart Castle viewpoint layby — free photo stop", emoji: "🏰" },
+      { dayId: "d25", time: "11:40", title: "Fort Augustus locks — optional leg stretch", emoji: "⚓" },
+      { dayId: "d25", time: "12:55", title: "Lunch — Dornie (Clachan Bar or castle café)", emoji: "🍽️" },
+      { dayId: "d25", time: "13:45", title: "Eilean Donan Castle — bridge photos", emoji: "🏰" },
+      { dayId: "d25", time: "14:25", title: "Cross the Skye Bridge", emoji: "🌉" },
+      { dayId: "d25", time: "15:10", title: "Portree — fuel + Co-op supplies", emoji: "⛽" },
+      { dayId: "d25", time: "16:45", title: "Old Man of Storr — optional evening hike (decide Sat morning)", emoji: "🥾" },
+      { dayId: "d25", time: "19:00", title: "Dinner in Portree — Isles Inn, Antlers or Sea Breezes (book for 6)", emoji: "🍽️", kind: "dinner" },
+      { dayId: "d25", time: "21:15", title: "Check in — Solas Alainn (lockbox · ~17:30 if skipping the hike)", emoji: "🏡" },
+      { dayId: "d26", time: "07:30", title: "Old Man of Storr hike (optional — skip if done Sat evening)", emoji: "🥾" },
       { dayId: "d26", time: "10:10", title: "Rigg Viewpoint · Lealt Falls · Kilt Rock & Mealt Falls", emoji: "📸" },
       { dayId: "d26", time: "11:30", title: "Staffin Bay + An Corran dinosaur beach (optional)", emoji: "🦕" },
+      { dayId: "d26", time: "12:00", title: "Lunch — cottage or Columba 1400, Staffin", emoji: "🍽️" },
       { dayId: "d26", time: "13:00", title: "The Quiraing — full circuit or main viewpoint", emoji: "🥾" },
       { dayId: "d26", time: "16:20", title: "Brother's Point (optional) → Fairy Glen", emoji: "🧚" },
       { dayId: "d26", time: "18:30", title: "Dinner in Portree — Scorrybreac or Sea Breezes (5 covers)", emoji: "🍽️", kind: "dinner" },
@@ -1216,6 +1244,16 @@
         if (it && it.dayId === "d26" && /rigg viewpoint.*lealt falls.*kilt rock/i.test(it.title || "")) return { ...it, title: "Rigg Viewpoint · Lealt Falls · Kilt Rock & Mealt Falls" };
         if (it && it.dayId === "d26" && /dinner in portree/i.test(it.title || "") && !/5 covers/i.test(it.title || "")) return { ...it, title: (it.title || "").trim() + " (5 covers)" };
         if (it && it.id === "jason_exit_flight" && !/safekab/i.test(it.note || "")) return { ...it, note: "Booked · SafeKab taxi 05:10 from the Redcliffe to the airport" };
+        if (it && it.dayId === "d24" && /late supplies.*tesco/i.test(it.title || "")) return { ...it, title: "Big shop — Tesco Extra Inshes (dry goods, breakfasts, booze)", emoji: "🛒" };
+        if (it && it.dayId === "d25" && /check out.*a82/i.test(it.title || "") && it.time !== "10:00") return { ...it, time: "10:00" };
+        if (it && it.dayId === "d25" && /urquhart/i.test(it.title || "") && !/viewpoint layby/i.test(it.title || "")) return { ...it, title: "Urquhart Castle viewpoint layby — free photo stop", time: "10:35", kind: "activity" };
+        if (it && it.dayId === "d25" && /lunch.*(fort augustus|invermoriston)/i.test(it.title || "")) return { ...it, title: "Lunch — Dornie (Clachan Bar or castle café)", time: "12:55" };
+        if (it && it.dayId === "d25" && /eilean donan/i.test(it.title || "") && !/bridge photos/i.test(it.title || "")) return { ...it, title: "Eilean Donan Castle — bridge photos", time: "13:45" };
+        if (it && it.dayId === "d25" && /cross the skye bridge/i.test(it.title || "") && it.time !== "14:25") return { ...it, time: "14:25" };
+        if (it && it.dayId === "d25" && /portree.*co-op/i.test(it.title || "") && it.time !== "15:10") return { ...it, time: "15:10" };
+        if (it && it.dayId === "d25" && /check in (—|-) solas/i.test(it.title || "") && !/lockbox/i.test(it.title || "")) return { ...it, title: "Check in — Solas Alainn (lockbox · ~17:30 if skipping the hike)", time: "21:15" };
+        if (it && it.dayId === "d25" && /hungry gull/i.test(it.title || "")) return { ...it, title: "Dinner in Portree — Isles Inn, Antlers or Sea Breezes (book for 6)", time: "19:00", kind: "dinner" };
+        if (it && it.dayId === "d26" && /old man of storr/i.test(it.title || "") && !/optional/i.test(it.title || "")) return { ...it, title: "Old Man of Storr hike (optional — skip if done Sat evening)" };
         if (it && it.dayId === "d28" && /(?:slow portree morning|birch coffee in portree).*lump viewpoint/i.test(it.title || "")) return { ...it, title: "Optional Birch coffee in Portree + The Lump viewpoint", emoji: "☕", time: "08:00" };
         if (it && it.dayId === "d28" && /lean to coffee/i.test(it.title || "")) return { ...it, title: "Optional Lean To Coffee stop near the Skye Bridge", kind: "activity", time: "11:20" };
         if (it && it.dayId === "d28" && /eilean donan second look/i.test(it.title || "")) return { ...it, time: "12:30" };
@@ -1243,6 +1281,20 @@
           p.items.push({ id: "jason_exit_flight", dayId: "d27", title: "Jason's flight INV → London — lands ~08:30", emoji: "✈️", city: "Inverness", kind: "activity", note: "Booked · SafeKab taxi 05:10 from the Redcliffe to the airport", time: "06:45", pinned: true });
         }
         p.jasonExitV1 = true;
+      }
+      // Saturday v2 (agreed 23 Jul): 10:00 roll, free Urquhart viewpoint, Dornie
+      // lunch, optional evening Storr; Sunday gains the missing lunch slot.
+      if (!p.saturdayV2) {
+        if (!p.items.some(it => it && /fort augustus locks/i.test(it.title || ""))) {
+          p.items.push({ id: "sat_fa_locks", dayId: "d25", title: "Fort Augustus locks — optional leg stretch", emoji: "⚓", city: "Fort Augustus", kind: "activity", note: "Skippable — 15 min at the canal staircase if anyone needs the break", time: "11:40" });
+        }
+        if (!p.items.some(it => it && it.dayId === "d25" && /old man of storr/i.test(it.title || ""))) {
+          p.items.push({ id: "sat_storr_opt", dayId: "d25", title: "Old Man of Storr — optional evening hike (decide Sat morning)", emoji: "🥾", city: "Trotternish", kind: "activity", note: "Car park clears after ~16:30 · doing it tonight frees Sunday for the full Quiraing circuit", time: "16:45" });
+        }
+        if (!p.items.some(it => it && it.dayId === "d26" && /^lunch/i.test(it.title || ""))) {
+          p.items.push({ id: "sun_lunch", dayId: "d26", title: "Lunch — cottage or Columba 1400, Staffin", emoji: "🍽️", city: "Staffin", kind: "activity", note: "Refuel before the Quiraing block", time: "12:00" });
+        }
+        p.saturdayV2 = true;
       }
       // One-time seed: merge the starter itinerary in, skipping any stop the
       // group already added (matched by title). Runs once, then `seeded` locks it.
@@ -2130,19 +2182,20 @@
         book: ["Download both easyJet boarding passes", "Save the apartment access instructions", "Booking friend: share car reference + pickup desk details", "Pack waterproofs, midge repellent and a head net"]
       },
       d25: {
-        accom: { name: "Solas Alainn, Staffin", meta: "Night 1 of 3 · booking #42401", note: "Directions arrive 14 days before check-in; save them offline before leaving Inverness.", checkin: "after 17:00", checkout: "Tue by 10:00" },
+        accom: { name: "Solas Alainn, Staffin", meta: "Night 1 of 3 · booking #42401", note: "Lockbox self check-in — save the directions offline and warn the host arrival may be ~21:15 after the optional hike and dinner.", checkin: "lockbox · from 17:00, late OK", checkout: "Tue by 10:00" },
         drive: [
-          { leg: "Inverness → Urquhart Castle", time: "~35 min", note: "A82 along Loch Ness; decide on the optional castle stop before departure." },
-          { leg: "Urquhart → Fort Augustus", time: "~45 min", note: "Allow extra time for summer traffic around Loch Ness." },
-          { leg: "Fort Augustus → Eilean Donan", time: "~1 hr 20", note: "Scenic A87; build in photo and comfort-stop buffer." },
-          { leg: "Eilean Donan → Portree", time: "~1 hr", note: "Cross the Skye Bridge, then fuel and buy groceries in Portree." },
-          { leg: "Portree → Staffin", time: "~35 min", note: "Final stretch becomes more rural; arrive with food and at least half a tank." }
+          { leg: "Inverness → Urquhart viewpoint layby", time: "~35 min", note: "A82 south; the free layby just past the castle entrance has the classic elevated view — 15–20 min, no tickets." },
+          { leg: "Viewpoint → Fort Augustus", time: "~45 min", note: "Optional 15-min canal-locks leg stretch — or roll straight through." },
+          { leg: "Fort Augustus → Dornie", time: "~1 hr 20", note: "Glen Shiel is a food desert — hold out for Dornie's three options (Cluanie Inn mid-glen is the only outpost)." },
+          { leg: "Dornie → Portree", time: "~1 hr", note: "Eilean Donan bridge photos, cross the Skye Bridge, then fuel + fresh-food top-up in Portree (big shop done Friday)." },
+          { leg: "Portree → Storr car park", time: "~15 min", note: "Optional evening hike slot — the car park is free-flowing after ~16:30." },
+          { leg: "Portree → Staffin", time: "~35 min", note: "After dinner, north up the A855 to the lockbox — sunset over Staffin Bay ~21:50." }
         ],
         guide: [
-          { icon: "🏰", title: "Loch Ness stops", lines: ["Urquhart is optional and can add 60–90 minutes once parking and the visit are included.", "If the day slips, keep Eilean Donan and the 17:00 cottage check-in as the anchors."] },
-          { icon: "🛒", title: "Arrival supplies", lines: ["Use Portree for the main food shop and fuel before heading north.", "Staffin has a local store and fuel, but rural opening hours and stock are more limited."] }
+          { icon: "🏰", title: "Castles without tickets", lines: ["Urquhart: the A82 viewpoint layby just south of the entrance gives the postcard shot for £0 — there's no grounds access without timed tickets, and that's fine.", "Eilean Donan: the bridge and shoreline angles are free and better than the interior queue; a paid second look stays open on Tuesday's route."] },
+          { icon: "🥾", title: "The Storr call", lines: ["Decide Saturday morning: clear evening → hike it tonight at 16:45 (empty car park, moody backlit pinnacles) and Sunday opens up for the full Quiraing circuit.", "Wet or knackered → skip, check in ~17:30 instead, and Storr stays as Sunday's 07:30 opener exactly as planned."] }
         ],
-        book: ["Book a timed Urquhart entry only if the group commits", "Save cottage directions and contact details", "Fuel and full grocery shop in Portree", "Keep snacks and water accessible for the drive"]
+        book: ["Book Saturday dinner for 6 — Isles Inn / Antlers / Sea Breezes, ~19:00", "Message Solas Alainn: possible ~21:15 lockbox arrival", "Fresh/chilled top-up + fuel in Portree — dry goods done Friday at Tesco", "Check Sunday's An Corran tide time tonight", "Keep boots and windproofs accessible, not buried, for the optional Storr"]
       },
       d26: {
         accom: { name: "Solas Alainn, Staffin", meta: "Night 2 of 3 · Trotternish base", note: "Short hops today, but car parks fill quickly on a clear Sunday.", checkin: "already in", checkout: "Tue by 10:00" },
@@ -2241,6 +2294,95 @@
       return null;
     }
 
+    // Trail info pop-outs — tap a hike image in the visual itinerary for the
+    // route, duration, format and what to bring. Walk-grade stops only.
+    const TRAIL_INFO = [
+      {
+        match: /old man of storr|\bstorr\b/i, name: "Old Man of Storr", tag: "Out-and-back · Moderate · The icon",
+        stats: [{ k: "Distance", v: "3.8 km" }, { k: "Ascent", v: "~320 m" }, { k: "Duration", v: "1½–2 h" }, { k: "Format", v: "Out-and-back" }],
+        route: "Wide gravel path from the car park through the felled plantation, then a gate and steeper zigzags to the Sanctuary — the shelf right beneath the Old Man pinnacle. The short pull up left of the Sanctuary gives the classic angle back over the pinnacles and the Sound of Raasay.",
+        prep: ["The second half is steep and relentless — steady pace wins.", "Trainers are fine in the dry; boots better after rain (loose gravel on the descent).", "It is always windier at the Sanctuary than the car park — bring the windproof.", "1L water each; no shade, no facilities past the car park.", "Morning light hits the pinnacle faces; evening is backlit, moody and near-empty."],
+        parking: "Paid machine car park (~£5, card OK) — the busiest on Skye: full by ~08:30 in July mornings, free-flowing again after ~16:30. Toilets at the car park.",
+        link: "https://www.walkhighlands.co.uk/skye/oldmanofstorr.shtml", linkLabel: "Walkhighlands route guide ↗"
+      },
+      {
+        match: /quiraing/i, name: "The Quiraing", tag: "Full loop or taster · Moderate–hard",
+        stats: [{ k: "Full loop", v: "6.8 km" }, { k: "Ascent", v: "~290 m" }, { k: "Duration", v: "2½–3½ h" }, { k: "Taster", v: "45–90 min" }],
+        route: "From the pass car park the main path traverses beneath the cliffs past the Prison and the Needle to the north end, climbs sharply onto the plateau, then returns south along the cliff-top rim looking down on everything you just walked. Taster version: follow the traverse to the main amphitheatre and retrace.",
+        prep: ["Narrow path with real drops in two or three places — sure feet, no scrambling.", "Notoriously muddy and slick after rain: boots, not trainers.", "One rocky step with a small stream crossing early on.", "The plateau is very exposed — only do the full loop in decent visibility and manageable wind.", "Decide full-vs-taster at lunch, not on the hill, on coach-deadline days."],
+        parking: "Paid machine at the pass car park — small, jams by mid-morning; single-track access road, use the passing places properly.",
+        link: "https://www.walkhighlands.co.uk/skye/quiraing.shtml", linkLabel: "Walkhighlands route guide ↗"
+      },
+      {
+        match: /fairy glen/i, name: "Fairy Glen", tag: "Easy wander · 30–60 min",
+        stats: [{ k: "Distance", v: "~1 km" }, { k: "Ascent", v: "Minimal" }, { k: "Duration", v: "30–60 min" }, { k: "Format", v: "Wander" }],
+        route: "Wander freely between the grassy cone hills and lochans of this miniature landslip landscape near Uig. The tower-topped crag is Castle Ewen — an easy, short scramble path leads to its top for the best view down the glen.",
+        prep: ["Steep grass turns slippery the moment it's damp.", "The Castle Ewen top is airy — give it a miss in strong wind.", "Please don't build or add to stone spirals; locals dismantle them.", "No facilities — this is a quick, magical leg-stretch, not a provisioning stop."],
+        parking: "Small paid car park in the glen itself (machine). Busy midday; usually fine by late afternoon.",
+        link: "https://maps.google.com/?q=Fairy+Glen+Uig+Skye", linkLabel: "Open in Google Maps ↗"
+      },
+      {
+        match: /fairy pool/i, name: "Fairy Pools", tag: "Out-and-back · Easy–moderate",
+        stats: [{ k: "Distance", v: "4.8 km" }, { k: "Ascent", v: "~90 m" }, { k: "Duration", v: "1½–2 h" }, { k: "Format", v: "Out-and-back" }],
+        route: "Gravel path drops from the car park to the river, then follows it upstream past a chain of waterfalls and blue-green pools with the Black Cuillin wall as the backdrop. Go as far up the chain as time allows and retrace.",
+        prep: ["Two stepping-stone river crossings — after heavy rain that means wet feet or turning around.", "Rock beside the pools is polished and slippery — watch footing for photos.", "Wild dip optional and bracing (~11°C): swimwear + towel if anyone's game.", "Midges swarm the calm corners — repellent on before leaving the car."],
+        parking: "Official paid car park (~£6, card) with toilets — fills from ~10:00, which is why the plan hits it at 09:00.",
+        link: "https://www.walkhighlands.co.uk/skye/fairypools.shtml", linkLabel: "Walkhighlands route guide ↗"
+      },
+      {
+        match: /an corran|dinosaur/i, name: "An Corran dinosaur beach", tag: "Beach stop · Tide-dependent",
+        stats: [{ k: "Time", v: "20–40 min" }, { k: "Effort", v: "Easy" }, { k: "Format", v: "Beach scramble" }, { k: "Key factor", v: "Low tide" }],
+        route: "From Staffin slipway walk onto the flat sandstone platform at the north end of the bay — the three-toed dinosaur footprints sit in the bedrock slabs, clearest just after the tide has washed sand off them.",
+        prep: ["Footprints only show around LOW tide — check a tide app the night before and aim within ~2h of low water.", "Weed-covered rock is lethally slippery — grippy shoes, slow steps.", "Look, photograph, leave — no rubbings or casts.", "If the tide's wrong, skip without guilt and bank the time."],
+        parking: "A handful of free spaces at the Staffin slipway.",
+        link: "https://maps.google.com/?q=An+Corran+Beach+Staffin", linkLabel: "Open in Google Maps ↗"
+      },
+      {
+        match: /talisker bay/i, name: "Talisker Bay", tag: "Easy track · Best near low tide",
+        stats: [{ k: "Distance", v: "3.2 km" }, { k: "Ascent", v: "Minimal" }, { k: "Duration", v: "45–60 min + beach" }, { k: "Format", v: "Out-and-back" }],
+        route: "From the road end by Talisker House, an easy estate track runs between the hills to the bay: black-and-silver striped sand, a huge sea stack on the south side and a thread waterfall dropping off the north cliffs.",
+        prep: ["The sand largely vanishes at high tide — best within a couple of hours of low water.", "Rutted farm track — trainers fine in the dry.", "No facilities and effectively no phone signal at the bay."],
+        parking: "A handful of verge spaces at the road end — never block the turning area or field gates; if it's full, wait rather than squeeze.",
+        link: "https://maps.google.com/?q=Talisker+Bay+Skye", linkLabel: "Open in Google Maps ↗"
+      },
+      {
+        match: /coral beach/i, name: "Coral Beach (Claigan)", tag: "Out-and-back · Easy",
+        stats: [{ k: "Distance", v: "3.2 km" }, { k: "Ascent", v: "~30 m" }, { k: "Duration", v: "45–75 min" }, { k: "Format", v: "Out-and-back" }],
+        route: "From Claigan car park an easy coastal track crosses grazing land to a first white beach, then over a small rise to the main strand — crushed, sun-bleached maerl that turns the shallows genuinely turquoise. The 10-minute pull up the knoll behind the beach is the best viewpoint on a clear day.",
+        prep: ["Cattle often graze the path — give them room, keep food packed away.", "The 'coral' is sharp underfoot — think twice before going barefoot.", "Fully exposed to northerly wind: windproof for the beach stop."],
+        parking: "Small free car park at the Claigan road end — fills on sunny afternoons. No facilities.",
+        link: "https://www.walkhighlands.co.uk/skye/coralbeaches.shtml", linkLabel: "Walkhighlands route guide ↗"
+      },
+      {
+        match: /neist/i, name: "Neist Point", tag: "Out-and-back · Steep steps · Sunset",
+        stats: [{ k: "Distance", v: "2.2 km" }, { k: "Re-ascent", v: "~110 m" }, { k: "Duration", v: "45–75 min" }, { k: "Format", v: "Out-and-back" }],
+        route: "From the road-end car park a concrete path with handrailed steps drops steeply, then runs out along the headland to the lighthouse on Skye's most westerly tip. Note: the classic side-on cliff photo of the point is NOT on this path — it's a 2-minute walk north along the clifftop from the car park.",
+        prep: ["Gusts near the edges can be violent — stay well back from cliff lines and hold onto hats.", "The steps feel long on the way back up — pace it.", "For the sunset plan: warm layers, picnic, and headtorches for the return in the dark.", "Arrive by ~20:00 for parking and light."],
+        parking: "Free road-end parking — tight and chaotic around sunset. No facilities.",
+        link: "https://www.walkhighlands.co.uk/skye/neistpoint.shtml", linkLabel: "Walkhighlands route guide ↗"
+      }
+    ];
+    function openTrailModal(i, imgSrc) {
+      const info = TRAIL_INFO[i], modal = document.getElementById("trailModal"), card = document.getElementById("trailCard");
+      if (!info || !modal || !card) return;
+      card.innerHTML = `
+        <div class="tm-hero">${imgSrc ? `<img src="${escapeAttr(imgSrc)}" alt="" onerror="this.style.display='none'">` : ""}<div class="tm-heroshade"></div><h2>${escapeHtml(info.name)}</h2><button class="tm-close" id="tmClose" aria-label="Close">✕</button></div>
+        <div class="tm-body">
+          <span class="tm-tag">${escapeHtml(info.tag)}</span>
+          <div class="tm-stats">${info.stats.map(s => `<div class="tm-stat"><b>${escapeHtml(s.v)}</b><span>${escapeHtml(s.k)}</span></div>`).join("")}</div>
+          <div class="tm-sec"><h4>🥾 The route</h4><p>${escapeHtml(info.route)}</p></div>
+          <div class="tm-sec"><h4>🎒 Be ready for</h4><ul>${info.prep.map(p => `<li>${escapeHtml(p)}</li>`).join("")}</ul></div>
+          <div class="tm-sec"><h4>🅿️ Parking &amp; facilities</h4><p>${escapeHtml(info.parking)}</p></div>
+        </div>
+        <div class="tm-actions">${info.link ? `<a class="btn small" href="${escapeAttr(info.link)}" target="_blank" rel="noopener">${escapeHtml(info.linkLabel || "Route guide ↗")}</a>` : ""}<button class="btn small" id="tmCloseBtn">Close</button></div>`;
+      card.querySelector("#tmClose").addEventListener("click", closeTrailModal);
+      card.querySelector("#tmCloseBtn").addEventListener("click", closeTrailModal);
+      modal.classList.add("active");
+    }
+    function closeTrailModal() { const m = document.getElementById("trailModal"); if (m) m.classList.remove("active"); }
+    document.getElementById("trailModal")?.addEventListener("click", e => { if (e.target === e.currentTarget) closeTrailModal(); });
+    document.addEventListener("keydown", e => { if (e.key === "Escape") closeTrailModal(); });
+
     function applyVitinMode() {
       const poster = document.getElementById("vitinPoster"), editor = document.getElementById("planEditor"), hint = document.getElementById("vitinHint");
       if (poster) poster.style.display = vitinPosterMode ? "" : "none";
@@ -2319,7 +2461,10 @@
               : `<div class="vpa-imgfb">${it.emoji || "📍"}</div>`;
             const sub = (it.kind === "dinner") ? "Group dinner" : (it.note || "");
             const meta = (it.time || sub) ? `<p>${it.time ? `<span class="vpa-when">${escapeHtml(it.time)}</span>` : ""}${it.time && sub ? " · " : ""}${escapeHtml(sub)}</p>` : "";
-            return `<div class="vpa-card">${img}<div class="vpa-txt"><h4>${escapeHtml(it.title)}</h4>${meta}</div></div>`;
+            const trailIdx = TRAIL_INFO.findIndex(x => x.match.test(it.title || ""));
+            const trailBadge = trailIdx >= 0 ? `<span class="vpa-trailbadge">🥾 Trail info</span>` : "";
+            const trailData = trailIdx >= 0 ? ` data-trail="${trailIdx}" role="button" tabindex="0" title="Tap for trail info"` : "";
+            return `<div class="vpa-card${trailIdx >= 0 ? " has-trail" : ""}"${trailData}>${trailBadge}${img}<div class="vpa-txt"><h4>${escapeHtml(it.title)}</h4>${meta}</div></div>`;
           }).join("");
           body = `<div class="vpa">${cards}</div>`;
         }
@@ -2342,6 +2487,11 @@
         host.querySelectorAll(".vp-jump .vp-jbtn").forEach((jb, k) => jb.classList.toggle("on", k === vitinIdx));
       }
       host.querySelectorAll("[data-goslide]").forEach(b => b.addEventListener("click", () => go(parseInt(b.dataset.goslide, 10))));
+      host.querySelectorAll("[data-trail]").forEach(el => {
+        const open = () => { const im = el.querySelector("img.vpa-img"); openTrailModal(parseInt(el.dataset.trail, 10), im ? im.getAttribute("src") : ""); };
+        el.addEventListener("click", open);
+        el.addEventListener("keydown", ev => { if (ev.key === "Enter" || ev.key === " ") { ev.preventDefault(); open(); } });
+      });
       host.querySelector("#vpPrev").addEventListener("click", () => go(vitinIdx - 1));
       host.querySelector("#vpNext").addEventListener("click", () => go(vitinIdx + 1));
       let x0 = null;

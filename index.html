@@ -1142,7 +1142,8 @@
     const defaultDesk = {
       rooms: [
         { id: "car_hire", emoji: "🚗", kind: "car", fixed: true, title: "Car hire — Inverness Airport", desc: "Booked by a friend for Fri 24 Jul airport pickup and Tue 28 Jul return. The booking friend holds the confirmation.", owners: [], drivers: [], options: [{ id: "opt_car_friend", by: 0, title: "Inverness Airport car hire — booked", link: "", price: "", notes: "Before departure, share the rental company, lead-driver name, booking reference, pickup desk details and roadside-assistance number with the group.", votes: {} }], status: "decided", chosen: "opt_car_friend" },
-        { id: "flights_rest", emoji: "✈️", kind: "custom", fixed: true, title: "easyJet flights — booked", desc: "Outbound and return flights are confirmed. Save every boarding pass to the offline pack before departure.", owners: [], options: [{ id: "opt_flights_booked", by: 0, title: "easyJet EZY623 outbound + EZY624 return", link: "", price: "", notes: "Return confirmed: EZY624 INV→LTN Tue 28 Jul, departs 19:30 and arrives 21:00. Bag drop opens 17:30 and closes 18:50; check-in closes 40 minutes before departure.", votes: {} }], status: "decided", chosen: "opt_flights_booked" },
+        { id: "flights_rest", emoji: "✈️", kind: "custom", fixed: true, title: "easyJet flights — booked", desc: "Outbound and return flights are confirmed. Save every boarding pass to the offline pack before departure.", owners: [], options: [{ id: "opt_flights_booked", by: 0, title: "easyJet EZY623 outbound + EZY624 return", link: "", price: "", notes: "Return confirmed: EZY624 INV→LTN Tue 28 Jul, departs 19:30 and arrives 21:00. Bag drop opens 17:30 and closes 18:50; check-in closes 40 minutes before departure. Five fly the Tuesday return — Jason flies home Monday morning (see Jason's early exit).", votes: {} }], status: "decided", chosen: "opt_flights_booked" },
+        { id: "jason_exit", emoji: "🚌", kind: "custom", fixed: true, title: "Jason's early exit — booked", desc: "Jason leaves Sunday evening: 17:45 Citylink 917 from Portree Somerled Sq (Stance 1) → Inverness bus station 21:00, overnight at the Redcliffe Hotel (1 Gordon Terrace, ~15 min walk), then flies INV → London ~06:45 Monday, landing ~08:30.", owners: [], options: [{ id: "opt_jason_exit", by: 0, title: "17:45 coach + Redcliffe + Monday-morning flight — all booked", link: "", price: "", notes: "One action left: pre-book the Monday ~05:05 taxi, Redcliffe → Inverness Airport (Inverness Taxis 01463 222222 or app · backups: SafeKab app / Sneckie Taxis 01463 714777). Group side: be rolling into Portree by 17:30 Sunday and book dinner for 5.", votes: {} }], status: "decided", chosen: "opt_jason_exit" },
         { id: "offline_pack", emoji: "📲", kind: "custom", fixed: true, title: "Offline launch pack", desc: "Generated in Skye Essentials: offline-map scope, bookings, car-hire handover, parking guidance, kit and emergency information.", owners: [], options: [{ id: "opt_offline_ready", by: 0, title: "Skye offline launch pack — ready", link: "", price: "", notes: "Use the Print / save board as PDF button in Skye Essentials, then download the maps and documents listed there.", votes: {} }], status: "decided", chosen: "opt_offline_ready" },
         { id: "stay_skye", emoji: "🛏️", kind: "accom", title: "The stay — Solas Alainn, Staffin", desc: "3-bed / 3-bath cottage under the Quiraing, sleeps 6.", owners: [0], options: [{ id: "opt_solas", by: 0, title: "Solas Alainn, Staffin — booking #42401", link: "", price: "", notes: "Check-in Sat 25 Jul from 17:00 · out Tue 28 by 10:00. Linen, towels & final clean included.", votes: {} }], status: "decided", chosen: "opt_solas" }
       ]
@@ -1152,8 +1153,8 @@
     const TRIP_DAYS = [
       { id: "d24", iso: "2026-07-24", date: "Fri 24 Jul", city: "Inverness", logistics: true, stay: "Royal Apartment, Inverness", note: "Fly LTN → INV tonight — sleep south Inverness, drive to Skye tomorrow." },
       { id: "d25", iso: "2026-07-25", date: "Sat 25 Jul", city: "Inverness → Skye", stay: "Solas Alainn, Staffin", note: "The drive-up — Loch Ness, Eilean Donan, over the Skye Bridge. Check-in from 17:00." },
-      { id: "d26", iso: "2026-07-26", date: "Sun 26 Jul", city: "Trotternish", stay: "Solas Alainn, Staffin", note: "Give this the clearest forecast — everything is 5–20 min from base. Swappable with Monday until 48h out." },
-      { id: "d27", iso: "2026-07-27", date: "Mon 27 Jul", city: "West Skye", stay: "Solas Alainn, Staffin", note: "The big drive day — 07:30 start, Talisker Bay and optional Carbost lunch, Neist Point sunset ~21:45, home late." },
+      { id: "d26", iso: "2026-07-26", date: "Sun 26 Jul", city: "Trotternish", stay: "Solas Alainn, Staffin", note: "Give this the clearest forecast — everything is 5–20 min from base. Hard rule: into Portree by 17:30 for Jason's 17:45 coach (the last one)." },
+      { id: "d27", iso: "2026-07-27", date: "Mon 27 Jul", city: "West Skye", stay: "Solas Alainn, Staffin", note: "The big drive day — 07:30 start, Talisker Bay and optional Carbost lunch, Neist Point sunset ~21:45, home late. Five on the loop — Jason flies home this morning." },
       { id: "d28", iso: "2026-07-28", date: "Tue 28 Jul", city: "Skye → Home", logistics: true, note: "Out of the cottage by 10:00 — Sligachan and Plockton on the way to INV. Fly 19:30." }
     ];
 
@@ -1177,7 +1178,7 @@
       { dayId: "d26", time: "11:30", title: "Staffin Bay + An Corran dinosaur beach (optional)", emoji: "🦕" },
       { dayId: "d26", time: "13:00", title: "The Quiraing — full circuit or main viewpoint", emoji: "🥾" },
       { dayId: "d26", time: "16:20", title: "Brother's Point (optional) → Fairy Glen", emoji: "🧚" },
-      { dayId: "d26", time: "18:30", title: "Dinner in Portree — Scorrybreac or Sea Breezes", emoji: "🍽️", kind: "dinner" },
+      { dayId: "d26", time: "18:30", title: "Dinner in Portree — Scorrybreac or Sea Breezes (5 covers)", emoji: "🍽️", kind: "dinner" },
       { dayId: "d27", time: "07:30", title: "Start — fuel up first, long way west", emoji: "⛽" },
       { dayId: "d27", time: "09:00", title: "Fairy Pools (car park fills by 10:00)", emoji: "💦" },
       { dayId: "d27", time: "11:15", title: "Talisker Bay coastal stop", emoji: "🌊" },
@@ -1213,6 +1214,7 @@
         if (it && it.dayId === "d27" && /coral beach/i.test(it.title || "")) return { ...it, time: "15:00" };
         if (it && it.dayId === "d27" && /coastal drive.*glendale/i.test(it.title || "")) return { ...it, time: "16:30" };
         if (it && it.dayId === "d26" && /rigg viewpoint.*lealt falls.*kilt rock/i.test(it.title || "")) return { ...it, title: "Rigg Viewpoint · Lealt Falls · Kilt Rock & Mealt Falls" };
+        if (it && it.dayId === "d26" && /dinner in portree/i.test(it.title || "") && !/5 covers/i.test(it.title || "")) return { ...it, title: (it.title || "").trim() + " (5 covers)" };
         if (it && it.dayId === "d28" && /(?:slow portree morning|birch coffee in portree).*lump viewpoint/i.test(it.title || "")) return { ...it, title: "Optional Birch coffee in Portree + The Lump viewpoint", emoji: "☕", time: "08:00" };
         if (it && it.dayId === "d28" && /lean to coffee/i.test(it.title || "")) return { ...it, title: "Optional Lean To Coffee stop near the Skye Bridge", kind: "activity", time: "11:20" };
         if (it && it.dayId === "d28" && /eilean donan second look/i.test(it.title || "")) return { ...it, time: "12:30" };
@@ -1229,6 +1231,17 @@
           p.items.push({ id: "liz_lean_to_route", dayId: "d28", title: "Optional Lean To Coffee stop near the Skye Bridge", emoji: "☕", city: "Ashaig", kind: "activity", note: "Liz's shortlist · check seasonal hours", time: "11:20" });
         }
         p.foodFlowV2 = true;
+      }
+      // Jason's early exit (booked 23 Jul): Sun 17:45 coach to Inverness, Redcliffe
+      // overnight, ~06:45 Mon flight. Pinned so the ⛅ day swap can't move them.
+      if (!p.jasonExitV1) {
+        if (!p.items.some(it => it && /jason.*(coach|917)/i.test(it.title || ""))) {
+          p.items.push({ id: "jason_exit_bus", dayId: "d26", title: "Portree — drop Jason at Somerled Sq (17:45 coach to Inverness)", emoji: "🚌", city: "Portree", kind: "activity", note: "Citylink 917 · Inverness bus station 21:00 · Redcliffe Hotel overnight", time: "17:30", pinned: true });
+        }
+        if (!p.items.some(it => it && /jason.*flight/i.test(it.title || ""))) {
+          p.items.push({ id: "jason_exit_flight", dayId: "d27", title: "Jason's flight INV → London — lands ~08:30", emoji: "✈️", city: "Inverness", kind: "activity", note: "Booked · pre-booked ~05:05 taxi from the Redcliffe to the airport", time: "06:45", pinned: true });
+        }
+        p.jasonExitV1 = true;
       }
       // One-time seed: merge the starter itinerary in, skipping any stop the
       // group already added (matched by title). Runs once, then `seeded` locks it.
@@ -1966,6 +1979,7 @@
       ensurePlan();
       const A = "d26", B = "d27";
       state.plan.items.forEach(it => {
+        if (it.pinned || /^jason_exit/.test(String(it.id || ""))) return; // booked exit logistics stay put
         if (it.dayId === A) it.dayId = B;
         else if (it.dayId === B) it.dayId = A;
       });
@@ -2136,13 +2150,15 @@
           { leg: "Storr → Kilt Rock / Mealt Falls", time: "~15 min", note: "Quick roadside viewpoints with limited dwell time needed." },
           { leg: "Staffin → Quiraing upper car park", time: "~15 min", note: "Narrow, steep single-track access; use passing places correctly." },
           { leg: "Quiraing → Fairy Glen", time: "~30 min", note: "Expect slow traffic and livestock on the road." },
-          { leg: "Fairy Glen → Portree", time: "~30 min", note: "Dinner run; confirm the booking before leaving the north." }
+          { leg: "Fairy Glen → Portree", time: "~30 min", note: "Dinner run; confirm the booking before leaving the north — into Portree by 17:30 for Jason's coach." },
+          { leg: "Somerled Sq — Jason's 917 coach", time: "17:45", note: "Direct Citylink to Inverness bus station (21:00); Jason walks ~15 min to the Redcliffe — reception expects him ~21:20." }
         ],
         guide: [
+          { icon: "🚌", title: "Jason's exit — protect 17:30", lines: ["The 17:45 from Somerled Square Stance 1 is the last coach of the day; be rolling into Portree by 17:30.", "If the day runs late, trim Fairy Glen — the missed-coach fallback is a ~£250 private transfer."] },
           { icon: "🅿️", title: "Trailhead parking", lines: ["Storr and Quiraing can fill by mid-morning; target Storr before 08:30 and keep parking payment options ready.", "Never stop in passing places or block gates when official parking is full."] },
           { icon: "🥾", title: "Trail conditions", lines: ["The Quiraing can be muddy, exposed and slippery even in summer; proper boots and waterproof layers matter.", "An Corran's rocks can be slick and footprints are tide-dependent—treat it as optional."] }
         ],
-        book: ["Check mountain forecast and wind the night before", "Download the Storr and Quiraing walking maps", "Bring boots, waterproofs, 1–1.5L water and snacks", "Carry midge repellent and head nets"]
+        book: ["Check mountain forecast and wind the night before", "Download the Storr and Quiraing walking maps", "Bring boots, waterproofs, 1–1.5L water and snacks", "Carry midge repellent and head nets", "Dinner booking is 5 covers (Jason on the 17:45 coach)", "Jason: coach ticket saved offline + chippy before Somerled Sq"]
       },
       d27: {
         accom: { name: "Solas Alainn, Staffin", meta: "Night 3 of 3 · late return", note: "This is the longest driving day; leave the cottage ready for a quiet late arrival.", checkin: "already in", checkout: "Tue by 10:00" },
@@ -2155,6 +2171,7 @@
           { leg: "Neist Point → Staffin", time: "~1 hr 45", note: "Long drive after sunset—share driving if possible and keep fuel margin." }
         ],
         guide: [
+          { icon: "✈️", title: "Jason's flight home", lines: ["Jason: pre-booked ~05:05 taxi from the Redcliffe, then the ~06:45 INV → London flight, landing ~08:30.", "The West Skye loop runs with five — plan drivers for the long day accordingly."] },
           { icon: "🅿️", title: "West Skye parking", lines: ["Fairy Pools is best early; pay at the official car park and do not verge-park.", "Coral Beach and Neist Point have constrained parking—drop optional stops if the day starts running late."] },
           { icon: "🌅", title: "Neist Point sunset", lines: ["Aim to arrive around 20:00 for the ~21:45 sunset, leaving time for parking and the walk.", "Bring warm layers, a picnic and headtorches for the return to the car."] }
         ],
@@ -2170,7 +2187,7 @@
           { leg: "Plockton → Inverness Airport", time: "~1 hr 45", note: "Allow more in summer traffic; refuel before returning the car around 16:30." }
         ],
         guide: [
-          { icon: "✈️", title: "Confirmed return flight", lines: ["EZY624 departs Inverness at 19:30 and arrives London Luton at 21:00; target the terminal by about 17:00 after the car return.", "Bag drop opens at 17:30 and closes at 18:50. Check-in also closes 40 minutes before departure, so save the boarding pass offline."] },
+          { icon: "✈️", title: "Confirmed return flight", lines: ["EZY624 — the remaining five — departs Inverness at 19:30 and arrives London Luton at 21:00; target the terminal by about 17:00 after the car return.", "Bag drop opens at 17:30 and closes at 18:50. Check-in also closes 40 minutes before departure, so save the boarding pass offline."] },
           { icon: "🚗", title: "Car return", lines: ["Photograph the fuel gauge, mileage and all sides of the vehicle at return.", "Remove every bag, charging cable and item from the boot before handing over the keys."] }
         ],
         book: ["Check out by 10:00", "Check Birch and Lean To seasonal opening hours", "Refuel and retain the receipt", "Download EZY624 boarding passes", "Protect the 16:30 car-return target and 18:50 bag-drop cutoff"]

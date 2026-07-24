@@ -294,6 +294,13 @@
     .tm-sec p, .tm-sec li { color: var(--muted); font-size: 14px; line-height: 1.55; margin: 0; }
     .tm-sec ul { margin: 0; padding-left: 18px; display: grid; gap: 4px; }
     .tm-actions { display: flex; flex-wrap: wrap; gap: 10px; padding: 4px 22px 0; }
+    /* Per-day weather strip on the visual itinerary */
+    .vp-wx { margin: 10px 0 4px; padding: 10px 12px; border: 1px solid var(--line); border-radius: 14px; background: rgba(79, 163, 216, 0.08); }
+    .vp-wx-line { font-size: 13.5px; line-height: 1.5; }
+    .vp-wx-chips { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 7px; align-items: center; }
+    .vp-wx-chips span { font-size: 11.5px; border: 1px solid var(--line); border-radius: 999px; padding: 3px 9px; color: var(--muted); white-space: nowrap; }
+    .vp-wx-chips a { font-size: 11.5px; font-weight: 700; border-radius: 999px; padding: 3px 10px; background: rgba(79, 163, 216, 0.2); text-decoration: none; }
+    .vp-wx-stamp { margin-top: 6px; font-size: 10.5px; color: var(--muted); letter-spacing: 0.03em; }
     .personality-grid { display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); gap: 10px; margin: 18px 0; }
     .personality { border: 1px solid rgba(255,255,255,0.12); border-radius: 20px; background: rgba(255,255,255,0.06); color: var(--ink); padding: 14px 10px; text-align: center; transition: transform 0.18s ease, background 0.18s ease; }
     .personality:hover, .personality.selected { transform: translateY(-3px); background: rgba(255,209,92,0.18); border-color: rgba(255,209,92,0.36); }
@@ -2201,6 +2208,38 @@
     // ---- Visual itinerary: illustrated poster carousel (overview + per-day slides) ----
     const DAY_ACCENT = { d24: "#5a8fc2", d25: "#7d5fae", d26: "#2e9e6e", d27: "#cf9a2e", d28: "#5aa8c8" };
     const DAY_SCENE = { d24: "scene-inverness.jpg", d25: "scene-eilean.jpg", d26: "scene-storr.jpg", d27: "scene-neist.jpg", d28: "scene-cuillin.jpg" };
+    // Per-day forecast digest (Open-Meteo, pulled Fri 24 Jul 10:30) — am/pm/eve
+    // split with the hike calls written out. Static copy: recheck nightly via the
+    // live link; totals in mm are the bucket sums, gusts in km/h.
+    const DAY_WEATHER = {
+      d24: {
+        line: "🌧 Grey arrival into Inverness — decent chance of evening drizzle on the landing + Tesco run, ~16°C. Jackets at the top of the bags.",
+        chips: ["Eve: 60% · 0.9mm · gusts 38"],
+        link: "https://www.google.com/search?q=weather+inverness"
+      },
+      d25: {
+        line: "🌦 Wet, windy mainland morning (Loch Ness in the rain) clearing from the Skye Bridge onwards — breezy, mostly dry Trotternish evening. Storr tonight: ON — dry-ish with moody cloud; no golden light, but no crowds either.",
+        chips: ["AM: 88–100% · gusts 46–62", "PM: drying · cloud breaking ~50%", "Eve Portree: 39% · gusts 34"],
+        link: "https://www.google.com/search?q=weather+portree"
+      },
+      d26: {
+        line: "⛅ Grey start with light passing showers (totals tiny — shells on and crack on), brightening sharply into a calm, sunny-ish afternoon. Full Quiraing is fine; the day's best light lands on Fairy Glen and the Portree run — good news for the 17:45 coach.",
+        chips: ["AM: 95% chance but only ~0.3mm · gusts 24", "PM: 24% cloud · gusts 17", "Eve: dry · near-calm"],
+        link: "https://www.google.com/search?q=weather+staffin"
+      },
+      d27: {
+        line: "🌧 Driest slot is early — Fairy Pools at 09:00 is exactly right; turns wetter from lunch westward. Neist sunset is ~50/50 (full overcast + showers) — make the call at Dunvegan; the pub is a respectable plan B.",
+        chips: ["Glenbrittle AM: 80% · 0.3mm · gusts 37", "PM west: 96% · ~2mm", "Neist eve: 47% · 100% cloud"],
+        link: "https://www.google.com/search?q=weather+dunvegan"
+      },
+      d28: {
+        line: "🌧 Wet western morning and lunch — pick The Lump over the Scorrybreac loop, and take an indoor table in Plockton. Drier inland for Rogie Falls (rain-fed river = better salmon) but very gusty — keep a grip on the bridge.",
+        chips: ["Portree AM: 92% · 1.3mm", "Plockton PM: 96% · 3.5mm · gusts 45", "Rogie/inland PM: 57% · ~0mm · gusts 50"],
+        link: "https://www.google.com/search?q=weather+plockton"
+      }
+    };
+    const WX_STAMP = "Forecast pulled Fri 24 Jul 10:30 · tap live ↗ and recheck each evening";
+
     const DAY_DETAIL = {
       d24: {
         accom: { name: "Royal Apartment, south Inverness", meta: "1 night · late arrival", note: "Keep the apartment access instructions saved offline.", checkin: "~20:45", checkout: "Sat morning" },
@@ -2535,8 +2574,10 @@
         }
         const note = dayNote(d);
         const noteHtml = (note && !dayIsOff(d.id)) ? `<p class="vp-daynote">${escapeHtml(note)}</p>` : "";
+        const wx = DAY_WEATHER[d.id];
+        const wxHtml = (wx && !dayIsOff(d.id)) ? `<div class="vp-wx"><div class="vp-wx-line">${escapeHtml(wx.line)}</div><div class="vp-wx-chips">${(wx.chips || []).map(c => `<span>${escapeHtml(c)}</span>`).join("")}<a href="${escapeAttr(wx.link)}" target="_blank" rel="noopener">live ↗</a></div><div class="vp-wx-stamp">${escapeHtml(WX_STAMP)}</div></div>` : "";
         const detailsHtml = dayDetail(d);
-        return `<section class="vp-slide">${VP_MTN}${head}${noteHtml}${body}${detailsHtml}</section>`;
+        return `<section class="vp-slide">${VP_MTN}${head}${noteHtml}${wxHtml}${body}${detailsHtml}</section>`;
       }).join("");
 
       const dotsHtml = Array.from({ length: total }, (_, k) => `<button class="vp-dot${k === 0 ? " on" : ""}" data-goslide="${k}" aria-label="Slide ${k + 1}"></button>`).join("");

@@ -294,13 +294,15 @@
     .tm-sec p, .tm-sec li { color: var(--muted); font-size: 14px; line-height: 1.55; margin: 0; }
     .tm-sec ul { margin: 0; padding-left: 18px; display: grid; gap: 4px; }
     .tm-actions { display: flex; flex-wrap: wrap; gap: 10px; padding: 4px 22px 0; }
-    /* Per-day weather strip on the visual itinerary */
-    .vp-wx { margin: 10px 0 4px; padding: 10px 12px; border: 1px solid var(--line); border-radius: 14px; background: rgba(79, 163, 216, 0.08); }
-    .vp-wx-line { font-size: 13.5px; line-height: 1.5; }
-    .vp-wx-chips { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 7px; align-items: center; }
-    .vp-wx-chips span { font-size: 11.5px; border: 1px solid var(--line); border-radius: 999px; padding: 3px 9px; color: var(--muted); white-space: nowrap; }
-    .vp-wx-chips a { font-size: 11.5px; font-weight: 700; border-radius: 999px; padding: 3px 10px; background: rgba(79, 163, 216, 0.2); text-decoration: none; }
-    .vp-wx-stamp { margin-top: 6px; font-size: 10.5px; color: var(--muted); letter-spacing: 0.03em; }
+    /* Per-day weather strip on the visual itinerary. The poster slides are always
+       navy regardless of page theme, so colours are hard-coded like .vp-daynote —
+       never var(--muted)/var(--line) here. */
+    .vp-wx { position: relative; z-index: 1; margin: 12px 0 4px; padding: 11px 13px; border: 1px solid rgba(150, 205, 245, 0.38); border-radius: 14px; background: rgba(64, 150, 210, 0.18); }
+    .vp-wx-line { color: #e9f3fd; font-size: 13.5px; line-height: 1.55; text-shadow: 0 1px 6px rgba(0, 0, 0, 0.35); }
+    .vp-wx-chips { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 8px; align-items: center; }
+    .vp-wx-chips span { font-size: 11.5px; border: 1px solid rgba(150, 205, 245, 0.32); border-radius: 999px; padding: 3px 9px; color: #c3dbf0; white-space: nowrap; background: rgba(10, 24, 40, 0.35); }
+    .vp-wx-chips a { font-size: 11.5px; font-weight: 800; border-radius: 999px; padding: 3px 11px; background: rgba(95, 200, 255, 0.30); color: #f0f8ff; text-decoration: none; }
+    .vp-wx-stamp { margin-top: 7px; font-size: 10.5px; color: rgba(195, 219, 240, 0.85); letter-spacing: 0.03em; }
     .personality-grid { display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); gap: 10px; margin: 18px 0; }
     .personality { border: 1px solid rgba(255,255,255,0.12); border-radius: 20px; background: rgba(255,255,255,0.06); color: var(--ink); padding: 14px 10px; text-align: center; transition: transform 0.18s ease, background 0.18s ease; }
     .personality:hover, .personality.selected { transform: translateY(-3px); background: rgba(255,209,92,0.18); border-color: rgba(255,209,92,0.36); }
